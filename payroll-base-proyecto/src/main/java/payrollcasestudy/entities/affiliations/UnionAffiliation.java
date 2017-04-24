@@ -19,7 +19,7 @@ public class UnionAffiliation {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static final UnionAffiliation NO_AFFILIATION = null;
+	public static final UnionAffiliation NO_AFFILIATION = new UnionAffiliation(-1,0);
 
 	public ServiceCharge getServiceCharge(Calendar date) {
 		// TODO Auto-generated method stub
@@ -35,6 +35,10 @@ public class UnionAffiliation {
 	public Double getDues() {
 		// TODO Auto-generated method stub
 		return dues;
+	}
+
+	public int getMemberId() {		
+		return memberId;
 	}
 
 	

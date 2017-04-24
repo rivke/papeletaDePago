@@ -69,13 +69,12 @@ public class Employee {
     public Calendar getPayPeriodStartDay(Calendar payDate) {
         return paymentSchedule.getPayPeriodStartDate(payDate);
     }
+    
 
     public void payDay(PayCheck payCheck) {
         double grossPay = paymentClassification.calculatePay(payCheck);
-        double deductions = unionAffiliation.calculateDeduction(payCheck);
-        double netPay = grossPay - deductions;
+        double netPay = grossPay;
         payCheck.setGrossPay(grossPay);
-        payCheck.setDeductions(deductions);
         payCheck.setNetPay(netPay);
         paymentMethod.pay(payCheck);
     }

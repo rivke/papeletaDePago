@@ -8,11 +8,11 @@ import org.hamcrest.Matcher;
 
 import payrollcasestudy.entities.PayCheck;
 import payrollcasestudy.entities.ServiceCharge;
-import static payrollcasestudy.entities.paymentclassifications.PaymentClassification.isInPayPeriod;
 public class UnionAffiliation {
 	private Map<Calendar, ServiceCharge> serviceCharges = new HashMap<Calendar, ServiceCharge>();
 	private int memberId;
 	private double dues;
+	public static final UnionAffiliation NO_AFFILIATION = new UnionAffiliation(0,0);
 
 	public UnionAffiliation(int memberId,double dues) {
 		this.memberId=memberId;
@@ -20,7 +20,7 @@ public class UnionAffiliation {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static final UnionAffiliation NO_AFFILIATION = new UnionAffiliation(0,0);
+	
 
 	public ServiceCharge getServiceCharge(Calendar date) {
 		// TODO Auto-generated method stub
@@ -42,30 +42,9 @@ public class UnionAffiliation {
 		return memberId;
 	}
 
-	public double calculateDeduction(PayCheck payCheck) {
-		// TODO Auto-generated method stub				
-	    double totalDeductions = 0;
-	    totalDeductions += numberOfFridaysInPayPeriod(payCheck.getPayPeriodStart(), payCheck.getPayPeriodEnd()) * dues;
-        for (ServiceCharge serviceCharge : serviceCharges.values()){
-            if (isInPayPeriod(serviceCharge.getDate(), payCheck)){
-                totalDeductions += serviceCharge.getAmount();
-            }
-        }
-        return totalDeductions;	    
-	}
 	
 
-	private double numberOfFridaysInPayPeriod(Calendar payPeriodStart, Calendar payPeriodEnd) {
-		// TODO Auto-generated method stub
-		int numberOfFridays = 0;
-        while (!payPeriodStart.after(payPeriodEnd)){
-            if (payPeriodStart.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY){
-                numberOfFridays++;
-            }
-            payPeriodStart.add(Calendar.DAY_OF_MONTH, 1);
-        }
-        return numberOfFridays;
-	}
+	
 
 	
 

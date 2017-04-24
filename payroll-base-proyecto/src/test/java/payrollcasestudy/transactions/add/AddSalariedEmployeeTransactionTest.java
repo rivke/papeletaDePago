@@ -19,6 +19,7 @@ import static payrollcasestudy.TestConstants.*;
  * Listing 19-2
  */
 public class AddSalariedEmployeeTransactionTest {
+	
 
     @Rule
     public DatabaseResource databaseResource = new DatabaseResource();

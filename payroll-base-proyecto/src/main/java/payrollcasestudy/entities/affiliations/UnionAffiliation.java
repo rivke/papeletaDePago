@@ -1,12 +1,15 @@
 package payrollcasestudy.entities.affiliations;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.hamcrest.Matcher;
 
 import payrollcasestudy.entities.ServiceCharge;
 
 public class UnionAffiliation {
+	private Map<Calendar, ServiceCharge> serviceCharges = new HashMap<Calendar, ServiceCharge>();
 	private int memberId;
 	private double dues;
 
@@ -20,7 +23,13 @@ public class UnionAffiliation {
 
 	public ServiceCharge getServiceCharge(Calendar date) {
 		// TODO Auto-generated method stub
-		return null;
+		return serviceCharges.get(date);
+	}
+
+	public void addServiceChargeTransaction(Calendar payDate, double serviceCharge) {
+		// TODO Auto-generated method stub
+		serviceCharges.put(payDate, new ServiceCharge(payDate,serviceCharge));
+		
 	}
 
 	

@@ -32,6 +32,11 @@ public class UnionAffiliation {
 		
 	}
 
+	public Double getDues() {
+		// TODO Auto-generated method stub
+		return dues;
+	}
+
 	
 
 }

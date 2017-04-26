@@ -10,13 +10,11 @@ import payrollcasestudy.entities.PayCheck;
 import payrollcasestudy.entities.ServiceCharge;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
 
-
 public class UnionAffiliation {
 	private Map<Calendar, ServiceCharge> serviceCharges = new HashMap<Calendar, ServiceCharge>();
 	private int memberId;
 	private double dues;
-	public static final UnionAffiliation NO_AFFILIATION = new UnionAffiliation(0,0);
-	private static PaymentClassification paymentClassification;
+	public static final UnionAffiliation NO_AFFILIATION = new UnionAffiliation(-1,0);
 	
 	public UnionAffiliation(int memberId,double dues) {
 		this.memberId=memberId;
@@ -48,7 +46,7 @@ public class UnionAffiliation {
 		double totalDeductions = 0;
         totalDeductions = dues * quantityOfFridays(payCheck.getPayPeriodStart(), payCheck.getPayPeriodEnd());
         for (ServiceCharge serviceCharge : serviceCharges.values()){
-            if (paymentClassification.isInPayPeriod(serviceCharge.getDate(), payCheck)){
+            if (PaymentClassification.isInPayPeriod(serviceCharge.getDate(), payCheck)){
                 totalDeductions += serviceCharge.getAmount();
             }
         }
@@ -56,14 +54,17 @@ public class UnionAffiliation {
 		
 	}
 
-	private int quantityOfFridays(Calendar periodForPayStart, Calendar periodForPayEnd) {
-        int numberOfFridays = 0;
-        while (periodForPayStart != periodForPayEnd){
-            if (periodForPayStart.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY){
+	private double quantityOfFridays(Calendar periodForPayStart, Calendar periodForPayEnd) {
+		double numberOfFridays = 0; 
+		Calendar actualPayPeriod;
+		actualPayPeriod = periodForPayStart;
+		while(actualPayPeriod.compareTo(periodForPayEnd) <= 0){
+			if (actualPayPeriod.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY){
                 numberOfFridays++;
+                actualPayPeriod.add(Calendar.FRIDAY, 1);
             }
-            periodForPayStart.add(Calendar.DAY_OF_MONTH, 1);
-        }
+			actualPayPeriod.add(Calendar.DAY_OF_MONTH, 1);				
+		}		
         return numberOfFridays;
     }
 

@@ -73,8 +73,10 @@ public class Employee {
 
     public void payDay(PayCheck payCheck) {
         double grossPay = paymentClassification.calculatePay(payCheck);
-        double netPay = grossPay;
+        double totalDeductions = unionAffiliation.calculateDeductions(payCheck);
+        double netPay = grossPay - totalDeductions;
         payCheck.setGrossPay(grossPay);
+        payCheck.setDeductions(totalDeductions);
         payCheck.setNetPay(netPay);
         paymentMethod.pay(payCheck);
     }

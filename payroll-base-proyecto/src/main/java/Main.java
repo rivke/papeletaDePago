@@ -1,6 +1,12 @@
 import static spark.Spark.*;
 
+import java.awt.List;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 
 import org.junit.Rule;
 
@@ -22,13 +28,14 @@ import spark.Spark;
 public class Main {
 	
 	public static int employeeId;
+	public static String mensajee;
 		
 	public static void main(String[] args) {
 		employeeId = 0;	
 		final Configuration configuration = new Configuration(new Version(2, 3, 0));
         configuration.setClassForTemplateLoading(Main.class, "/");
         
-        Spark.get("/regi", (request, response) -> {
+        Spark.get("/registrarEmpleadoHora", (request, response) -> {
        	 
             StringWriter writer = new StringWriter();
  
@@ -43,41 +50,42 @@ public class Main {
             return writer;
         });
         
+    	post("/create", (request, response) -> createEmployee(request.queryParams("id"), request.queryParams("nombre"), request.queryParams("direccion")));
+    	
         
-				    
-		
-		get("/", (request, response) -> hola());		
-		
-		post("/hola", (request, response) -> responder_saludo(request.queryParams("nombre_saludo"), request.queryParams("nombre_saludo2")));
-		
-		get("/Arquitectura", (request, response) -> "Hola Arquitectura");
-		
-		//get("/registroEmpleados", (request, response) -> registrar());
 		
 		post("/registrar", (request, response) -> registrar_Empleado(request.queryParams("nombre"), request.queryParams("apellido"), request.queryParams("direccion"), Double.parseDouble(request.queryParams("tarifa_por_hora"))));
-	}
-
-	private static String responder_saludo(String nombre,String apellido) {
-		System.out.println("----------RESPONDIENDO---------");
-		return "Hola "+nombre+ " "+ apellido ;
-	}
-
-	private static String hola() {
-		return "<html>"
-				+ "<body>"
-				+ "<form method='post' action='/hola'>" 
-				+ "<label>Nombre:</label>"
-				+ "<input type='text' name='nombre_saludo'><br>"
-				+ "<label>Apellido:</label>"
-				+ "<input type='text' name='nombre_saludo2'><br>"
-				+ "<input type='submit' value='Saluda'>"
-				+ "</body>"
-				+ "</html>";
+	
+		get("/mostrar2", (request, response) ->showEmployee());
 		
+	
+		Spark.post("/mostrar", (request, response) -> {
+	       	 
+            StringWriter writer = new StringWriter();
+ 
+            try {
+            	
+                Template formTemplate = configuration.getTemplate("result.ftl");
+ 
+                formTemplate.process(null, writer);
+            } catch (Exception e) {
+                Spark.halt(500);
+            }
+ 
+            return writer;
+        });
+        
+
+	
 	}
+
+	
+
+
 	
 	private static String registrar_Empleado(String nombre, String apellido, String direccion, double tarifa_por_hora){
 		System.out.println("----------REGISTRANDO EMPLEADO ASALARIADO POR HORA---------");		
+		
 		employeeId++;
 		String nombreCompleto = "";
 		nombreCompleto = nombre + " " + apellido;
@@ -86,14 +94,40 @@ public class Main {
         addEmployeeTransaction.execute();
         Employee employee = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
         if(employee.getName() == nombreCompleto)
-    		return mostrar_Mensaje_de_Registro( "Empleado con "+nombre+ " "+ apellido + "</br></br> Se ha sido registrado con exito");
+        	
+    		return mensajee="Empleado con "+nombre+ " "+ apellido + "</br></br> Se ha sido registrado con exito";
         else
-        	return mostrar_Mensaje_de_Registro("Error al registrar el empleado " + employee.getName());        
+        	return mensajee="Error al registrar el empleado " + employee.getName();        
+	}
+	
+	public static String showEmployee()
+	{
+		Set<Integer> employeeIds=PayrollDatabase.globalPayrollDatabase.getAllEmployeeIds();
+		ArrayList<Integer> employeeIdLista = new ArrayList<>(employeeIds);
+		Employee employee;
+		String allEmployees="";
+		for(int ind=0;ind<employeeIdLista.size();ind++)
+		{
+			employee=PayrollDatabase.globalPayrollDatabase.getEmployee(employeeIdLista.get(ind));
+			allEmployees=allEmployees+employee.getName().toString()+" - "+employee.getAddress()+"<br>";
+		}
+		return allEmployees;
+		
+	
+	}
+	public static String createEmployee(String employeeId, String nombre,String direccion){
+		int employeeIdInt=Integer.parseInt(employeeId);
+		Employee employee = new Employee(employeeIdInt,nombre,direccion);
+		PayrollDatabase.globalPayrollDatabase.addEmployee(employeeIdInt,employee);
+		return "exito";
+		
+		
 	}
 	
 	
 	
-	private static String mostrar_Mensaje_de_Registro(String mensaje){
+	
+	/*private static String mostrar_Mensaje_de_Registro(String mensaje){
 		return "<html>"
 				+ "<head>"
 				+ "<style>"
@@ -118,5 +152,5 @@ public class Main {
 				+ "</div>"
 				+ "</body>"
 				+ "</html>";	
-	}
+	}*/
 }

@@ -1,10 +1,25 @@
 <html>
-    <head>
-        <title>Said</title>
-    </head>
-    <body>
-        <h1> Your name is ${name}</h1>
-        <br>
-        <h1> Your email is ${email}</h1>
-    </body>
-</html>
+				<head>
+				<style>
+				body{ font-family: 'Oswald', 'Helvetica Neue', Arial, Helvetica, sans-serif; }
+				</style>
+				<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css' media='screen' title='no title' charset='utf-8'>	  		  
+				<script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js'></script>
+				<meta charset='utf-8'>
+				<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+				<title>Registro de empleado por horas</title>   
+				</head>
+				<body>
+				<div class='ui container' style='padding-top: 30px;'>
+				<div class='ui blue segment' >
+				<h3 class='ui teal centered header'>" + mensaje + "</h3>
+				 <h1> Your email is ${mensaje}</h1>
+				</div>
+				</div>
+				<div class='ui segment center aligned basic'>
+				<form action='/regi'>
+				<input class='ui orange button' type='submit' value='Volver a Registro de Empleados' />
+				</form>
+				</div>
+				</body>
+				</html>

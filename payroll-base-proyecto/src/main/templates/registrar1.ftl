@@ -11,7 +11,9 @@
 				<div class='ui basic padded segment'>
 				<h1 class='ui blue centered header'>Registro de Empleado por Horas</h1>
 				</div>
-				<form class='ui form' method='post' action='/registrar'>
+				<form class='ui form' method='post' action='/create'>
+				<label>Id:</label>
+				<input type='text' name='id'><br>
 				<label>Nombre:</label>
 				<input type='text' name='nombre'><br>
 				<label>Apellido:</label>

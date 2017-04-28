@@ -109,7 +109,7 @@ public class Main {
 		for(int ind=0;ind<employeeIdLista.size();ind++)
 		{
 			employee=PayrollDatabase.globalPayrollDatabase.getEmployee(employeeIdLista.get(ind));
-			allEmployees=allEmployees+employee.getName().toString()+" - "+employee.getAddress()+"<br>";
+			allEmployees=allEmployees+employee.getName().toString()+" Vive en... "+employee.getAddress()+"<br>";
 		}
 		return allEmployees;
 		

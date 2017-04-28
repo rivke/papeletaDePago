@@ -112,7 +112,7 @@ public class Main {
 				+ "</div>"
 				+ "</div>"
 				+ "<div class='ui segment center aligned basic'>"
-				+ "<form action='/registroEmpleados'>"
+				+ "<form action='/regi'>"
 				+ "<input class='ui orange button' type='submit' value='Volver a Registro de Empleados' />"
 				+ "</form>"
 				+ "</div>"

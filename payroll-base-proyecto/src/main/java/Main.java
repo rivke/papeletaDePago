@@ -20,13 +20,13 @@ public class Main {
 	public static void main(String[] args) {
 		employeeId = 0;			    
 		
-		//get("/", (request, response) -> hola());		
+		get("/", (request, response) -> hola());		
 		
-		//post("/hola", (request, response) -> responder_saludo(request.queryParams("nombre_saludo"), request.queryParams("nombre_saludo2")));
+		post("/hola", (request, response) -> responder_saludo(request.queryParams("nombre_saludo"), request.queryParams("nombre_saludo2")));
 		
 		get("/Arquitectura", (request, response) -> "Hola Arquitectura");
 		
-		get("/", (request, response) -> registrar());
+		get("/registroEmpleados", (request, response) -> registrar());
 		
 		post("/registrar", (request, response) -> registrar_Empleado(request.queryParams("nombre"), request.queryParams("apellido"), request.queryParams("direccion"), Double.parseDouble(request.queryParams("tarifa_por_hora"))));
 	}
@@ -44,7 +44,7 @@ public class Main {
 				+ "<input type='text' name='nombre_saludo'><br>"
 				+ "<label>Apellido:</label>"
 				+ "<input type='text' name='nombre_saludo2'><br>"
-				+ "<input type='submit' value='Saluda'"
+				+ "<input type='submit' value='Saluda'>"
 				+ "</body>"
 				+ "</html>";
 		
@@ -60,9 +60,9 @@ public class Main {
         addEmployeeTransaction.execute();
         Employee employee = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
         if(employee.getName() == nombreCompleto)
-    		return "Empleado con Nombre: "+nombre+ " Apellido: "+ apellido + " ha sigo registrado con exito";
+    		return mostrar_Mensaje_de_Registro( "Empleado con "+nombre+ " "+ apellido + "</br></br> Se ha sido registrado con exito");
         else
-        	return nombreCompleto +" Error al registrar el empleado " + employee.getName();        
+        	return mostrar_Mensaje_de_Registro("Error al registrar el empleado " + employee.getName());        
 	}
 	
 	private static String registrar(){
@@ -88,13 +88,39 @@ public class Main {
 				+ "<input type='text' name='direccion'><br>"
 				+ "<label>Tarifa por hora:</label>"
 				+ "<input type='number' name='tarifa_por_hora'><br>"
-				+ "</form>"
 				+ "<div class='ui segment center aligned  basic'>"
-				+ "<button class='ui button' type='submit'> Registrar Empleado</button>"
+				+ "<input class='ui olive button' type='submit' value='Registrar Empleado'>"
 				+ "</div>"
+				+ "</form>"
 				+ "</div>"
 				+ "</body>"
-				+ "</html>";
+				+ "</html>";	
+	}
 	
+	private static String mostrar_Mensaje_de_Registro(String mensaje){
+		return "<html>"
+				+ "<head>"
+				+ "<style>"
+				+ "body{ font-family: 'Oswald', 'Helvetica Neue', Arial, Helvetica, sans-serif; }"
+				+ "</style>"
+				+ "<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css' media='screen' title='no title' charset='utf-8'>"		  		  
+				+ "<script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js'></script>"
+				+ "<meta charset='utf-8'>"
+				+ "<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>"
+				+ "<title>Registro de empleado por horas</title>"		    
+				+ "</head>"
+				+ "<body>"
+				+ "<div class='ui container' style='padding-top: 30px;'>"
+				+ "<div class='ui blue segment' >"
+				+ "<h3 class='ui teal centered header'>" + mensaje + "</h3>"
+				+ "</div>"
+				+ "</div>"
+				+ "<div class='ui segment center aligned basic'>"
+				+ "<form action='/registroEmpleados'>"
+				+ "<input class='ui orange button' type='submit' value='Volver a Registro de Empleados' />"
+				+ "</form>"
+				+ "</div>"
+				+ "</body>"
+				+ "</html>";	
 	}
 }

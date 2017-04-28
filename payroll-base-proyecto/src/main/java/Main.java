@@ -1,7 +1,12 @@
 import static spark.Spark.*;
 
+import java.io.StringWriter;
+
 import org.junit.Rule;
 
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.Version;
 import payrollcasestudy.DatabaseResource;
 import payrollcasestudy.boundaries.PayrollDatabase;
 import payrollcasestudy.entities.Employee;
@@ -11,6 +16,7 @@ import payrollcasestudy.entities.paymentmethods.PaymentMethod;
 import payrollcasestudy.entities.paymentschedule.PaymentSchedule;
 import payrollcasestudy.transactions.Transaction;
 import payrollcasestudy.transactions.add.AddHourlyEmployeeTransaction;
+import spark.Spark;
 
 
 public class Main {
@@ -18,7 +24,27 @@ public class Main {
 	public static int employeeId;
 		
 	public static void main(String[] args) {
-		employeeId = 0;			    
+		employeeId = 0;	
+		final Configuration configuration = new Configuration(new Version(2, 3, 0));
+        configuration.setClassForTemplateLoading(Main.class, "/");
+        
+        Spark.get("/regi", (request, response) -> {
+       	 
+            StringWriter writer = new StringWriter();
+ 
+            try {
+                Template formTemplate = configuration.getTemplate("registrar1.ftl");
+ 
+                formTemplate.process(null, writer);
+            } catch (Exception e) {
+                Spark.halt(500);
+            }
+ 
+            return writer;
+        });
+        
+        
+				    
 		
 		get("/", (request, response) -> hola());		
 		
@@ -26,7 +52,7 @@ public class Main {
 		
 		get("/Arquitectura", (request, response) -> "Hola Arquitectura");
 		
-		get("/registroEmpleados", (request, response) -> registrar());
+		//get("/registroEmpleados", (request, response) -> registrar());
 		
 		post("/registrar", (request, response) -> registrar_Empleado(request.queryParams("nombre"), request.queryParams("apellido"), request.queryParams("direccion"), Double.parseDouble(request.queryParams("tarifa_por_hora"))));
 	}
@@ -65,37 +91,7 @@ public class Main {
         	return mostrar_Mensaje_de_Registro("Error al registrar el empleado " + employee.getName());        
 	}
 	
-	private static String registrar(){
-		return "<html>"
-				+ "<head>"
-				+ "<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css' media='screen' title='no title' charset='utf-8'>"		  		  
-				+ "<script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js'></script>"
-				+ "<meta charset='utf-8'>"
-				+ "<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>"
-				+ "<title>Registro de empleado por horas</title>"		    
-				+ "</head>"
-				+ "<body>"
-				+ "<div class='ui container'>"
-				+ "<div class='ui basic padded segment'>"
-				+ "<h1 class='ui blue centered header'>Registro de Empleado por Horas</h1>"
-				+ "</div>"
-				+ "<form class='ui form' method='post' action='/registrar'>" 
-				+ "<label>Nombre:</label>"
-				+ "<input type='text' name='nombre'><br>"
-				+ "<label>Apellido:</label>"
-				+ "<input type='text' name='apellido'><br>"
-				+ "<label>Direccion:</label>"
-				+ "<input type='text' name='direccion'><br>"
-				+ "<label>Tarifa por hora:</label>"
-				+ "<input type='number' name='tarifa_por_hora'><br>"
-				+ "<div class='ui segment center aligned  basic'>"
-				+ "<input class='ui olive button' type='submit' value='Registrar Empleado'>"
-				+ "</div>"
-				+ "</form>"
-				+ "</div>"
-				+ "</body>"
-				+ "</html>";	
-	}
+	
 	
 	private static String mostrar_Mensaje_de_Registro(String mensaje){
 		return "<html>"

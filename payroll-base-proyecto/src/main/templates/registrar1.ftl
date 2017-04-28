@@ -1,0 +1,29 @@
+<html>
+				<head>
+				<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css' media='screen' title='no title' charset='utf-8'>		  		  
+				<script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js'></script>
+				<meta charset='utf-8'>
+				<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+				<title>Registro de empleado por horas</title>    
+				</head>
+				<body>
+				<div class='ui container'>
+				<div class='ui basic padded segment'>
+				<h1 class='ui blue centered header'>Registro de Empleado por Horas</h1>
+				</div>
+				<form class='ui form' method='post' action='/registrar'>
+				<label>Nombre:</label>
+				<input type='text' name='nombre'><br>
+				<label>Apellido:</label>
+				<input type='text' name='apellido'><br>
+				<label>Direccion:</label>
+				<input type='text' name='direccion'><br>
+				<label>Tarifa por hora:</label>
+				<input type='number' name='tarifa_por_hora'><br>
+				<div class='ui segment center aligned  basic'>
+				<input class='ui olive button' type='submit' value='Registrar Empleado'>
+				</div>
+				</form>
+				</div>
+				</body>
+				</html>	

@@ -14,7 +14,7 @@ public class EmployeeController {
 	private static String registrar_Empleado(String nombre, String apellido, String direccion, double tarifa_por_hora){
 		System.out.println("----------REGISTRANDO EMPLEADO ASALARIADO POR HORA---------");		
 		
-		int employeeId;
+		int employeeId = 0;
 		employeeId++;
 		String nombreCompleto = "";
 		nombreCompleto = nombre + " " + apellido;
@@ -22,7 +22,8 @@ public class EmployeeController {
                 new AddHourlyEmployeeTransaction(employeeId, nombreCompleto, direccion, tarifa_por_hora);
         addEmployeeTransaction.execute();
         Employee employee = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
-        if(employee.getName() == nombreCompleto)
+        String mensajee;
+		if(employee.getName() == nombreCompleto)
         	
     		return mensajee="Empleado con "+nombre+ " "+ apellido + "</br></br> Se ha sido registrado con exito";
         else

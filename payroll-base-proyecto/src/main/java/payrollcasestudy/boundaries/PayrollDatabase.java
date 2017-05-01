@@ -1,6 +1,8 @@
 package payrollcasestudy.boundaries;
 
 import payrollcasestudy.entities.Employee;
+import updatable.Updatable;
+import views.EmpleadoView;
 
 import java.util.*;
 
@@ -47,4 +49,26 @@ public class PayrollDatabase {
     public Set<Integer> getAllEmployeeIds() {
         return employees.keySet();
     }
+    
+    public static Employee addShow(int ind)
+	{
+		Set<Integer> employeeIds=PayrollDatabase.globalPayrollDatabase.getAllEmployeeIds();
+		ArrayList<Integer> employeeIdLista = new ArrayList<>(employeeIds);
+		Employee employee;
+		
+		
+			employee=PayrollDatabase.globalPayrollDatabase.getEmployee(employeeIdLista.get(ind));
+			
+			
+		
+		return employee;
+		
+	
+	}
+    
+    
+    
+    
+    
+    
 }

@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.junit.Rule;
 
+import controller.EmployeeController;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.Version;
@@ -22,59 +23,94 @@ import payrollcasestudy.entities.paymentmethods.PaymentMethod;
 import payrollcasestudy.entities.paymentschedule.PaymentSchedule;
 import payrollcasestudy.transactions.Transaction;
 import payrollcasestudy.transactions.add.AddHourlyEmployeeTransaction;
+import spark.ModelAndView;
 import spark.Spark;
+import updatable.Updatable;
+import velocityy.VelocityTemplateEngine;
+import views.EmpleadoView;
 
 
 public class Main {
 	
 	public static int employeeId;
 	public static String mensajee;
+	public static String mensajee2="rebe";
+	static EmployeeController employeeController;
+	static VelocityTemplateEngine velocity;
 		
 	public static void main(String[] args) {
+		
 		employeeId = 0;	
-		final Configuration configuration = new Configuration(new Version(2, 3, 0));
-        configuration.setClassForTemplateLoading(Main.class, "/");
+		
+		
+		get("/regi", (request, response) -> {
+		      return new ModelAndView(new HashMap(), "registrar1.vtl");
+		    }, velocity.vel());
+
+		
+		
+		
         
-        Spark.get("/registrarEmpleadoHora", (request, response) -> {
-       	 
-            StringWriter writer = new StringWriter();
- 
-            try {
-                Template formTemplate = configuration.getTemplate("registrar1.ftl");
- 
-                formTemplate.process(null, writer);
-            } catch (Exception e) {
-                Spark.halt(500);
-            }
- 
-            return writer;
-        });
         
-    	post("/create", (request, response) -> createEmployee(request.queryParams("id"), request.queryParams("nombre"), request.queryParams("direccion")));
+        
+    	post("/registrarEmpleado", (request, response) -> employeeController.createEmployee(request.queryParams("id"), request.queryParams("nombre"), request.queryParams("direccion")));
     	
         
 		
-		post("/registrar", (request, response) -> registrar_Empleado(request.queryParams("nombre"), request.queryParams("apellido"), request.queryParams("direccion"), Double.parseDouble(request.queryParams("tarifa_por_hora"))));
+	//	post("/registrar", (request, response) -> registrar_Empleado(request.queryParams("nombre"), request.queryParams("apellido"), request.queryParams("direccion"), Double.parseDouble(request.queryParams("tarifa_por_hora"))));
 	
-		get("/mostrar2", (request, response) ->showEmployee());
+		//get("/mostrar2", (request, response) ->showEmployee());
 		
+		
+		get("/mostrar", (request, response) -> {
+			Map<String, Object> map = new HashMap<>();
+            map.put("nombre", employeeController.showEmployee());
+		      return new ModelAndView(map, "showEmp.vtl");
+		    }, velocity.vel());
 	
-		Spark.post("/mostrar", (request, response) -> {
-	       	 
+		/*Spark.post("/mostrar", (request, response) -> {
             StringWriter writer = new StringWriter();
  
             try {
-            	
-                Template formTemplate = configuration.getTemplate("result.ftl");
+                String name = request.queryParams("nombre") != null ? request.queryParams("nombre") : "anonymous";
+                String email = request.queryParams("direccion") != null ? request.queryParams("direccion") : "unknown";
  
-                formTemplate.process(null, writer);
+                Template resultTemplate = configuration.getTemplate("showEmp.ftl");
+ 
+                Map<String, Object> map = new HashMap<>();
+                map.put("nombre", name);
+                map.put("direccion", email);
+ 
+                resultTemplate.process(map, writer);
             } catch (Exception e) {
                 Spark.halt(500);
             }
  
             return writer;
         });
-        
+		*/
+		/*
+		Spark.get("/mostrar3", (request, response) -> {
+            StringWriter writer = new StringWriter();
+ 
+            try {
+                //String name = request.queryParams("nombre") != null ? request.queryParams("nombre") : "anonymous";
+               // String email = request.queryParams("direccion") != null ? request.queryParams("direccion") : "unknown";
+                String a= showEmployee();
+                Template resultTemplate = configuration.getTemplate("showEmp.ftl");
+ 
+                Map<String, Object> map = new HashMap<>();
+               // map.put("nombre", name);
+                map.put("direccion", a);
+ 
+                resultTemplate.process(map, writer);
+            } catch (Exception e) {
+                Spark.halt(500);
+            }
+ 
+            return writer;
+        });
+        */
 
 	
 	}
@@ -83,74 +119,11 @@ public class Main {
 
 
 	
-	private static String registrar_Empleado(String nombre, String apellido, String direccion, double tarifa_por_hora){
-		System.out.println("----------REGISTRANDO EMPLEADO ASALARIADO POR HORA---------");		
-		
-		employeeId++;
-		String nombreCompleto = "";
-		nombreCompleto = nombre + " " + apellido;
-        Transaction addEmployeeTransaction =
-                new AddHourlyEmployeeTransaction(employeeId, nombreCompleto, direccion, tarifa_por_hora);
-        addEmployeeTransaction.execute();
-        Employee employee = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
-        if(employee.getName() == nombreCompleto)
-        	
-    		return mensajee="Empleado con "+nombre+ " "+ apellido + "</br></br> Se ha sido registrado con exito";
-        else
-        	return mensajee="Error al registrar el empleado " + employee.getName();        
-	}
-	
-	public static String showEmployee()
-	{
-		Set<Integer> employeeIds=PayrollDatabase.globalPayrollDatabase.getAllEmployeeIds();
-		ArrayList<Integer> employeeIdLista = new ArrayList<>(employeeIds);
-		Employee employee;
-		String allEmployees="";
-		for(int ind=0;ind<employeeIdLista.size();ind++)
-		{
-			employee=PayrollDatabase.globalPayrollDatabase.getEmployee(employeeIdLista.get(ind));
-			allEmployees=allEmployees+employee.getName().toString()+" Vive en... "+employee.getAddress()+"<br>";
-		}
-		return allEmployees;
-		
-	
-	}
-	public static String createEmployee(String employeeId, String nombre,String direccion){
-		int employeeIdInt=Integer.parseInt(employeeId);
-		Employee employee = new Employee(employeeIdInt,nombre,direccion);
-		PayrollDatabase.globalPayrollDatabase.addEmployee(employeeIdInt,employee);
-		return "exito";
-		
-		
-	}
 	
 	
 	
 	
-	/*private static String mostrar_Mensaje_de_Registro(String mensaje){
-		return "<html>"
-				+ "<head>"
-				+ "<style>"
-				+ "body{ font-family: 'Oswald', 'Helvetica Neue', Arial, Helvetica, sans-serif; }"
-				+ "</style>"
-				+ "<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css' media='screen' title='no title' charset='utf-8'>"		  		  
-				+ "<script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js'></script>"
-				+ "<meta charset='utf-8'>"
-				+ "<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>"
-				+ "<title>Registro de empleado por horas</title>"		    
-				+ "</head>"
-				+ "<body>"
-				+ "<div class='ui container' style='padding-top: 30px;'>"
-				+ "<div class='ui blue segment' >"
-				+ "<h3 class='ui teal centered header'>" + mensaje + "</h3>"
-				+ "</div>"
-				+ "</div>"
-				+ "<div class='ui segment center aligned basic'>"
-				+ "<form action='/regi'>"
-				+ "<input class='ui orange button' type='submit' value='Volver a Registro de Empleados' />"
-				+ "</form>"
-				+ "</div>"
-				+ "</body>"
-				+ "</html>";	
-	}*/
+	
+	
+	
 }

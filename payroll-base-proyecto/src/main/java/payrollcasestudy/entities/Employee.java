@@ -1,6 +1,8 @@
 package payrollcasestudy.entities;
 
+import payrollcasestudy.boundaries.PayrollDatabase;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
+import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
 import payrollcasestudy.entities.paymentmethods.PaymentMethod;
 import payrollcasestudy.entities.paymentschedule.PaymentSchedule;
@@ -101,7 +103,13 @@ public class Employee {
 		result += updatable.inicioEmpleado();
 		result += updatable.updateId(""+employeeId);
 		result += updatable.updateName(name);
-		result += updatable.updateAddress(address);		
+		result += updatable.updateAddress(address);	
+		double hourlyrate;
+		Employee employ = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
+		HourlyPaymentClassification h = (HourlyPaymentClassification) paymentClassification;
+		
+		hourlyrate = h.getHourlyRate();
+		result += updatable.updateHourlyRate(""+hourlyrate);
 		result += updatable.finEmpleado();
 		
 		return result;

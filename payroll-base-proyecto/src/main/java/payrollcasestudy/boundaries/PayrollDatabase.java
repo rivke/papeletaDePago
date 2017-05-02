@@ -54,21 +54,19 @@ public class PayrollDatabase {
 	{
 		Set<Integer> employeeIds=PayrollDatabase.globalPayrollDatabase.getAllEmployeeIds();
 		ArrayList<Integer> employeeIdLista = new ArrayList<>(employeeIds);
-		Employee employee;
-		
-		
-			employee=PayrollDatabase.globalPayrollDatabase.getEmployee(employeeIdLista.get(ind));
-			
-			
-		
-		return employee;
-		
-	
-	}
+		Employee employee;				
+			employee=PayrollDatabase.globalPayrollDatabase.getEmployee(employeeIdLista.get(ind));				
+		return employee;	
+	}        
     
-    
-    
-    
-    
+    public static ArrayList<Employee> getAllEmployees(){
+    	ArrayList<Employee> employees = new ArrayList<Employee>();
+    	String resp = " ";
+    	Employee emp;
+    	for(int id : globalPayrollDatabase.getAllEmployeeIds()){
+    		employees.add(globalPayrollDatabase.getEmployee(id));    		
+    	}
+    	return employees;
+    }      
     
 }

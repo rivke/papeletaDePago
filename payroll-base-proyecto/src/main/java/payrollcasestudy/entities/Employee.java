@@ -16,6 +16,7 @@ public class Employee {
     private int employeeId;
     private String name;
     private String address;
+    
     //Updatable updatable = new EmpleadoView();
     private UnionAffiliation unionAffiliation= UnionAffiliation.NO_AFFILIATION;
 
@@ -98,9 +99,11 @@ public class Employee {
 	public String update(Updatable updatable) {
 		String result = "";
 		result += updatable.inicioEmpleado();
-		result += updatable.updateNombre(name);
-		result += updatable.updateAddress(address);
+		result += updatable.updateId(""+employeeId);
+		result += updatable.updateName(name);
+		result += updatable.updateAddress(address);		
 		result += updatable.finEmpleado();
+		
 		return result;
 		}
 

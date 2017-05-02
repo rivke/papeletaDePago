@@ -4,28 +4,49 @@ import updatable.Updatable;
 
 public class EmpleadoView implements Updatable {
 	
-	public String inicioEmpleado() {
-		return "<div>";
-
+		public String inicioEmpleado() {
+			return "<div class='ui basic segment'>" + "<div class='ui horizontal list'>";
+			}
+	
+		public String updateId(String id) {
+			return "<div class='item'>"
+				+ "<div class='content'>"
+			    + "<div class='header'>ID: </div>"
+			    + id
+			    + "</div>"
+				+ "</div>";		
 		}
-
-		public String updateNombre(String nombre) {
-		return "<div>"
-		+ "<h3 class='ui teal centered header'>Nombre: </h3>"
-		+ "<h2 class='ui teal centered header'>"+nombre+"</h2>"
-		+"</div>";
+	
+		public String updateName(String nombre) {
+			return "<div class='item'>"
+				+ "<div class='content'>"
+			    + "<div class='header'>Nombre: </div>"
+			    + nombre
+			    + "</div>"
+				+ "</div>";		
 		}
 
 		public String updateAddress(String direccion) {
-		return "<div>"
-		+ "<h3 class='ui teal centered header'>Direccion: </h3>"
-		+ "<h2 class='ui teal centered header'>"+direccion+"</h2>"
-		+"</div>";
+			return "<div class='item'>"
+				+ "<div class='content'>"
+			    + "<div class='header'>Direccion: </div>"
+			    + direccion
+			    + "</div>"
+			    + "</div>";		
 		}
-
+		
+		public String updateHourlyRate(String tarifaPorHora) {
+			return "<div class='item'>"
+				+ "<div class='content'>"
+			    + "<div class='header'>Tarifa por Hora: </div>"
+			    + tarifaPorHora
+			    + "</div>"
+			    + "</div>";			
+		}			
 
 		public String finEmpleado() {
-		return "</div>";	
+		return "</div>" 
+				+ "</div>";	
 		} 
 
 }

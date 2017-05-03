@@ -99,22 +99,16 @@ public class EmployeeController {
         return verifyCreation(nombre, apellido, nombreCompleto);		
 	}
 
-	public static String addPagoEmployee(int employeeId) {
-		double net=0.0;
-		double a=4.2;
-		String n;
+	public static String addPaySalariedEmployee(int employeeId) {
+		
         Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
         paydayTransaction.execute();
+        PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);
        
         
-
-        PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);
-        net=payCheck.getNetPay();
         
-        
-        
-		return "hp"+net;
+		return ""+payCheck.getNetPay();
 	}		
 
 }

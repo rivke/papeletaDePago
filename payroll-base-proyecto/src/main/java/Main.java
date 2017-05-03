@@ -57,7 +57,7 @@ public class Main {
     	
     	get("/pago", (request, response) -> {
 			Map<String, Object> map = new HashMap<>();
-            map.put("pagos", employeeController.addPagoEmployee(1));
+            map.put("pagos", employeeController.addPaySalariedEmployee(1));
 		      return new ModelAndView(map, "pago.vtl");
 		    }, velocity.vel());
     	

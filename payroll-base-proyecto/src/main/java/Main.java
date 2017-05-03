@@ -53,7 +53,21 @@ public class Main {
     	post("/registrar_Empleado_Comision", (request, response) -> employeeController.addComisionEmployee(request.queryParams("nombre3"), request.queryParams("apellido3"), request.queryParams("direccion3"), Double.parseDouble(request.queryParams("salarioMensual")), Double.parseDouble(request.queryParams("comision"))));
    	    
     	
+    	get("/registrarDescuento", (request, response) -> {
+		      return new ModelAndView(new HashMap(), "registrarDescuentos.vtl");
+		    }, velocity.vel());	
     	
+    	
+    	
+    	post("/agregarCargoPorServicio", (request, response) -> employeeController.addServiceChargeEmployee(Integer.parseInt(request.queryParams("id")), Double.parseDouble(request.queryParams("cargo"))));
+   	    
+
+    	post("/agregarReciboVenta", (request, response) -> employeeController.addSalesReceiptEmployee(Integer.parseInt(request.queryParams("id2")), Double.parseDouble(request.queryParams("amount"))));
+   	    
+    	
+
+    	post("/agregarTimeCard", (request, response) -> employeeController.addTimeCardEmployee(Integer.parseInt(request.queryParams("id3")), Double.parseDouble(request.queryParams("hours"))));
+   	    
     	
     	get("/pago", (request, response) -> {
 			Map<String, Object> map = new HashMap<>();

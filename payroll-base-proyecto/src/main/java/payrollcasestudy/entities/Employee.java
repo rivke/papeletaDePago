@@ -22,7 +22,7 @@ public class Employee {
     private String name;
     private String address;
     
-    //Updatable updatable = new EmpleadoView();
+    
     private UnionAffiliation unionAffiliation= UnionAffiliation.NO_AFFILIATION;
 
     public Employee(int employeeId, String name, String address) {

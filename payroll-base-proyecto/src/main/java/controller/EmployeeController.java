@@ -1,11 +1,21 @@
 package controller;
 
+import static java.util.Calendar.NOVEMBER;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.closeTo;
+import static payrollcasestudy.TestConstants.FLOAT_ACCURACY;
+
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Set;
 
 import payrollcasestudy.boundaries.PayrollDatabase;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.Message;
+import payrollcasestudy.entities.PayCheck;
+import payrollcasestudy.transactions.PaydayTransaction;
 import payrollcasestudy.transactions.Transaction;
 import payrollcasestudy.transactions.add.AddCommissionedEmployeeTransaction;
 import payrollcasestudy.transactions.add.AddHourlyEmployeeTransaction;
@@ -86,6 +96,23 @@ public class EmployeeController {
                 new AddCommissionedEmployeeTransaction(employeeId, nombreCompleto, direccion, salarioMensual, comision);
         addEmployeeTransaction.execute();
         return verifyCreation(nombre, apellido, nombreCompleto);		
+	}
+
+	public static String addPagoEmployee(int employeeId) {
+		double net;
+		String n;
+        Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
+        PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
+        paydayTransaction.execute();
+       
+        
+
+        PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);
+        net=payCheck.getNetPay();
+        n=String.valueOf(net); 
+        
+        
+		return "hp"+n;
 	}		
 
 }

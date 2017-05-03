@@ -2,6 +2,7 @@ package payrollcasestudy.entities.paymentclassifications;
 
 import payrollcasestudy.entities.PayCheck;
 import payrollcasestudy.entities.TimeCard;
+import updatable.Updatable;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -46,4 +47,20 @@ public class HourlyPaymentClassification extends PaymentClassification{
         double straightTime = hours - overtime;
         return straightTime * hourlyRate + overtime * hourlyRate * 1.5;
     }
+
+	public String queTipoDeEmpleado(Updatable updatable, String result, PaymentClassification paymentClassification) {
+		if(paymentClassification instanceof HourlyPaymentClassification)
+		{
+			double hourlyrate;
+			HourlyPaymentClassification h = (HourlyPaymentClassification) paymentClassification;		
+			hourlyrate = h.getHourlyRate();
+			result += updatable.updateHourlyRate(""+hourlyrate);
+			//return result;
+			
+		}
+		return result;
+	}
+	
+	
+	
 }

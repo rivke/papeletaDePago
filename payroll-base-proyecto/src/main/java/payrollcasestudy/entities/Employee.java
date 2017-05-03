@@ -108,75 +108,14 @@ public class Employee {
 		result += updatable.updateName(name);
 		result += updatable.updateAddress(address);	
 					
-		result = paymentClasification(updatable, result);
+		result = paymentClassification.queTipoDeEmpleado(updatable, result, paymentClassification);
 		result += updatable.finEmpleado();		
 		return result;
 		}
 
-	private String paymentClasification(Updatable updatable, String result) {
-		
-		if(isHourly()){
-			result = hourlyPayment(updatable, result);
-		}		
-		if(isSalaried()){
-			result = salariedPayment(updatable, result);
-		}			
-		if(isCommission()){
-			result = comissionPayment(updatable, result);
-		}
-		return result;
-	}
-
-	private String comissionPayment(Updatable updatable, String result) {
-		double montlySalary;
-		double comission;
-		CommissionedPaymentClassification h = (CommissionedPaymentClassification) paymentClassification;		
-		montlySalary = h.getMonthlySalary();
-		comission = h.getCommissionRate();
-		result += updatable.updateMontlySalary(""+montlySalary);
-		result += updatable.updateCommission(""+comission);
-		return result;
-	}
-
-	private String salariedPayment(Updatable updatable, String result) {
-		double salary;
-		SalariedClassification h = (SalariedClassification) paymentClassification;		
-		salary = h.getSalary();
-		result += updatable.updateSalary(""+salary);
-		return result;
-	}
-
-	private String hourlyPayment(Updatable updatable, String result) {
-		double hourlyrate;
-		HourlyPaymentClassification h = (HourlyPaymentClassification) paymentClassification;		
-		hourlyrate = h.getHourlyRate();
-		result += updatable.updateHourlyRate(""+hourlyrate);
-		return result;
-	}
 	
 	
-	public boolean isHourly(){
-		if(paymentClassification instanceof HourlyPaymentClassification)
-			return true;
-		
-			return false;
-		
-	}
 	
-	public boolean isSalaried(){
-		if(paymentClassification instanceof SalariedClassification)
-			return true;
-		
-			return false;
-		
-	}
 	
-	public boolean isCommission(){
-		if(paymentClassification instanceof CommissionedPaymentClassification)
-			return true;
-		
-			return false;
-		
-	}
 
 }

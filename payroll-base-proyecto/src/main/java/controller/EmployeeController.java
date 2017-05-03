@@ -46,10 +46,8 @@ import views.MessageView;
 
 public class EmployeeController {
 	static PayrollDatabase database=PayrollDatabase.globalPayrollDatabase;
-	
 	static public int employeeId=0;
-	
-	static public int memberId = 86;
+	static public int memberId = 0;
 	
 	public static String addHourlyEmployee(String nombre, String apellido, String direccion, double tarifa_por_hora){
 		System.out.println("----------REGISTRANDO EMPLEADO POR HORA---------");			
@@ -175,7 +173,8 @@ public class EmployeeController {
 		
 		Employee employee = database.getEmployee(eemployeId);
 	        
-	        int memberId = 86; //Maxwell Smart
+	      //  int memberId = 86; //Maxwell Smart/
+		memberId++;
 	        UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,cargo);
 	        employee.setUnionAffiliation(unionAffiliation);
 	        database.addUnionMember(memberId, employee);

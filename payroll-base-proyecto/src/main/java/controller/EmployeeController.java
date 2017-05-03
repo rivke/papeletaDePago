@@ -21,7 +21,7 @@ import org.junit.Rule;
 import payrollcasestudy.DatabaseResource;
 import payrollcasestudy.boundaries.PayrollDatabase;
 import payrollcasestudy.entities.Employee;
-import payrollcasestudy.entities.Message;
+
 import payrollcasestudy.entities.PayCheck;
 import payrollcasestudy.entities.SalesReceipt;
 import payrollcasestudy.entities.ServiceCharge;
@@ -39,9 +39,9 @@ import payrollcasestudy.transactions.add.AddSalesReceiptTransaction;
 import payrollcasestudy.transactions.add.AddServiceChargeTransaction;
 import payrollcasestudy.transactions.add.AddTimeCardTransaction;
 import updatable.Updatable;
-import updatable.UpdatableMessage;
+
 import views.EmpleadoView;
-import views.MessageView;
+
 
 
 public class EmployeeController {
@@ -112,8 +112,6 @@ public class EmployeeController {
         return verifyCreation(nombre, apellido, nombreCompleto);
 	}
 	
-	
-	
 
 	
 	public static String addComisionEmployee(String nombre, String apellido, String direccion, double salarioMensual,
@@ -129,7 +127,7 @@ public class EmployeeController {
 	}
 	
 
-	//PAGO
+	
 	public static String addPaySalariedEmployee(int employeeId) {
 		
         Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
@@ -144,36 +142,22 @@ public class EmployeeController {
 	   Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
        PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
        paydayTransaction.execute();
-       
-	   
 		Set<Integer> employeeIds=database.getAllEmployeeIds();
 		ArrayList<Integer> employeeIdLista = new ArrayList<>(employeeIds);
-		Employee employee;
 		String allPay="";
 		for(int ind=1;ind<=employeeIdLista.size();ind++)
 		{
 			
 			 PayCheck payCheck = paydayTransaction.getPaycheck(ind);
-			allPay=allPay+payCheck.getNetPay()+"--";			
+			allPay=allPay+payCheck.getNetPay()+" --- ";			
 		}
-		return allPay;
-		
-		
-       
-         
-		//return ""+payCheck.getNetPay();
+		return allPay;		
 	}
-	
-	
-	
-
-	
-	
+		
 	public static String addServiceChargeEmployee(int eemployeId, double cargo) {
 		
 		Employee employee = database.getEmployee(eemployeId);
 	        
-	      //  int memberId = 86; //Maxwell Smart/
 		memberId++;
 	        UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,cargo);
 	        employee.setUnionAffiliation(unionAffiliation);
@@ -181,39 +165,28 @@ public class EmployeeController {
 	        
 	        Calendar date = new GregorianCalendar(2001, 11, 01);
 	        AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date, 12.95);
-	        addServiceChargeTransaction.execute();
-	        
+	        addServiceChargeTransaction.execute();	        
 	      
 		return "Servicio agregado";
 	}
 
 	
 	
-	public static String addSalesReceiptEmployee(int eemployeId, double amount) {
-		
-        //comision
-        Calendar date = new GregorianCalendar(2001, NOVEMBER, 31);
+	public static String addSalesReceiptEmployee(int eemployeId, double amount) {		
+        
+        Calendar date = new GregorianCalendar(2001, 11, 31);
         Transaction salesReceiptTransaction =
                 new AddSalesReceiptTransaction(date, amount, eemployeId);
-        salesReceiptTransaction.execute();
-
-       
-        
-        
+        salesReceiptTransaction.execute(); 
 		return "Recibo de venta agregado";
 	}
 	
 
-	public static String addTimeCardEmployee(int eemployeId, double horas) {
-		int employeeId = 2;
-		//hora
-      
-
-        Calendar date = new GregorianCalendar(2001,10,31);
-        Transaction timeCardTransaction = new AddTimeCardTransaction(date, 8.0,  eemployeId);
+	public static String addTimeCardEmployee(int eemployeId, double horas) {		
+		
+        Calendar date = new GregorianCalendar(2001,11,31);
+        Transaction timeCardTransaction = new AddTimeCardTransaction(date, horas,  eemployeId);
         timeCardTransaction.execute();
-
-      
      
 		return "Timecard agregada";
 	}		

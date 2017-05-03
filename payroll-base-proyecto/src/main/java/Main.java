@@ -11,7 +11,7 @@ import java.util.Set;
 import org.junit.Rule;
 
 import controller.EmployeeController;
-import controller.MessageController;
+
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.Version;
@@ -38,7 +38,7 @@ public class Main {
 	public static String mensajee2="rebe";
 	static EmployeeController employeeController;
 	static VelocityTemplateEngine velocity;
-	static MessageController messageController;
+	
 		
 	public static void main(String[] args) {
 		
@@ -77,11 +77,7 @@ public class Main {
     	
     	
     	
-    	get("/verResultado", (request, response) -> {
-			Map<String, Object> map = new HashMap<>();
-            map.put("message", messageController.employeeCreatedSuccessfully());
-		      return new ModelAndView(map, "viewMessage.vtl");
-		    }, velocity.vel());
+    	
     	
 		get("/mostrar", (request, response) -> {
 			Map<String, Object> map = new HashMap<>();

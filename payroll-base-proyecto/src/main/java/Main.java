@@ -48,7 +48,8 @@ public class Main {
 		      return new ModelAndView(new HashMap(), "registrar1.vtl");
 		    }, velocity.vel());		                
             	  	      	
-    	post("/registrar_Empleado", (request, response) -> employeeController.addHourlyEmployee(request.queryParams("nombre"), request.queryParams("apellido"), request.queryParams("direccion"), Double.parseDouble(request.queryParams("tarifa_por_hora"))));
+    	post("/registrar_Empleado_por_Hora", (request, response) -> employeeController.addHourlyEmployee(request.queryParams("nombre"), request.queryParams("apellido"), request.queryParams("direccion"), Double.parseDouble(request.queryParams("tarifa_por_hora"))));
+    	post("/registrar_Empleado_Asalariado", (request, response) -> employeeController.addSalariedEmployee(request.queryParams("nombre2"), request.queryParams("apellido2"), request.queryParams("direccion2"), Double.parseDouble(request.queryParams("salario"))));
    	    
     	get("/verResultado", (request, response) -> {
 			Map<String, Object> map = new HashMap<>();

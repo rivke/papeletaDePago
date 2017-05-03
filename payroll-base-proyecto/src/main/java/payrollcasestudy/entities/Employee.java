@@ -4,6 +4,7 @@ import payrollcasestudy.boundaries.PayrollDatabase;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
 import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
+import payrollcasestudy.entities.paymentclassifications.SalariedClassification;
 import payrollcasestudy.entities.paymentmethods.PaymentMethod;
 import payrollcasestudy.entities.paymentschedule.PaymentSchedule;
 import updatable.Updatable;
@@ -122,6 +123,14 @@ public class Employee {
 	
 	public boolean isHourly(){
 		if(paymentClassification instanceof HourlyPaymentClassification)
+			return true;
+		else
+			return false;
+		
+	}
+	
+	public boolean isSalaried(){
+		if(paymentClassification instanceof SalariedClassification)
 			return true;
 		else
 			return false;

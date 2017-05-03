@@ -8,6 +8,7 @@ import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.Message;
 import payrollcasestudy.transactions.Transaction;
 import payrollcasestudy.transactions.add.AddHourlyEmployeeTransaction;
+import payrollcasestudy.transactions.add.AddSalariedEmployeeTransaction;
 import updatable.Updatable;
 import updatable.UpdatableMessage;
 import views.EmpleadoView;
@@ -16,7 +17,7 @@ import views.MessageView;
 public class EmployeeController {
 	static public int employeeId=0;
 	public static String addHourlyEmployee(String nombre, String apellido, String direccion, double tarifa_por_hora){
-		System.out.println("----------REGISTRANDO EMPLEADO ASALARIADO POR HORA---------");			
+		System.out.println("----------REGISTRANDO EMPLEADO POR HORA---------");			
 		employeeId++;
 		String nombreCompleto = "";
 		nombreCompleto = nombre + " " + apellido;
@@ -60,6 +61,18 @@ public class EmployeeController {
 			allEmployees = allEmployees + emp.update(updatable);
 		}
 		return allEmployees;	
+	}
+
+	public static String addSalariedEmployee(String nombre, String apellido, String direccion,
+			double salario) {
+		System.out.println("----------REGISTRANDO EMPLEADO ASALARIADO---------");			
+		employeeId++;
+		String nombreCompleto = "";
+		nombreCompleto = nombre + " " + apellido;
+        Transaction addEmployeeTransaction =
+                new AddSalariedEmployeeTransaction(employeeId, nombreCompleto, direccion, salario);
+        addEmployeeTransaction.execute();
+        return verifyCreation(nombre, apellido, nombreCompleto);
 	}		
 
 }

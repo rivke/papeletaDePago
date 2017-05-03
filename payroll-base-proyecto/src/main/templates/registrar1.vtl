@@ -8,13 +8,17 @@
 		<title>Registro de empleado por horas</title>    
 	</head>
 	<body>
+	<div class="ui red padded center aligned basic segment">
+		<h1 class="ui orange center aligned header">Registro de Empleados </h1> 
+	</div>
+	<div class="ui container">
 		<div class="ui top attached tabular menu">
 		  <a class="active item" data-tab="first">Registro de Empleado por Horas</a>
-		  <a class="item" data-tab="second">Second</a>
-		  <a class="item" data-tab="third">Third</a>
+		  <a class="item" data-tab="second">Registro de Empleado Asalariado</a>
+		  <a class="item" data-tab="third">Registro de Empleado por Comision</a>
 		</div>
 		<div class="ui bottom attached active tab segment" data-tab="first">
-		 	<form class='ui form' method='post' action='/registrar_Empleado'>			
+		 	<form class='ui form' method='post' action='/registrar_Empleado_por_Hora'>			
 				<label>Nombre:</label>
 				<input type='text' name='nombre'><br>
 				<label>Apellido:</label>
@@ -28,17 +32,16 @@
 				</div>
 			</form>
 		</div>
-		<div class="ui bottom attached tab segment" data-tab="second">
-		  <h3>Empleado por salario </h3>
-		  <form class='ui form' method='post' action='/registrar_Empleado'>			
+		<div class="ui bottom attached tab segment" data-tab="second">		  
+		  <form class='ui form' method='post' action='/registrar_Empleado_Asalariado'>			
 			<label>Nombre:</label>
-			<input type='text' name='nombre'><br>
+			<input type='text' name='nombre2'><br>
 			<label>Apellido:</label>
-			<input type='text' name='apellido'><br>
+			<input type='text' name='apellido2'><br>
 			<label>Direccion:</label>
-			<input type='text' name='direccion'><br>
-			<label>Tarifa por hora:</label>
-			<input type='number' name='tarifa_por_hora'><br>
+			<input type='text' name='direccion2'><br>
+			<label>Salario Mensual:</label>
+			<input type='number' name='salario'><br>
 			<div class='ui segment center aligned  basic'>
 				<input class='ui olive button' type='submit' value='Registrar Empleado'>
 			</div>
@@ -49,7 +52,7 @@
 		</div>
 	
 		
-		
+		</div>
 	</body>
 	<script>
 	$('.tabular.menu .item').tab();

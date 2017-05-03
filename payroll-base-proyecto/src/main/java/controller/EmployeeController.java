@@ -50,6 +50,7 @@ public class EmployeeController {
 	static public int employeeId=0;
 	
 	static public int memberId = 86;
+	
 	public static String addHourlyEmployee(String nombre, String apellido, String direccion, double tarifa_por_hora){
 		System.out.println("----------REGISTRANDO EMPLEADO POR HORA---------");			
 		employeeId++;
@@ -60,6 +61,7 @@ public class EmployeeController {
         addEmployeeTransaction.execute();
         return verifyCreation(nombre, apellido, nombreCompleto);        
 	}
+	
 
 	private static String verifyCreation(String nombre, String apellido, String nombreCompleto) {
 		Employee employee = database.getEmployee(employeeId);
@@ -69,6 +71,7 @@ public class EmployeeController {
         else
         	return mensajee="Error al registrar el empleado " + employee.getName();
 	}
+	
 	
 	public static String showEmployee()
 	{
@@ -85,6 +88,7 @@ public class EmployeeController {
 		return allEmployees;	
 	}
 	
+	
 	public static String showAllEmployees(){
 		Updatable updatable = new EmpleadoView();		
 		String allEmployees="";
@@ -96,6 +100,7 @@ public class EmployeeController {
 		}
 		return allEmployees;	
 	}
+	
 
 	public static String addSalariedEmployee(String nombre, String apellido, String direccion,
 			double salario) {
@@ -108,7 +113,11 @@ public class EmployeeController {
         addEmployeeTransaction.execute();
         return verifyCreation(nombre, apellido, nombreCompleto);
 	}
+	
+	
+	
 
+	
 	public static String addComisionEmployee(String nombre, String apellido, String direccion, double salarioMensual,
 			double comision) {
 		System.out.println("----------REGISTRANDO EMPLEADO POR COMISION---------");			
@@ -120,7 +129,9 @@ public class EmployeeController {
         addEmployeeTransaction.execute();
         return verifyCreation(nombre, apellido, nombreCompleto);		
 	}
+	
 
+	//PAGO
 	public static String addPaySalariedEmployee(int employeeId) {
 		
         Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
@@ -130,10 +141,38 @@ public class EmployeeController {
          
 		return ""+payCheck.getNetPay();
 	}
+	
+   public static String payEmployee() {
+	   Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
+       PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
+       paydayTransaction.execute();
+       
+	   
+		Set<Integer> employeeIds=database.getAllEmployeeIds();
+		ArrayList<Integer> employeeIdLista = new ArrayList<>(employeeIds);
+		Employee employee;
+		String allPay="";
+		for(int ind=1;ind<=employeeIdLista.size();ind++)
+		{
+			
+			 PayCheck payCheck = paydayTransaction.getPaycheck(ind);
+			allPay=allPay+payCheck.getNetPay()+"--";			
+		}
+		return allPay;
+		
+		
+       
+         
+		//return ""+payCheck.getNetPay();
+	}
+	
+	
+	
 
+	
+	
 	public static String addServiceChargeEmployee(int eemployeId, double cargo) {
-		// TODO Auto-generated method stub
-		//AddHourlyEmployeeTransaction
+		
 		Employee employee = database.getEmployee(eemployeId);
 	        
 	        int memberId = 86; //Maxwell Smart
@@ -145,14 +184,13 @@ public class EmployeeController {
 	        AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date, 12.95);
 	        addServiceChargeTransaction.execute();
 	        
-	        //ServiceCharge serviceCharge = unionAffiliation.getServiceCharge(date);
-	       
-	      //  assertThat(serviceCharge.getAmount(), is(closeTo(12.95, FLOAT_ACCURACY)));
+	      
 		return "Servicio agregado";
 	}
 
+	
+	
 	public static String addSalesReceiptEmployee(int eemployeId, double amount) {
-		// TODO Auto-generated method stub
 		
         //comision
         Calendar date = new GregorianCalendar(2001, NOVEMBER, 31);
@@ -160,12 +198,12 @@ public class EmployeeController {
                 new AddSalesReceiptTransaction(date, amount, eemployeId);
         salesReceiptTransaction.execute();
 
-        //Employee employee = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
-        
+       
         
         
 		return "Recibo de venta agregado";
 	}
+	
 
 	public static String addTimeCardEmployee(int eemployeId, double horas) {
 		int employeeId = 2;
@@ -176,7 +214,7 @@ public class EmployeeController {
         Transaction timeCardTransaction = new AddTimeCardTransaction(date, 8.0,  eemployeId);
         timeCardTransaction.execute();
 
-       // Employee employee = PayrollDatabase.globalPayrollDatabase.getEmployee( eemployeId);
+      
      
 		return "Timecard agregada";
 	}		

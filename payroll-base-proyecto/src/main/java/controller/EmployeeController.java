@@ -1,6 +1,7 @@
 package controller;
 
 import static java.util.Calendar.NOVEMBER;
+import static java.util.Calendar.APRIL;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.closeTo;
@@ -99,7 +100,8 @@ public class EmployeeController {
 	}
 
 	public static String addPagoEmployee(int employeeId) {
-		double net;
+		double net=0.0;
+		double a=4.2;
 		String n;
         Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
@@ -109,10 +111,10 @@ public class EmployeeController {
 
         PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);
         net=payCheck.getNetPay();
-        n=String.valueOf(net); 
         
         
-		return "hp"+n;
+        
+		return "hp"+net;
 	}		
 
 }

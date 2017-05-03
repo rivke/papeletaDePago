@@ -1,19 +1,36 @@
 <html>
 	<head>
-		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css' media='screen' title='no title' charset='utf-8'>		  		  
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js'></script>
+		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css' media='screen' title='no title' charset='utf-8'> 		  		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
 		<meta charset='utf-8'>
 		<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
 		<title>Registro de empleado por horas</title>    
 	</head>
 	<body>
-		<div class='ui container'>
-			<div class='ui basic padded segment'>
-			<h1 class='ui blue centered header'>Registro de Empleado por Horas</h1>
+		<div class="ui top attached tabular menu">
+		  <a class="active item" data-tab="first">Registro de Empleado por Horas</a>
+		  <a class="item" data-tab="second">Second</a>
+		  <a class="item" data-tab="third">Third</a>
 		</div>
-		<form class='ui form' method='post' action='/registrar_Empleado'>
-			<label>Id:</label>
-			<input type='text' name='id'><br>
+		<div class="ui bottom attached active tab segment" data-tab="first">
+		 	<form class='ui form' method='post' action='/registrar_Empleado'>			
+				<label>Nombre:</label>
+				<input type='text' name='nombre'><br>
+				<label>Apellido:</label>
+				<input type='text' name='apellido'><br>
+				<label>Direccion:</label>
+				<input type='text' name='direccion'><br>
+				<label>Tarifa por hora:</label>
+				<input type='number' name='tarifa_por_hora'><br>
+				<div class='ui segment center aligned  basic'>
+					<input class='ui olive button' type='submit' value='Registrar Empleado'>
+				</div>
+			</form>
+		</div>
+		<div class="ui bottom attached tab segment" data-tab="second">
+		  <h3>Empleado por salario </h3>
+		  <form class='ui form' method='post' action='/registrar_Empleado'>			
 			<label>Nombre:</label>
 			<input type='text' name='nombre'><br>
 			<label>Apellido:</label>
@@ -25,7 +42,19 @@
 			<div class='ui segment center aligned  basic'>
 				<input class='ui olive button' type='submit' value='Registrar Empleado'>
 			</div>
-		</form>
+			</form>
 		</div>
+		<div class="ui bottom attached tab segment" data-tab="third">
+		  Third
+		</div>
+	
+		
+		
 	</body>
-				</html>	
+	<script>
+	$('.tabular.menu .item').tab();
+	$('.menu .item')
+  .tab()
+;
+	</script>
+</html>	

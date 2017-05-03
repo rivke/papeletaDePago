@@ -47,8 +47,7 @@ public class Main {
 		get("/registrar", (request, response) -> {
 		      return new ModelAndView(new HashMap(), "registrar1.vtl");
 		    }, velocity.vel());		                
-        
-    	post("/registrarEmpleado", (request, response) -> employeeController.createEmployee(request.queryParams("id"), request.queryParams("nombre"), request.queryParams("direccion")));  	      	
+            	  	      	
     	post("/registrar_Empleado", (request, response) -> employeeController.addHourlyEmployee(request.queryParams("nombre"), request.queryParams("apellido"), request.queryParams("direccion"), Double.parseDouble(request.queryParams("tarifa_por_hora"))));
    	    
     	get("/verResultado", (request, response) -> {

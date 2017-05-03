@@ -9,6 +9,7 @@ import payrollcasestudy.entities.paymentschedule.PaymentSchedule;
 import updatable.Updatable;
 import views.EmpleadoView;
 
+import static org.hamcrest.Matchers.*;
 import java.util.Calendar;
 
 public class Employee {
@@ -106,13 +107,25 @@ public class Employee {
 		result += updatable.updateAddress(address);	
 		double hourlyrate;
 		Employee employ = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
-		HourlyPaymentClassification h = (HourlyPaymentClassification) paymentClassification;
-		
-		hourlyrate = h.getHourlyRate();
-		result += updatable.updateHourlyRate(""+hourlyrate);
-		result += updatable.finEmpleado();
-		
+		if(isHourly()){
+			HourlyPaymentClassification h = (HourlyPaymentClassification) paymentClassification;		
+			hourlyrate = h.getHourlyRate();
+			result += updatable.updateHourlyRate(""+hourlyrate);
+		}
+		else{
+			result += updatable.updateHourlyRate("--");
+		}		
+		result += updatable.finEmpleado();		
 		return result;
 		}
+	
+	
+	public boolean isHourly(){
+		if(paymentClassification instanceof HourlyPaymentClassification)
+			return true;
+		else
+			return false;
+		
+	}
 
 }

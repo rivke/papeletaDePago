@@ -14,22 +14,25 @@ import views.EmpleadoView;
 import views.MessageView;
 
 public class EmployeeController {
+	static public int employeeId=0;
 	public static String addHourlyEmployee(String nombre, String apellido, String direccion, double tarifa_por_hora){
-		System.out.println("----------REGISTRANDO EMPLEADO ASALARIADO POR HORA---------");		
-		int employeeId = 0;
+		System.out.println("----------REGISTRANDO EMPLEADO ASALARIADO POR HORA---------");			
 		employeeId++;
 		String nombreCompleto = "";
 		nombreCompleto = nombre + " " + apellido;
         Transaction addEmployeeTransaction =
                 new AddHourlyEmployeeTransaction(employeeId, nombreCompleto, direccion, tarifa_por_hora);
         addEmployeeTransaction.execute();
-        Employee employee = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
+        return verifyCreation(nombre, apellido, nombreCompleto);        
+	}
+
+	private static String verifyCreation(String nombre, String apellido, String nombreCompleto) {
+		Employee employee = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
         String mensajee;
-		if(employee.getName() == nombreCompleto)
-        	
-    		return mensajee="<div class='ui basic segment'>El Empleado "+nombre+ " "+ apellido + "</br> Se ha sido registrado con exito</div>";
+		if(employee.getName() == nombreCompleto)        	
+    		return mensajee="El Empleado "+nombre+ " "+ apellido + "</br> Se ha sido registrado con exito";
         else
-        	return mensajee="Error al registrar el empleado " + employee.getName();        
+        	return mensajee="Error al registrar el empleado " + employee.getName();
 	}
 	
 	public static String showEmployee()
@@ -57,18 +60,6 @@ public class EmployeeController {
 			allEmployees = allEmployees + emp.update(updatable);
 		}
 		return allEmployees;	
-	}
-	
-	public static String createEmployee(String employeeId, String nombre,String direccion){
-		String resultado="";
-		int employeeIdInt=Integer.parseInt(employeeId);
-		Employee employee = new Employee(employeeIdInt,nombre,direccion);
-		PayrollDatabase.globalPayrollDatabase.addEmployee(employeeIdInt,employee);
-		MessageController messageController = new MessageController();
-		UpdatableMessage updatableMessage = new MessageView();
-		Message message = new Message("Empleado creado suc");
-		resultado += message.update(updatableMessage);
-		return resultado;				
-	}
+	}		
 
 }

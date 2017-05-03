@@ -42,7 +42,33 @@ public class EmpleadoView implements Updatable {
 			    + tarifaPorHora
 			    + "</div>"
 			    + "</div>";			
-		}			
+		}
+		
+		public String updateSalary(String salario) {
+			return "<div class='item'>"
+				+ "<div class='content'>"
+			    + "<div class='header'>Salario Fijo: </div>"
+			    + salario
+			    + "</div>"
+			    + "</div>";			
+		}
+		
+		public String updateMontlySalary(String salarioMensual) {
+			return "<div class='item'>"
+				+ "<div class='content'>"
+			    + "<div class='header'>Salario Mensual: </div>"
+			    + salarioMensual
+			    + "</div>"
+			    + "</div>";			
+		}
+		public String updateCommission(String comision) {
+			return "<div class='item'>"
+				+ "<div class='content'>"
+			    + "<div class='header'>Comision: </div>"
+			    + comision
+			    + "</div>"
+			    + "</div>";			
+		}
 
 		public String finEmpleado() {
 		return "</div>" 

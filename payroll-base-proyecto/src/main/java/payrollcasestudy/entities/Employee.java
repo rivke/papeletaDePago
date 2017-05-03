@@ -2,6 +2,7 @@ package payrollcasestudy.entities;
 
 import payrollcasestudy.boundaries.PayrollDatabase;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
+import payrollcasestudy.entities.paymentclassifications.CommissionedPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.SalariedClassification;
@@ -107,15 +108,27 @@ public class Employee {
 		result += updatable.updateName(name);
 		result += updatable.updateAddress(address);	
 		double hourlyrate;
-		Employee employ = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
+		double salary;
+		double montlySalary;
+		double comission;
+		Employee employ = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);				
 		if(isHourly()){
 			HourlyPaymentClassification h = (HourlyPaymentClassification) paymentClassification;		
 			hourlyrate = h.getHourlyRate();
 			result += updatable.updateHourlyRate(""+hourlyrate);
-		}
-		else{
-			result += updatable.updateHourlyRate("--");
 		}		
+		if(isSalaried()){
+			SalariedClassification h = (SalariedClassification) paymentClassification;		
+			salary = h.getSalary();
+			result += updatable.updateSalary(""+salary);
+		}			
+		if(isCommission()){
+			CommissionedPaymentClassification h = (CommissionedPaymentClassification) paymentClassification;		
+			montlySalary = h.getMonthlySalary();
+			comission = h.getCommissionRate();
+			result += updatable.updateMontlySalary(""+montlySalary);
+			result += updatable.updateCommission(""+comission);
+		}
 		result += updatable.finEmpleado();		
 		return result;
 		}
@@ -131,6 +144,14 @@ public class Employee {
 	
 	public boolean isSalaried(){
 		if(paymentClassification instanceof SalariedClassification)
+			return true;
+		else
+			return false;
+		
+	}
+	
+	public boolean isCommission(){
+		if(paymentClassification instanceof CommissionedPaymentClassification)
 			return true;
 		else
 			return false;

@@ -7,6 +7,7 @@ import payrollcasestudy.boundaries.PayrollDatabase;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.Message;
 import payrollcasestudy.transactions.Transaction;
+import payrollcasestudy.transactions.add.AddCommissionedEmployeeTransaction;
 import payrollcasestudy.transactions.add.AddHourlyEmployeeTransaction;
 import payrollcasestudy.transactions.add.AddSalariedEmployeeTransaction;
 import updatable.Updatable;
@@ -73,6 +74,18 @@ public class EmployeeController {
                 new AddSalariedEmployeeTransaction(employeeId, nombreCompleto, direccion, salario);
         addEmployeeTransaction.execute();
         return verifyCreation(nombre, apellido, nombreCompleto);
+	}
+
+	public static String addComisionEmployee(String nombre, String apellido, String direccion, double salarioMensual,
+			double comision) {
+		System.out.println("----------REGISTRANDO EMPLEADO POR COMISION---------");			
+		employeeId++;
+		String nombreCompleto = "";
+		nombreCompleto = nombre + " " + apellido;
+        Transaction addEmployeeTransaction =
+                new AddCommissionedEmployeeTransaction(employeeId, nombreCompleto, direccion, salarioMensual, comision);
+        addEmployeeTransaction.execute();
+        return verifyCreation(nombre, apellido, nombreCompleto);		
 	}		
 
 }

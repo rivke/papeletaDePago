@@ -14,4 +14,10 @@ public String updateId(String id);
 
 public String updateHourlyRate(String tarifa);
 
+public String updateSalary(String salary);
+
+public String updateCommission(String comision);
+
+public String updateMontlySalary(String salarioMensual);
+
 }

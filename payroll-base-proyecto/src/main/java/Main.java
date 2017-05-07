@@ -75,7 +75,7 @@ public class Main {
     	
     	get("/detalle/:id", (request, response) -> {
     		
-    		map.put("num",request.params(":id"));
+    		map.put("num",employeeController.showEmployee(Integer.parseInt(request.params(":id"))));
     		
 		      return new ModelAndView(map, "mostrarUno.vtl");
 		    }, velocity.vel());	

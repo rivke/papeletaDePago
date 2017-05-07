@@ -75,6 +75,19 @@ public class EmployeeController {
 	
 	
 	
+     public static String showEmployee(int id){
+		
+		
+		Updatable updatable = new EmpleadoView();		
+		String Employees="";
+		Employee empleados;
+		empleados = database.getEmployee(id);
+		
+			Employees = Employees + empleados.update(updatable);
+		
+		return Employees;	
+	}
+	
 	
 	public static String showAllEmployees(){
 		

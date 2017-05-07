@@ -19,17 +19,13 @@ public class SalariedClassification extends PaymentClassification {
         return salary;
     }
     
-	public String queTipoDeEmpleado(Updatable updatable, String result, PaymentClassification paymentClassification) {
-		if(paymentClassification instanceof SalariedClassification)
-		{
-			double salary;
-			SalariedClassification h = (SalariedClassification) paymentClassification;		
-			salary = h.getSalary();
-			result += updatable.updateSalary(""+salary);
-		//	return result;
+	public String queTipoDeEmpleado(Updatable updatable) {
+		
 			
-		}
-		return result;
+		return updatable.updateSalary(""+salary);
+		
+		
+		
 	}
 	
 }

@@ -108,7 +108,7 @@ public class Employee {
 		result += updatable.updateName(name);
 		result += updatable.updateAddress(address);	
 					
-		result = paymentClassification.queTipoDeEmpleado(updatable, result, paymentClassification);
+		result += paymentClassification.queTipoDeEmpleado(updatable);
 		result += updatable.finEmpleado();		
 		return result;
 		}

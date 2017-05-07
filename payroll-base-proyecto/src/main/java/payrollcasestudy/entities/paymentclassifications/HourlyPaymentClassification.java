@@ -48,17 +48,14 @@ public class HourlyPaymentClassification extends PaymentClassification{
         return straightTime * hourlyRate + overtime * hourlyRate * 1.5;
     }
 
-	public String queTipoDeEmpleado(Updatable updatable, String result, PaymentClassification paymentClassification) {
-		if(paymentClassification instanceof HourlyPaymentClassification)
-		{
-			double hourlyrate;
-			HourlyPaymentClassification h = (HourlyPaymentClassification) paymentClassification;		
-			hourlyrate = h.getHourlyRate();
-			result += updatable.updateHourlyRate(""+hourlyrate);
-			//return result;
+	public String queTipoDeEmpleado(Updatable updatable) {
+		
 			
-		}
-		return result;
+		return	 updatable.updateHourlyRate(""+hourlyRate);
+			
+			
+		
+		
 	}
 	
 	

@@ -7,7 +7,7 @@ import java.util.Calendar;
 
 public abstract class PaymentClassification {
     public abstract double calculatePay(PayCheck payCheck);
-    public abstract String queTipoDeEmpleado(Updatable updatable, String result, PaymentClassification paymentClassification );
+    public abstract String queTipoDeEmpleado(Updatable updatable );
     
     
     public static boolean isInPayPeriod(Calendar date, PayCheck payCheck) {

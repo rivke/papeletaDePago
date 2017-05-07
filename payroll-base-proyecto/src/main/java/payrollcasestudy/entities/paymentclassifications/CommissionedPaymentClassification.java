@@ -45,20 +45,15 @@ public class CommissionedPaymentClassification extends PaymentClassification {
         return totalPay;
     }
     
-    public String queTipoDeEmpleado(Updatable updatable, String result, PaymentClassification paymentClassification) {
-    	if(paymentClassification instanceof CommissionedPaymentClassification)
-		{
-    		double montlySalary;
-    		double comission;
-    		CommissionedPaymentClassification h = (CommissionedPaymentClassification) paymentClassification;		
-    		montlySalary = h.getMonthlySalary();
-    		comission = h.getCommissionRate();
-    		result += updatable.updateMontlySalary(""+montlySalary);
-    		result += updatable.updateCommission(""+comission);
-    		//return result;
+    public String queTipoDeEmpleado(Updatable updatable) {
+    		String result="";
+    		result += updatable.updateMontlySalary(""+monthlySalary);
+    		result += updatable.updateCommission(""+commissionRate);
+    		return	result;
+    		
 			
-		}
-		return result;
+	
+		
 	}
 	
     

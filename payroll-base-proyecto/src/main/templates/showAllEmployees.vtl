@@ -15,20 +15,25 @@
 				<h3 class='ui red center aligned header'> Lista de Empleados </h3>
 			 		 
                  #foreach( $product in $empleados )
-                  $product.update($updatable)
+                 
+                  $product.update($updatable) 
+                                   
                   <form action='/detalle/$product.getId()'>
-				  <input class='ui orange button' type='submit' value='Detalle de pago' />
-			     </form>
-                  
+					  <input class='ui teal  button' type='submit' value='Ver Detalle de pago' />
+				  </form>				 
+				                    
                  #end
                  
-			</div>
-			
-			
+			</div>					
 		</div>		
 		<div class='ui segment center aligned basic'>
 			<form action='/registrar'>
 				<input class='ui orange button' type='submit' value='Volver a Registro de Empleados' />
+			</form>
+		</div>
+		<div class='ui segment center aligned basic'>
+			<form action='/'>
+				<input class='ui grey button' type='submit' value='Volver a la Pagina Principal' />
 			</form>
 		</div>		
 	</body>

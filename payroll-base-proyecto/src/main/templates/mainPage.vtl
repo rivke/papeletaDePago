@@ -1,4 +1,9 @@
 <html>
+<style>
+	.body{
+		background-color: #596461;
+	}
+</style>
 	<head>
 		<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css' media='screen' title='no title' charset='utf-8'> 		  		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -7,37 +12,66 @@
 		<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
 		<title>Sistema de Registros</title>    
 	</head>
-	<body>	
+<body>	
+<div class="ui basic padded segment">
+
 	<div class="ui container">
+	
 		<div class="ui padded basic segment">
-			<h1 class="ui center aligned green header">Bienvenido al Sistema de Registro de Papeletas de Pago</h1>
-		</div> 
-		<div class='ui orange segment '>
-			<h3 class="ui olive header"> Empleados</h3>
-			<div class="ui basic segment">
-				<form action='/registrar'>
-					<input class='ui orange button' type='submit' value='Registrar de Empleados' />
-				</form>		
-				<form action='/mostrarEmpleados'>
-					<input class='ui teal button' type='submit' value='Ver Empleados registrados' />
-				</form>
-			</div>
+			<h1 class="ui center aligned blue header">Bienvenido al Sistema de Registro de Papeletas de Pago</h1>
+		</div> 		  
+  
+		<div class='ui orange segment'>
+			<div class="ui vertical stripe quote segment">
+				<div class="ui equal width stackable internally celled grid">
+			    	<div class="center aligned row">
+			        	<div class="centered column">
+			        		<div class="ui basic segment">
+				          		<h3 class="ui green header"> Empleados</h3>		
+				        	</div>          
+			        	</div>
+			        	<div class="column">
+			        		<div class="ui basic segment">
+			          			<form action='/registrar'>
+									<input class='ui orange button' type='submit' value='Registrar de Empleados' />
+								</form>		
+								<form action='/mostrarEmpleados'>
+									<input class='ui teal button' type='submit' value='Ver Empleados registrados' />
+								</form>
+							</div>
+			        	</div>
+			      	</div>
+		    	</div>
+		  	</div>
 		</div>
+		
 		<div class='ui teal segment '>
-			<h3 class="ui olive header">Pagos</h3>
-			<div class="ui basic segment">
-				<form action='/registrarDescuento'>
-					<input class='ui yellow button' type='submit' value='Registrar Servicios' />
-				</form>
-			</div>
-		</div>		
+			<div class="ui vertical stripe quote segment">
+				<div class="ui equal width stackable internally celled grid">
+			    	<div class="center aligned row">
+			        	<div class="centered column">
+			        		<div class="ui basic segment">
+				          		<h3 class="ui green header">Pagos</h3>		
+				        	</div>          
+			        	</div>
+			        	<div class="column">
+			        		<div class="ui basic segment">
+			          			<form action='/registrarServicio'>
+									<input class='ui yellow button' type='submit' value='Registrar Servicios' />
+								</form>
+							</div>
+			        	</div>
+			      	</div>
+		    	</div>
+		  	</div>
+		</div>	
 		
 	</div>
-	</body>
-	<script>
+	
+</div>
+</body>
+<script>
 	$('.tabular.menu .item').tab();
-	$('.menu .item')
-  .tab()
-;
-	</script>
+	$('.menu .item').tab();
+</script>
 </html>	

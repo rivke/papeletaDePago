@@ -52,7 +52,7 @@ public class Main {
 		    }, velocity.vel());
 		
 		get("/registrar", (request, response) -> {
-		      return new ModelAndView(new HashMap(), "registrar1.vtl");
+		      return new ModelAndView(new HashMap(), "registrarEmpleado.vtl");
 		    }, velocity.vel());		                
             	  	      	
     	post("/registrar_Empleado_por_Hora", (request, response) -> employeeController.addHourlyEmployee(request.queryParams("nombre"), request.queryParams("apellido"), request.queryParams("direccion"), Double.parseDouble(request.queryParams("tarifa_por_hora"))));
@@ -60,8 +60,8 @@ public class Main {
     	post("/registrar_Empleado_Comision", (request, response) -> employeeController.addComisionEmployee(request.queryParams("nombre3"), request.queryParams("apellido3"), request.queryParams("direccion3"), Double.parseDouble(request.queryParams("salarioMensual")), Double.parseDouble(request.queryParams("comision"))));
    	    
     	
-    	get("/registrarDescuento", (request, response) -> {
-		      return new ModelAndView(new HashMap(), "registrarDescuentos.vtl");
+    	get("/registrarServicio", (request, response) -> {
+		      return new ModelAndView(new HashMap(), "registrarServicio.vtl");
 		    }, velocity.vel());	
     	
     	

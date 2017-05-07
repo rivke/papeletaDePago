@@ -47,6 +47,10 @@ public class Main {
 		
 		employeeId = 0;		
 		
+		get("/", (request, response) -> {
+		      return new ModelAndView(new HashMap(), "mainPage.vtl");
+		    }, velocity.vel());
+		
 		get("/registrar", (request, response) -> {
 		      return new ModelAndView(new HashMap(), "registrar1.vtl");
 		    }, velocity.vel());		                

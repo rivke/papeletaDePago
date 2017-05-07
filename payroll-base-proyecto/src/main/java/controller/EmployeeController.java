@@ -153,20 +153,15 @@ public class EmployeeController {
    
    
    public static String showpayEmployeeSeulement(int id) {
-	  
-      // paydayTransaction.execute();
-		
-		String Pay="";
+	  	
+		String Pay="no pagado";
 		
 			
 			 PayCheck payCheck = paydayTransaction.getPaycheck(id);
 			 if (payCheck!=null)
-			 {
-					 
-			Pay="Pago total: "+payCheck.getNetPay()+"  ";	
-			 }
-			 else
-				 Pay ="no pagado";
+			 
+				Pay="Pago total: "+payCheck.getNetPay()+"  ";	
+			
 			
 			
 	

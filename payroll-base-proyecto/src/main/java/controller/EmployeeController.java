@@ -48,11 +48,12 @@ public class EmployeeController {
 	static PayrollDatabase database=PayrollDatabase.globalPayrollDatabase;
 	static public int employeeId=0;
 	static public int memberId = 0;
+	static String nombreCompleto = "";
 	
 	public static String addHourlyEmployee(String nombre, String apellido, String direccion, double tarifa_por_hora){
 		System.out.println("----------REGISTRANDO EMPLEADO POR HORA---------");			
 		employeeId++;
-		String nombreCompleto = "";
+		
 		nombreCompleto = nombre + " " + apellido;
         Transaction addEmployeeTransaction =
                 new AddHourlyEmployeeTransaction(employeeId, nombreCompleto, direccion, tarifa_por_hora);
@@ -174,7 +175,7 @@ public class EmployeeController {
 	
 	public static String addSalesReceiptEmployee(int eemployeId, double amount) {		
         
-        Calendar date = new GregorianCalendar(2001, 11, 31);
+        Calendar date = new GregorianCalendar(2001,NOVEMBER, 30);
         Transaction salesReceiptTransaction =
                 new AddSalesReceiptTransaction(date, amount, eemployeId);
         salesReceiptTransaction.execute(); 
@@ -184,7 +185,7 @@ public class EmployeeController {
 
 	public static String addTimeCardEmployee(int eemployeId, double horas) {		
 		
-        Calendar date = new GregorianCalendar(2001,11,31);
+        Calendar date = new GregorianCalendar(2001,NOVEMBER,30);
         Transaction timeCardTransaction = new AddTimeCardTransaction(date, horas,  eemployeId);
         timeCardTransaction.execute();
      

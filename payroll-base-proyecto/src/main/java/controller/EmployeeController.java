@@ -158,6 +158,23 @@ public class EmployeeController {
 		return allPay;		
 	}
 		
+   
+   
+   public static String payEmployeeSeulement(int id) {
+	   Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
+       PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
+       paydayTransaction.execute();
+		
+		String Pay="";
+		
+			
+			 PayCheck payCheck = paydayTransaction.getPaycheck(id);
+			Pay="Pago total: "+payCheck.getNetPay()+"  ";			
+	
+		return Pay;		
+	}
+   
+   
 	public static String addServiceChargeEmployee(int eemployeId, double cargo) {
 		
 		Employee employee = database.getEmployee(eemployeId);

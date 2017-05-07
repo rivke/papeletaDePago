@@ -67,23 +67,23 @@ public class Main {
    	    post("/agregarTimeCard", (request, response) -> employeeController.addTimeCardEmployee(Integer.parseInt(request.queryParams("id3")), Double.parseDouble(request.queryParams("hours"))));
    	    
     	
-    	get("/pago", (request, response) -> {
-			Map<String, Object> map = new HashMap<>();
-            map.put("pagos", employeeController.payEmployee());
-		      return new ModelAndView(map, "pago.vtl");
-		    }, velocity.vel());
+   	 get("/pago", (request, response) -> employeeController.payEmployee());
+	    
+   	 
+    	
     	
     	get("/detalle/:id", (request, response) -> {
     		
     		map.put("empleado",employeeController.showEmployee(Integer.parseInt(request.params(":id"))));
-    		map.put("pago",employeeController.payEmployeeSeulement(Integer.parseInt(request.params(":id"))));
+    		
+    			
+    			
+    				
+    		map.put("pago",employeeController.showpayEmployeeSeulement(Integer.parseInt(request.params(":id"))));
     		
 		      return new ModelAndView(map, "mostrarUno.vtl");
 		    }, velocity.vel());	
     	
-    	
-    	get("/users/:name", (request, response) -> "Selected user: " + request.params(":name"));
-          
     	
 	
 		

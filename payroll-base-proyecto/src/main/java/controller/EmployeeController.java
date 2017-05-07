@@ -51,6 +51,8 @@ public class EmployeeController {
 	static public int employeeId=0;
 	static public int memberId = 0;
 	static String nombreCompleto = "";
+	static Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
+    static PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
 	
 	public static String addHourlyEmployee(String nombre, String apellido, String direccion, double tarifa_por_hora){
 		System.out.println("----------REGISTRANDO EMPLEADO POR HORA---------");			
@@ -143,33 +145,30 @@ public class EmployeeController {
 	}
 	
    public static String payEmployee() {
-	   Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
-       PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
+	   
        paydayTransaction.execute();
-		Set<Integer> employeeIds=database.getAllEmployeeIds();
-		ArrayList<Integer> employeeIdLista = new ArrayList<>(employeeIds);
-		String allPay="";
-		for(int ind=1;ind<=employeeIdLista.size();ind++)
-		{
-			
-			 PayCheck payCheck = paydayTransaction.getPaycheck(ind);
-			allPay=allPay+payCheck.getNetPay()+" --- ";			
-		}
-		return allPay;		
+       return "Pagados";
 	}
 		
    
    
-   public static String payEmployeeSeulement(int id) {
-	   Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
-       PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-       paydayTransaction.execute();
+   public static String showpayEmployeeSeulement(int id) {
+	  
+      // paydayTransaction.execute();
 		
 		String Pay="";
 		
 			
 			 PayCheck payCheck = paydayTransaction.getPaycheck(id);
-			Pay="Pago total: "+payCheck.getNetPay()+"  ";			
+			 if (payCheck!=null)
+			 {
+					 
+			Pay="Pago total: "+payCheck.getNetPay()+"  ";	
+			 }
+			 else
+				 Pay ="no pagado";
+			
+			
 	
 		return Pay;		
 	}

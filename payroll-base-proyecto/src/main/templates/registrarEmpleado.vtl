@@ -1,0 +1,80 @@
+<html>
+<head>
+	<link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css' media='screen' title='no title' charset='utf-8'> 		  		
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+	<title>Registro de empleado por horas</title>    
+</head>
+<body>
+<div class="ui basic padded segment">
+	<div class="ui red padded center aligned basic segment">
+		<h1 class="ui orange center aligned header">Registro de Empleados </h1> 
+	</div>
+	<div class="ui container">
+		<div class="ui top attached tabular menu">
+		  <a class="active item" data-tab="first">Registro de Empleado por Horas</a>
+		  <a class="item" data-tab="second">Registro de Empleado Asalariado</a>
+		  <a class="item" data-tab="third">Registro de Empleado por Comision</a>
+		</div>
+		<div class="ui bottom attached active tab segment" data-tab="first">
+		 	<form class='ui form' method='post' action='/registrar_Empleado_por_Hora'>			
+				<label>Nombre:</label>
+				<input type='text' name='nombre'><br>
+				<label>Apellido:</label>
+				<input type='text' name='apellido'><br>
+				<label>Direccion:</label>
+				<input type='text' name='direccion'><br>
+				<label>Tarifa por hora:</label>
+				<input type='number' name='tarifa_por_hora'><br>
+				<div class='ui segment center aligned  basic'>
+					<input class='ui olive button' type='submit' value='Registrar'>
+				</div>
+			</form>
+		</div>
+		<div class="ui bottom attached tab segment" data-tab="second">		  
+		  <form class='ui form' method='post' action='/registrar_Empleado_Asalariado'>			
+			<label>Nombre:</label>
+			<input type='text' name='nombre2'><br>
+			<label>Apellido:</label>
+			<input type='text' name='apellido2'><br>
+			<label>Direccion:</label>
+			<input type='text' name='direccion2'><br>
+			<label>Salario Mensual:</label>
+			<input type='number' name='salario'><br>
+			<div class='ui segment center aligned  basic'>
+				<input class='ui olive button' type='submit' value='Registrar'>
+			</div>
+			</form>
+		</div>
+		<div class="ui bottom attached tab segment" data-tab="third">
+		  <form class='ui form' method='post' action='/registrar_Empleado_Comision'>			
+			<label>Nombre:</label>
+			<input type='text' name='nombre3'><br>
+			<label>Apellido:</label>
+			<input type='text' name='apellido3'><br>
+			<label>Direccion:</label>
+			<input type='text' name='direccion3'><br>
+			<label>Salario Mensual:</label>
+			<input type='number' name='salarioMensual'><br>
+			<label>Comision:</label>
+			<input type='number' name='comision'><br>
+			<div class='ui segment center aligned  basic'>
+				<input class='ui olive button' type='submit' value='Registrar'>
+			</div>
+			</form>
+		</div>			
+	</div>
+	<div class='ui segment center aligned basic'>
+			<form action='/'>
+				<input class='ui grey button' type='submit' value='Volver a la Pagina Principal' />
+			</form>
+		</div>
+</div>
+</body>
+<script>
+	$('.tabular.menu .item').tab();
+	$('.menu .item').tab();
+</script>
+</html>	

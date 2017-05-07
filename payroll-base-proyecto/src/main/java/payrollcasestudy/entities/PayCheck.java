@@ -7,7 +7,7 @@ import java.util.Map;
 public class PayCheck {
     private double grossPay;
     private double deductions;
-    private double netPay;
+    private double netPay=0.0;
     private Calendar payPeriodStart;
     private Calendar payDate;
     private Map<String, String> fields = new HashMap<String, String>();

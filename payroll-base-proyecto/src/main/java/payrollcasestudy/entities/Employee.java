@@ -116,6 +116,18 @@ public class Employee {
 		return result;
 		}
 
+	public String onlyEmployee(Updatable updatable) {
+		String result = "";
+		result += updatable.inicioEmpleado();
+		result += updatable.updateId(""+employeeId);
+		result += updatable.updateName(name);
+		//result += updatable.updateAddress(address);	
+					
+		//result += paymentClassification.queTipoDeEmpleado(updatable);
+		result += updatable.finEmpleado();		
+		return result;
+		}
+
 	
 	
 	

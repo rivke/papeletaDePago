@@ -1,3 +1,4 @@
+
 2017-05-07 19:08:02,791 - Initializing Velocity, Calling init()...
 2017-05-07 19:08:02,791 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
 2017-05-07 19:08:02,793 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
@@ -457,3 +458,4 @@
 2017-05-07 19:08:44,776 - ResourceManager : found pago.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
 2017-05-07 19:08:44,776 - ResourceManager : found pago.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
 2017-05-07 19:08:44,776 - ResourceManager : found pago.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+

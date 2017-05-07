@@ -60,13 +60,8 @@ public class Main {
     	
     	
     	post("/agregarCargoPorServicio", (request, response) -> employeeController.addServiceChargeEmployee(Integer.parseInt(request.queryParams("id")), Double.parseDouble(request.queryParams("cargo"))));
-   	    
-
     	post("/agregarReciboVenta", (request, response) -> employeeController.addSalesReceiptEmployee(Integer.parseInt(request.queryParams("id2")), Double.parseDouble(request.queryParams("amount"))));
-   	    
-    	
-
-    	post("/agregarTimeCard", (request, response) -> employeeController.addTimeCardEmployee(Integer.parseInt(request.queryParams("id3")), Double.parseDouble(request.queryParams("hours"))));
+   	    post("/agregarTimeCard", (request, response) -> employeeController.addTimeCardEmployee(Integer.parseInt(request.queryParams("id3")), Double.parseDouble(request.queryParams("hours"))));
    	    
     	
     	get("/pago", (request, response) -> {
@@ -79,11 +74,7 @@ public class Main {
     	
     	
     	
-		get("/mostrar", (request, response) -> {
-			Map<String, Object> map = new HashMap<>();
-            map.put("nombre", employeeController.showEmployee());
-		      return new ModelAndView(map, "showEmp.vtl");
-		    }, velocity.vel());
+	
 		
 		get("/mostrarEmpleados", (request, response) -> {
 			Map<String, Object> map = new HashMap<>();

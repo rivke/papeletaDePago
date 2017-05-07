@@ -14,10 +14,12 @@
 			<div class='ui blue segment' >	
 				<h3 class='ui red center aligned header'> Lista de Empleados </h3>
 			 		 
-				
-				
                  #foreach( $product in $empleados )
                   $product.update($updatable)
+                  <form action='/detalle/$product.getId()'>
+				  <input class='ui orange button' type='submit' value='Detalle de pago' />
+			     </form>
+                  
                  #end
                  
 			</div>

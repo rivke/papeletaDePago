@@ -14,6 +14,8 @@ import static payrollcasestudy.TestConstants.FLOAT_ACCURACY;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import org.junit.Rule;
@@ -72,23 +74,11 @@ public class EmployeeController {
 	}
 	
 	
-	public static String showEmployee()
-	{
-		Updatable updatable = new EmpleadoView();
-		Set<Integer> employeeIds=database.getAllEmployeeIds();
-		ArrayList<Integer> employeeIdLista = new ArrayList<>(employeeIds);
-		Employee employee;
-		String allEmployees="";
-		for(int ind=0;ind<employeeIdLista.size();ind++)
-		{
-			employee=PayrollDatabase.addShow(ind);			
-			allEmployees=allEmployees+employee.update(updatable);			
-		}
-		return allEmployees;	
-	}
 	
 	
 	public static String showAllEmployees(){
+		
+		
 		Updatable updatable = new EmpleadoView();		
 		String allEmployees="";
 		ArrayList<Employee> empleados = new ArrayList<Employee>();

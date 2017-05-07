@@ -39,6 +39,9 @@ public class Main {
 	static EmployeeController employeeController;
 	static VelocityTemplateEngine velocity;
 	
+	static Map<String, Object> map = new HashMap<>();
+	static Updatable updatable = new EmpleadoView();		
+	
 		
 	public static void main(String[] args) {
 		
@@ -70,19 +73,21 @@ public class Main {
 		      return new ModelAndView(map, "pago.vtl");
 		    }, velocity.vel());
     	
-    	get("/detalle", (request, response) -> {
-		      return new ModelAndView(new HashMap(), "mostrarUno.vtl");
+    	get("/detalle/:id", (request, response) -> {
+    		
+    		map.put("num",request.params(":id"));
+    		
+		      return new ModelAndView(map, "mostrarUno.vtl");
 		    }, velocity.vel());	
     	
     	
     	get("/users/:name", (request, response) -> "Selected user: " + request.params(":name"));
+          
     	
 	
 		
 		get("/mostrarEmpleados", (request, response) -> {
-			Map<String, Object> map = new HashMap<>();
-          //  map.put("empleados", employeeController.showAllEmployees());
-			Updatable updatable = new EmpleadoView();		
+			
 			map.put("empleados",PayrollDatabase.getAllEmployees());
 			map.put("updatable",updatable);
 		      return new ModelAndView(map, "showAllEmployees.vtl");

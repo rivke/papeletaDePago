@@ -50,6 +50,9 @@ public class Employee {
     public String getName() {
         return name;
     }
+    public int getId() {
+        return employeeId;
+    }
 
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;

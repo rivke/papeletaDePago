@@ -71,9 +71,7 @@ public class EmpleadoView implements Updatable {
 		}
 
 		public String finEmpleado() {
-		return " <form action='/detalle'>"+
-				"<input class='ui orange button' type='submit' value='Detalle' />"+
-			"</form>" + "</div>" 
+		return   "</div>" 
 				+ "</div>";	
 		} 
 

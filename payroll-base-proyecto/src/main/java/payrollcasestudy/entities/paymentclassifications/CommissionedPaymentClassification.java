@@ -45,7 +45,7 @@ public class CommissionedPaymentClassification extends PaymentClassification {
         return totalPay;
     }
     
-    public String queTipoDeEmpleado(Updatable updatable) {
+    public String update(Updatable updatable) {
     		String result="";
     		result += updatable.updateMontlySalary(""+monthlySalary);
     		result += updatable.updateCommission(""+commissionRate);

@@ -19,7 +19,7 @@ public class SalariedClassification extends PaymentClassification {
         return salary;
     }
     
-	public String queTipoDeEmpleado(Updatable updatable) {
+	public String update(Updatable updatable) {
 		
 			
 		return updatable.updateSalary(""+salary);

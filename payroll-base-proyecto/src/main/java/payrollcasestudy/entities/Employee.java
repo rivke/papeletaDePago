@@ -109,12 +109,12 @@ public class Employee {
 		result += updatable.updateName(name);
 		result += updatable.updateAddress(address);	
 					
-		result += paymentClassification.queTipoDeEmpleado(updatable);
+		result += paymentClassification.update(updatable);
 		result += updatable.finEmpleado();		
 		return result;
 		}
 
-	public String onlyEmployee(Updatable updatable) {
+	public String updateIdAndName(Updatable updatable) {
 		String result = "";
 		result += updatable.inicioEmpleado();
 		result += updatable.updateId(""+employeeId);

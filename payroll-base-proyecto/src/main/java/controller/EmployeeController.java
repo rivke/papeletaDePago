@@ -82,11 +82,9 @@ public class EmployeeController {
 	
      public static String showEmployee(int id){			
 		Updatable updatable = new EmpleadoView();		
-		String Employees="";
-		Employee empleados;
-		empleados = database.getEmployee(id);		
-			Employees = Employees + empleados.update(updatable);		
-		return Employees;	
+		Employee empleado = database.getEmployee(id);		
+		return empleado.update(updatable);		
+			
 	}
 	
 	
@@ -130,12 +128,12 @@ public class EmployeeController {
 	}
 		
    
-   
-   public static String showpayEmployeeSeulement(int id) {	  	
-		String Pay="no pagado";					
-			 PayCheck payCheck = paydayTransaction.getPaycheck(id);
-			 if (payCheck!=null)			 
-				Pay="Pago total: "+payCheck.getNetPay()+"  ";	
+   	public static String showPayment(int id) {	  	
+	
+   		String Pay="no pagado";					
+	    PayCheck payCheck = paydayTransaction.getPaycheck(id);
+		if (payCheck!=null)			 
+		     Pay="Pago total: "+payCheck.getNetPay()+"  ";	
 		return Pay;		
 	}
    
@@ -143,7 +141,7 @@ public class EmployeeController {
 	public static String addServiceChargeEmployee(int eemployeId, double cargo, int dia, int mes, int anio) {		
 		Employee employee = database.getEmployee(eemployeId);
 	    memberId++;
-        addMemberShip(cargo, employee);
+        addMemberShip(2, employee);
         Calendar date1 = fechaCorrecta(dia, mes, anio);
          AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date1, cargo);
         addServiceChargeTransaction.execute();	        

@@ -81,23 +81,17 @@ public class EmployeeController {
 	
 	
 	
-     public static String showEmployee(int id){
-		
-		
+     public static String showEmployee(int id){			
 		Updatable updatable = new EmpleadoView();		
 		String Employees="";
 		Employee empleados;
-		empleados = database.getEmployee(id);
-		
-			Employees = Employees + empleados.update(updatable);
-		
+		empleados = database.getEmployee(id);		
+			Employees = Employees + empleados.update(updatable);		
 		return Employees;	
 	}
 	
 	
-	public static String showAllEmployees(){
-		
-		
+	public static String showAllEmployees(){				
 		Updatable updatable = new EmpleadoView();		
 		String allEmployees="";
 		ArrayList<Employee> empleados = new ArrayList<Employee>();
@@ -138,55 +132,43 @@ public class EmployeeController {
 	
 
 	
-	public static String addPaySalariedEmployee(int employeeId) {
-		
+	public static String addPaySalariedEmployee(int employeeId) {		
         Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
         paydayTransaction.execute();
-        PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);
-         
+        PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);         
 		return ""+payCheck.getNetPay();
 	}
 	
-   public static String payEmployee() {
-	   
+   public static String payEmployee() {	   
        paydayTransaction.execute();
-       return "Pagados";
+       return UI.mostrarMensaje("Pagados");
 	}
 		
    
    
-   public static String showpayEmployeeSeulement(int id) {
-	  	
-		String Pay="no pagado";
-		
-			
+   public static String showpayEmployeeSeulement(int id) {	  	
+		String Pay="no pagado";					
 			 PayCheck payCheck = paydayTransaction.getPaycheck(id);
-			 if (payCheck!=null)
-			 
+			 if (payCheck!=null)			 
 				Pay="Pago total: "+payCheck.getNetPay()+"  ";	
-			
-			
-			
-	
 		return Pay;		
 	}
    
-   
-	public static String addServiceChargeEmployee(int eemployeId, double cargo) {
-		
+  
+	public static String addServiceChargeEmployee(int eemployeId, double cargo) {		
 		Employee employee = database.getEmployee(eemployeId);
 	        
 		memberId++;
-	        UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,cargo);
-	        employee.setUnionAffiliation(unionAffiliation);
-	        database.addUnionMember(memberId, employee);
-	        
-	        Calendar date = new GregorianCalendar(2001, 11, 01);
-	        AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date, 12.95);
-	        addServiceChargeTransaction.execute();	        
+        UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,cargo);
+        employee.setUnionAffiliation(unionAffiliation);
+        database.addUnionMember(memberId, employee);
+        
+        Calendar date = new GregorianCalendar(2001, 11, 01);
+        AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date, 12.95);
+        addServiceChargeTransaction.execute();	        
 	      
-		return "Servicio agregado";
+		return UI.mostrarMensaje("Servicio agregado");
 	}
 
 	
@@ -197,7 +179,7 @@ public class EmployeeController {
         Transaction salesReceiptTransaction =
                 new AddSalesReceiptTransaction(date, amount, eemployeId);
         salesReceiptTransaction.execute(); 
-		return "Recibo de venta agregado";
+		return UI.mostrarMensaje("Recibo de venta agregado");
 	}
 	
 
@@ -207,7 +189,7 @@ public class EmployeeController {
         Transaction timeCardTransaction = new AddTimeCardTransaction(date, horas,  eemployeId);
         timeCardTransaction.execute();
      
-		return "Timecard agregada";
+		return UI.mostrarMensaje("Timecard agregada");
 	}		
 
 }

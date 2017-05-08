@@ -44,7 +44,7 @@ public class Main {
 	
 		
 	public static void main(String[] args) {
-		
+		map.put("updatable",updatable);
 		employeeId = 0;		
 		
 		get("/", (request, response) -> {
@@ -59,29 +59,23 @@ public class Main {
     	post("/registrar_Empleado_Asalariado", (request, response) -> employeeController.addSalariedEmployee(request.queryParams("nombre2"), request.queryParams("apellido2"), request.queryParams("direccion2"), Double.parseDouble(request.queryParams("salario"))));
     	post("/registrar_Empleado_Comision", (request, response) -> employeeController.addComisionEmployee(request.queryParams("nombre3"), request.queryParams("apellido3"), request.queryParams("direccion3"), Double.parseDouble(request.queryParams("salarioMensual")), Double.parseDouble(request.queryParams("comision"))));
    	    
+    	get("/registrarServicio", (request, response) -> {  
+    		map.put("empleados",PayrollDatabase.getAllEmployees());
+		      return new ModelAndView(map, "registrarServicio.vtl");
+		    }, velocity.vel());    	
     	
-    	get("/registrarServicio", (request, response) -> {
-		      return new ModelAndView(new HashMap(), "registrarServicio.vtl");
-		    }, velocity.vel());	
     	
-    	
-    	
-    	post("/agregarCargoPorServicio", (request, response) -> employeeController.addServiceChargeEmployee(Integer.parseInt(request.queryParams("id")), Double.parseDouble(request.queryParams("cargo"))));
-    	post("/agregarReciboVenta", (request, response) -> employeeController.addSalesReceiptEmployee(Integer.parseInt(request.queryParams("id2")), Double.parseDouble(request.queryParams("amount"))));
-   	    post("/agregarTimeCard", (request, response) -> employeeController.addTimeCardEmployee(Integer.parseInt(request.queryParams("id3")), Double.parseDouble(request.queryParams("hours"))));
+    	post("/agregarCargoPorServicio", (request, response) -> employeeController.addServiceChargeEmployee(Integer.parseInt(request.queryParams("id")), Double.parseDouble(request.queryParams("cargo")),Integer.parseInt(request.queryParams("dia_pago1")),Integer.parseInt(request.queryParams("mes_pago1")),Integer.parseInt(request.queryParams("anio_pago1"))));
+    	post("/agregarReciboVenta", (request, response) -> employeeController.addSalesReceiptEmployee(Integer.parseInt(request.queryParams("id2")), Double.parseDouble(request.queryParams("amount")),Integer.parseInt(request.queryParams("dia_pago2")),Integer.parseInt(request.queryParams("mes_pago2")),Integer.parseInt(request.queryParams("anio_pago2"))));
+   	    post("/agregarTimeCard", (request, response) -> employeeController.addTimeCardEmployee(Integer.parseInt(request.queryParams("id3")), Double.parseDouble(request.queryParams("hours")),Integer.parseInt(request.queryParams("dia_pago3")),Integer.parseInt(request.queryParams("mes_pago3")),Integer.parseInt(request.queryParams("anio_pago3"))));
    	    
     	
-   	 get("/pago", (request, response) -> employeeController.payEmployee());
-	    
-   	 
+   	    get("/pago", (request, response) -> employeeController.payEmployee());	       	 
     	
     	
     	get("/detalle/:id", (request, response) -> {
     		
-    		map.put("empleado",employeeController.showEmployee(Integer.parseInt(request.params(":id"))));
-    		
-    			
-    			
+    		map.put("empleado",employeeController.showEmployee(Integer.parseInt(request.params(":id"))));        			
     				
     		map.put("pago",employeeController.showpayEmployeeSeulement(Integer.parseInt(request.params(":id"))));
     		
@@ -89,12 +83,10 @@ public class Main {
 		    }, velocity.vel());	
     	
     	
-	
-		
 		get("/mostrarEmpleados", (request, response) -> {
 			
 			map.put("empleados",PayrollDatabase.getAllEmployees());
-			map.put("updatable",updatable);
+			
 		      return new ModelAndView(map, "showAllEmployees.vtl");
 		    }, velocity.vel());	
 	}		

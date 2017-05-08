@@ -156,7 +156,7 @@ public class EmployeeController {
 	}
    
   
-	public static String addServiceChargeEmployee(int eemployeId, double cargo) {		
+	public static String addServiceChargeEmployee(int eemployeId, double cargo, int dia, int mes, int anio) {		
 		Employee employee = database.getEmployee(eemployeId);
 	        
 		memberId++;
@@ -164,7 +164,7 @@ public class EmployeeController {
         employee.setUnionAffiliation(unionAffiliation);
         database.addUnionMember(memberId, employee);
         
-        Calendar date = new GregorianCalendar(2001, 11, 01);
+        Calendar date = new GregorianCalendar(anio, mes, dia);
         AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date, 12.95);
         addServiceChargeTransaction.execute();	        
 	      
@@ -173,9 +173,9 @@ public class EmployeeController {
 
 	
 	
-	public static String addSalesReceiptEmployee(int eemployeId, double amount) {		
-        
-        Calendar date = new GregorianCalendar(2001,NOVEMBER, 30);
+	public static String addSalesReceiptEmployee(int eemployeId, double amount, int dia, int mes, int anio) {		
+        //2001-11-30
+        Calendar date = new GregorianCalendar(anio,mes, dia);
         Transaction salesReceiptTransaction =
                 new AddSalesReceiptTransaction(date, amount, eemployeId);
         salesReceiptTransaction.execute(); 
@@ -183,9 +183,9 @@ public class EmployeeController {
 	}
 	
 
-	public static String addTimeCardEmployee(int eemployeId, double horas) {		
+	public static String addTimeCardEmployee(int eemployeId, double horas, int dia, int mes, int anio) {		
 		
-        Calendar date = new GregorianCalendar(2001,NOVEMBER,30);
+        Calendar date = new GregorianCalendar(anio,mes,dia);
         Transaction timeCardTransaction = new AddTimeCardTransaction(date, horas,  eemployeId);
         timeCardTransaction.execute();
      

@@ -94,12 +94,10 @@ public class Employee {
     }
 
 	public void setUnionAffiliation(UnionAffiliation unionAffiliation) {
-		// TODO Auto-generated method stub
 		this.unionAffiliation = unionAffiliation;
 		
 	}
 	public UnionAffiliation getUnionAffiliation() {
-		// TODO Auto-generated method stub
 		return unionAffiliation;
 		
 	}
@@ -120,10 +118,7 @@ public class Employee {
 		String result = "";
 		result += updatable.inicioEmpleado();
 		result += updatable.updateId(""+employeeId);
-		result += updatable.updateName(name);
-		//result += updatable.updateAddress(address);	
-					
-		//result += paymentClassification.queTipoDeEmpleado(updatable);
+		result += updatable.updateName(name);		
 		result += updatable.finEmpleado();		
 		return result;
 		}

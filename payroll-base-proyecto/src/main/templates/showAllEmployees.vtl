@@ -13,16 +13,17 @@
 		<div class='ui container' style='padding-top: 30px;'>
 			<div class='ui blue segment' >	
 				<h3 class='ui red center aligned header'> Lista de Empleados </h3>
-			 		 
-                 #foreach( $product in $empleados )
-
-                  $product.onlyEmployee($updatable)
-
-                  <form action='/detalle/$product.getId()'>
-					  <input class='ui teal  button' type='submit' value='Ver Detalle de pago' />
-				  </form>				 
-				                    
-                 #end
+			 		 <div class="ui stackable four column grid">
+		                 #foreach( $product in $empleados )
+						    <div class="column">
+		                 		$product.onlyEmployee($updatable)
+		
+		                    	<form action='/detalle/$product.getId()'>
+							  		<input class='ui teal  button' type='submit' value='Ver Detalle de pago' />
+						    	</form>				 
+						     </div>        
+		                 #end
+		              </div>
                  
 			</div>					
 		</div>		
@@ -30,15 +31,9 @@
 			<form action='/registrar'>
 				<input class='ui orange button' type='submit' value='Volver a Registro de Empleados' />
 			</form>
-		</div>
-		<div class='ui segment center aligned basic'>
-			<form action='/pago'>
-				<input class='ui red button' type='submit' value='Pagar' />
-			</form>
 			<form action='/'>
 				<input class='ui grey button' type='submit' value='Volver a la Pagina Principal' />
 			</form>
-			
 		</div>		
 	</body>
 </html>

@@ -164,8 +164,12 @@ public class EmployeeController {
         employee.setUnionAffiliation(unionAffiliation);
         database.addUnionMember(memberId, employee);
         
+        
         Calendar date = new GregorianCalendar(anio, mes, dia);
-        AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date, 12.95);
+        date.set(Calendar.MONTH, mes-1);
+        Calendar date1 = new GregorianCalendar(anio, date.get(Calendar.MONTH),dia);
+        
+        AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date1, 12.95);
         addServiceChargeTransaction.execute();	        
 	      
 		return UI.mostrarMensaje("Servicio agregado");
@@ -176,17 +180,18 @@ public class EmployeeController {
 	public static String addSalesReceiptEmployee(int eemployeId, double amount, int dia, int mes, int anio) {		
         //2001-11-30
         Calendar date = new GregorianCalendar(anio,mes, dia);
+        date.set(Calendar.MONTH, mes-1);
+        Calendar date1 = new GregorianCalendar(anio, date.get(Calendar.MONTH),dia);
+        
         Transaction salesReceiptTransaction =
-                new AddSalesReceiptTransaction(date, amount, eemployeId);
+                new AddSalesReceiptTransaction(date1, amount, eemployeId);
         salesReceiptTransaction.execute(); 
 		return UI.mostrarMensaje("Recibo de venta agregado");
 	}
 	
 
 	public static String addTimeCardEmployee(int eemployeId, double horas, int dia, int mes, int anio) {		
-		/*GregorianCalendar calendar = new GregorianCalendar();
-	    calendar.set(Calendar.DAY_OF_MONTH, 1);
-	    calendar.set(Calendar.MONTH, mes-1);*/
+		
 		
         Calendar date = new GregorianCalendar(anio,mes,dia);
         date.set(Calendar.MONTH, mes-1);

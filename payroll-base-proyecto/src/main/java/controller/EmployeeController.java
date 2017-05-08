@@ -70,12 +70,11 @@ public class EmployeeController {
 	private static String verifyCreation(String nombre, String apellido, String nombreCompleto) {
 		Employee employee = database.getEmployee(employeeId);
         String mensaje;
-		if(employee.getName() == nombreCompleto){
+		if(employee.getName() == nombreCompleto)
 			mensaje="El Empleado "+nombre+ " "+ apellido + "</br> Se ha sido registrado con exito ";
-		}
-		else{			
+				
 			mensaje="Error al registrar el empleado " + employee.getName();
-		}
+		
 		return UI.mostrarMensaje(mensaje);   
 	}
 	
@@ -91,24 +90,12 @@ public class EmployeeController {
 	}
 	
 	
-	public static String showAllEmployees(){				
-		Updatable updatable = new EmpleadoView();		
-		String allEmployees="";
-		ArrayList<Employee> empleados = new ArrayList<Employee>();
-		empleados = PayrollDatabase.getAllEmployees();
-		for( Employee emp : empleados)
-		{
-			allEmployees = allEmployees + emp.update(updatable);
-		}
-		return allEmployees;	
-	}
+	
 	
 
-	public static String addSalariedEmployee(String nombre, String apellido, String direccion,
-			double salario) {
+	public static String addSalariedEmployee(String nombre, String apellido, String direccion,double salario) {
 		System.out.println("----------REGISTRANDO EMPLEADO ASALARIADO---------");			
 		employeeId++;
-		String nombreCompleto = "";
 		nombreCompleto = nombre + " " + apellido;
         Transaction addEmployeeTransaction =
                 new AddSalariedEmployeeTransaction(employeeId, nombreCompleto, direccion, salario);
@@ -118,11 +105,8 @@ public class EmployeeController {
 	
 
 	
-	public static String addComisionEmployee(String nombre, String apellido, String direccion, double salarioMensual,
-			double comision) {
-		System.out.println("----------REGISTRANDO EMPLEADO POR COMISION---------");			
+	public static String addComisionEmployee(String nombre, String apellido, String direccion, double salarioMensual,double comision) {		
 		employeeId++;
-		String nombreCompleto = "";
 		nombreCompleto = nombre + " " + apellido;
         Transaction addEmployeeTransaction =
                 new AddCommissionedEmployeeTransaction(employeeId, nombreCompleto, direccion, salarioMensual, comision);
@@ -158,31 +142,26 @@ public class EmployeeController {
   
 	public static String addServiceChargeEmployee(int eemployeId, double cargo, int dia, int mes, int anio) {		
 		Employee employee = database.getEmployee(eemployeId);
-	        
-		memberId++;
-        UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,cargo);
-        employee.setUnionAffiliation(unionAffiliation);
-        database.addUnionMember(memberId, employee);
-        
-        
-        Calendar date = new GregorianCalendar(anio, mes, dia);
-        date.set(Calendar.MONTH, mes-1);
-        Calendar date1 = new GregorianCalendar(anio, date.get(Calendar.MONTH),dia);
-        
-        AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date1, 12.95);
+	    memberId++;
+        addMemberShip(cargo, employee);
+        Calendar date1 = fechaCorrecta(dia, mes, anio);
+         AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date1, cargo);
         addServiceChargeTransaction.execute();	        
 	      
 		return UI.mostrarMensaje("Servicio agregado");
 	}
 
+
+	private static void addMemberShip(double cargo, Employee employee) {
+		UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,cargo);
+        employee.setUnionAffiliation(unionAffiliation);
+        database.addUnionMember(memberId, employee);
+	}
+
 	
 	
 	public static String addSalesReceiptEmployee(int eemployeId, double amount, int dia, int mes, int anio) {		
-        //2001-11-30
-        Calendar date = new GregorianCalendar(anio,mes, dia);
-        date.set(Calendar.MONTH, mes-1);
-        Calendar date1 = new GregorianCalendar(anio, date.get(Calendar.MONTH),dia);
-        
+        Calendar date1 = fechaCorrecta(dia, mes, anio); 
         Transaction salesReceiptTransaction =
                 new AddSalesReceiptTransaction(date1, amount, eemployeId);
         salesReceiptTransaction.execute(); 
@@ -191,15 +170,19 @@ public class EmployeeController {
 	
 
 	public static String addTimeCardEmployee(int eemployeId, double horas, int dia, int mes, int anio) {		
-		
-		
-        Calendar date = new GregorianCalendar(anio,mes,dia);
-        date.set(Calendar.MONTH, mes-1);
-        Calendar date1 = new GregorianCalendar(anio, date.get(Calendar.MONTH),dia);
+		 Calendar date1 = fechaCorrecta(dia, mes, anio);
         Transaction timeCardTransaction = new AddTimeCardTransaction(date1, horas,  eemployeId);
         timeCardTransaction.execute();
      
 		return UI.mostrarMensaje("Timecard agregada");
+	}
+
+
+	private static Calendar fechaCorrecta(int dia, int mes, int anio) {
+		Calendar date = new GregorianCalendar(anio,mes,dia);
+        date.set(Calendar.MONTH, mes-1);
+        Calendar date1 = new GregorianCalendar(anio, date.get(Calendar.MONTH),dia);
+		return date1;
 	}		
 
 }

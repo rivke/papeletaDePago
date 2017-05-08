@@ -43,6 +43,7 @@ import payrollcasestudy.transactions.add.AddTimeCardTransaction;
 import updatable.Updatable;
 
 import views.EmpleadoView;
+import views.UI;
 
 
 
@@ -68,11 +69,14 @@ public class EmployeeController {
 
 	private static String verifyCreation(String nombre, String apellido, String nombreCompleto) {
 		Employee employee = database.getEmployee(employeeId);
-        String mensajee;
-		if(employee.getName() == nombreCompleto)        	
-    		return mensajee="El Empleado "+nombre+ " "+ apellido + "</br> Se ha sido registrado con exito";
-        else
-        	return mensajee="Error al registrar el empleado " + employee.getName();
+        String mensaje;
+		if(employee.getName() == nombreCompleto){
+			mensaje="El Empleado "+nombre+ " "+ apellido + "</br> Se ha sido registrado con exito ";
+		}
+		else{			
+			mensaje="Error al registrar el empleado " + employee.getName();
+		}
+		return UI.mostrarMensaje(mensaje);   
 	}
 	
 	

@@ -184,9 +184,14 @@ public class EmployeeController {
 	
 
 	public static String addTimeCardEmployee(int eemployeId, double horas, int dia, int mes, int anio) {		
+		/*GregorianCalendar calendar = new GregorianCalendar();
+	    calendar.set(Calendar.DAY_OF_MONTH, 1);
+	    calendar.set(Calendar.MONTH, mes-1);*/
 		
         Calendar date = new GregorianCalendar(anio,mes,dia);
-        Transaction timeCardTransaction = new AddTimeCardTransaction(date, horas,  eemployeId);
+        date.set(Calendar.MONTH, mes-1);
+        Calendar date1 = new GregorianCalendar(anio, date.get(Calendar.MONTH),dia);
+        Transaction timeCardTransaction = new AddTimeCardTransaction(date1, horas,  eemployeId);
         timeCardTransaction.execute();
      
 		return UI.mostrarMensaje("Timecard agregada");

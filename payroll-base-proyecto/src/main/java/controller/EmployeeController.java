@@ -52,7 +52,7 @@ public class EmployeeController {
 	static public int employeeId=0;
 	static public int memberId = 0;
 	static String nombreCompleto = "";
-	static Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
+	static Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
     static PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
 	
 	public static String addHourlyEmployee(String nombre, String apellido, String direccion, double tarifa_por_hora){
@@ -115,7 +115,7 @@ public class EmployeeController {
 
 	
 	public static String addPaySalariedEmployee(int employeeId) {		
-        Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
+        Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
         paydayTransaction.execute();
         PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);         

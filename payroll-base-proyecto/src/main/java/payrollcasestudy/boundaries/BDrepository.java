@@ -16,8 +16,14 @@ import payrollcasestudy.entities.Employee;
 public class BDrepository implements Repositoory{
 	private static final Map<String, Class<?>> Employee = null;
 	private static Connection con;
-	  private static BDrepository INSTANCE = null;
-	    public Connection conexion = null;
+	 private static BDrepository INSTANCE = null;
+	 public Connection conexion = null;
+	    
+	 public void conectar() throws SQLException
+	 {
+		 conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/papeletadepago","root","rebeca");
+		 
+	 }
 
 	  
 	  
@@ -59,8 +65,7 @@ public class BDrepository implements Repositoory{
 	public void addEmployee(int employeeId, Employee employee) throws SQLException {
 		
 	    PreparedStatement pstInsertarCuenta;
-	    conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/papeletadepago","root","rebeca");
-	   
+	    conectar();
 	 
 	    String sqlNuevaCuenta = "INSERT INTO employees VALUES (?,?,?)";
 	    pstInsertarCuenta = conexion.prepareStatement(sqlNuevaCuenta); 
@@ -70,20 +75,6 @@ public class BDrepository implements Repositoory{
 	   
 	    pstInsertarCuenta.executeUpdate();    
 	    
-		// TODO Auto-generated method stub
-		//INSERT INTO `papeletadepago`.`employees` (`employeeId`, `name`, `address`) VALUES ('1', 'dd', 'ff');
-		// query = "INSERT INTO vehiculo(marca, " + "modelo, " + "matricula, " + "anio, "
-	     //           + "id_tipo_vehiculo" + ") VALUES ('" + taxi.getMarca() + "', " + "'" + taxi.getModelo()
-	    //            + "', " + "'" + taxi.getMatricula() + "', " + taxi.getAnio() + ", " + tipo_vehiculo + ");";
-		 
-
-		/*	String seleccio = "INSERT INTO employees(employeeId,name,address)VALUES (?,?,?)";
-			PreparedStatement ps = con.prepareStatement(seleccio);
-			ps.setLong(0, employeeId); 
-			ps.setString(1, employee.getName()); 
-			ps.setString(2, employee.getAddress()); 
-			ps.executeUpdate();
-		*/
 	}
 	
 		
@@ -133,12 +124,11 @@ public class BDrepository implements Repositoory{
 	
 	
 	public ResultSet connectionWithTableOfEmployees()
-	{//Connection cn = DriverManager.getConnection("jdbc:mysql://servidor_bd:puerto/nombre_bd", "usuario", "contraseña");
-		
+	{
 		
 		ResultSet rs=null;
 		try{
-			conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/papeletadepago","root","rebeca");
+			conectar();
            String query= "SELECT * FROM papeletadepago.employees";
            Statement stmt=(Statement) conexion.createStatement();
            rs=((java.sql.Statement)stmt).executeQuery(query);

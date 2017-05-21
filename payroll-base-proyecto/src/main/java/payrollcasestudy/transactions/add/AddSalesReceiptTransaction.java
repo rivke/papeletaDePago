@@ -1,6 +1,7 @@
 package payrollcasestudy.transactions.add;
 
 import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.SalesReceipt;
 import payrollcasestudy.entities.paymentclassifications.CommissionedPaymentClassification;
@@ -21,7 +22,7 @@ public class AddSalesReceiptTransaction implements Transaction{
         this.employeeId = employeeId;
     }
 
-    public void execute() {
+    public void execute(Repositoory repository) {
         Employee employee = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
         if (employee != null){
             PaymentClassification paymentClassification = employee.getPaymentClassification();

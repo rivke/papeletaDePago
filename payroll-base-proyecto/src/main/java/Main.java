@@ -17,6 +17,7 @@ import freemarker.template.Template;
 import freemarker.template.Version;
 import payrollcasestudy.DatabaseResource;
 import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
 import payrollcasestudy.entities.paymentmethods.HoldMethod;
@@ -30,6 +31,8 @@ import updatable.Updatable;
 import velocityy.VelocityTemplateEngine;
 import views.EmpleadoView;
 
+import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.BDrepository;
 
 public class Main {
 	
@@ -41,7 +44,8 @@ public class Main {
 	
 	static Map<String, Object> map = new HashMap<>();
 	static Updatable updatable = new EmpleadoView();		
-	
+	private static Repositoory mc = new BDrepository();
+
 		
 	public static void main(String[] args) {
 		map.put("updatable",updatable);
@@ -83,7 +87,9 @@ public class Main {
     	
 		get("/mostrarEmpleados", (request, response) -> {
 			
-			map.put("empleados",PayrollDatabase.getAllEmployees());
+			//map.put("empleados",PayrollDatabase.getAllEmployees());
+			map.put("empleados",mc.getAllEmployees());
+
 			
 		      return new ModelAndView(map, "showAllEmployees.vtl");
 		    }, velocity.vel());	

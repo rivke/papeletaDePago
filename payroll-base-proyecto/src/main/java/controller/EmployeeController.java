@@ -11,6 +11,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static payrollcasestudy.TestConstants.FLOAT_ACCURACY;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -21,7 +22,9 @@ import java.util.Set;
 import org.junit.Rule;
 
 import payrollcasestudy.DatabaseResource;
+import payrollcasestudy.boundaries.BDrepository;
 import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 
 import payrollcasestudy.entities.PayCheck;
@@ -48,6 +51,9 @@ import views.UI;
 
 
 public class EmployeeController {
+	
+	private static Repositoory mc = new BDrepository();
+
 	static PayrollDatabase database=PayrollDatabase.globalPayrollDatabase;
 	static public int employeeId=0;
 	static public int memberId = 0;
@@ -55,15 +61,15 @@ public class EmployeeController {
 	static Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
     static PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
 	
-	public static String addHourlyEmployee(String nombre, String apellido, String direccion, double tarifa_por_hora){
+	public static String addHourlyEmployee(String nombre, String apellido, String direccion, double tarifa_por_hora) throws SQLException{
 		System.out.println("----------REGISTRANDO EMPLEADO POR HORA---------");			
 		employeeId++;
 		
 		nombreCompleto = nombre + " " + apellido;
         Transaction addEmployeeTransaction =
                 new AddHourlyEmployeeTransaction(employeeId, nombreCompleto, direccion, tarifa_por_hora);
-        addEmployeeTransaction.execute();
-        return verifyCreation(nombre, apellido, nombreCompleto);        
+        addEmployeeTransaction.execute(mc);
+        return "bien";//verifyCreation(nombre, apellido, nombreCompleto);        
 	}
 	
 
@@ -91,24 +97,24 @@ public class EmployeeController {
 	
 	
 
-	public static String addSalariedEmployee(String nombre, String apellido, String direccion,double salario) {
+	public static String addSalariedEmployee(String nombre, String apellido, String direccion,double salario) throws SQLException {
 		System.out.println("----------REGISTRANDO EMPLEADO ASALARIADO---------");			
 		employeeId++;
 		nombreCompleto = nombre + " " + apellido;
         Transaction addEmployeeTransaction =
                 new AddSalariedEmployeeTransaction(employeeId, nombreCompleto, direccion, salario);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(null);
         return verifyCreation(nombre, apellido, nombreCompleto);
 	}
 	
 
 	
-	public static String addComisionEmployee(String nombre, String apellido, String direccion, double salarioMensual,double comision) {		
+	public static String addComisionEmployee(String nombre, String apellido, String direccion, double salarioMensual,double comision) throws SQLException {		
 		employeeId++;
 		nombreCompleto = nombre + " " + apellido;
         Transaction addEmployeeTransaction =
                 new AddCommissionedEmployeeTransaction(employeeId, nombreCompleto, direccion, salarioMensual, comision);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(null);
         return verifyCreation(nombre, apellido, nombreCompleto);		
 	}
 	
@@ -117,13 +123,13 @@ public class EmployeeController {
 	public static String addPaySalariedEmployee(int employeeId) {		
         Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute();
+        paydayTransaction.execute(null);
         PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);         
 		return ""+payCheck.getNetPay();
 	}
 	
    public static String payEmployee() {	   
-       paydayTransaction.execute();
+       paydayTransaction.execute(null);
        return UI.mostrarMensaje("Pagados");
 	}
 		
@@ -144,7 +150,7 @@ public class EmployeeController {
         addMemberShip(2, employee);
         Calendar date1 = fechaCorrecta(dia, mes, anio);
          AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date1, cargo);
-        addServiceChargeTransaction.execute();	        
+        addServiceChargeTransaction.execute(null);	        
 	      
 		return UI.mostrarMensaje("Servicio agregado");
 	}
@@ -158,19 +164,19 @@ public class EmployeeController {
 
 	
 	
-	public static String addSalesReceiptEmployee(int eemployeId, double amount, int dia, int mes, int anio) {		
+	public static String addSalesReceiptEmployee(int eemployeId, double amount, int dia, int mes, int anio) throws SQLException {		
         Calendar date1 = fechaCorrecta(dia, mes, anio); 
         Transaction salesReceiptTransaction =
                 new AddSalesReceiptTransaction(date1, amount, eemployeId);
-        salesReceiptTransaction.execute(); 
+        salesReceiptTransaction.execute(null); 
 		return UI.mostrarMensaje("Recibo de venta agregado");
 	}
 	
 
-	public static String addTimeCardEmployee(int eemployeId, double horas, int dia, int mes, int anio) {		
+	public static String addTimeCardEmployee(int eemployeId, double horas, int dia, int mes, int anio) throws SQLException {		
 		 Calendar date1 = fechaCorrecta(dia, mes, anio);
         Transaction timeCardTransaction = new AddTimeCardTransaction(date1, horas,  eemployeId);
-        timeCardTransaction.execute();
+        timeCardTransaction.execute(null);
      
 		return UI.mostrarMensaje("Timecard agregada");
 	}

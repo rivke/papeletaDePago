@@ -1,6 +1,7 @@
 package payrollcasestudy.transactions.change;
 
 import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.transactions.Transaction;
 
@@ -13,7 +14,7 @@ public abstract class ChangeEmployeeTransaction implements Transaction {
         this.employeeId = employeeId;
     }
 
-    public void execute() {
+    public void execute(Repositoory repository) {
         Employee employee = database.getEmployee(employeeId);
         changeEmployee(employee);
     }

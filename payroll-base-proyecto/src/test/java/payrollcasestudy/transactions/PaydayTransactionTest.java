@@ -3,6 +3,8 @@ package payrollcasestudy.transactions;
 import org.junit.Rule;
 import org.junit.Test;
 import payrollcasestudy.DatabaseResource;
+import payrollcasestudy.boundaries.MemoryRepository;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.PayCheck;
 import payrollcasestudy.transactions.add.*;
 import payrollcasestudy.transactions.change.ChangeMemberTransaction;
@@ -19,6 +21,7 @@ import static org.hamcrest.Matchers.nullValue;
 import static payrollcasestudy.TestConstants.*;
 
 public class PaydayTransactionTest {
+	private static final Repositoory Repository = new MemoryRepository();
 
     @Rule
     public DatabaseResource databaseResource = new DatabaseResource();
@@ -29,11 +32,11 @@ public class PaydayTransactionTest {
     public void testSingleSalariedEmployee() throws Exception {
         int employeeId = 1;
         Transaction addSalariedEmployeeTransaction = new AddSalariedEmployeeTransaction(employeeId,"Bob", "Home", 1000.0);
-        addSalariedEmployeeTransaction.execute();
+        addSalariedEmployeeTransaction.execute(Repository);
 
         Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute();
+        paydayTransaction.execute(Repository);
 
         PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);
         assertThat(payCheck.getPayPeriodEnd(), is(payDate));
@@ -47,11 +50,11 @@ public class PaydayTransactionTest {
     public void testSingleSalariedEmployeeWrongDate() throws Exception {
         int empId = 1;
         Transaction addEmployeeTransaction = new AddSalariedEmployeeTransaction(empId, "Bob", "Home", 1000.0);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
 
         Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 29);
         PaydayTransaction payDayTransaction = new PaydayTransaction(payDate);
-        payDayTransaction.execute();
+        payDayTransaction.execute(Repository);
 
         assertThat(payDayTransaction.getPaycheck(empId), is(nullValue()));
     }
@@ -60,11 +63,11 @@ public class PaydayTransactionTest {
     public void testHourlyEmployeeSingleHourlyEmployeeNoTimeCards() throws Exception {
         int employeeId = 2;
         Transaction addEmployeeTransaction = new AddHourlyEmployeeTransaction(employeeId, "Bill", "Home", 15.25);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
         Calendar payDate = FRIDAY;
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
 
-        paydayTransaction.execute();
+        paydayTransaction.execute(Repository);
 
         validateHourlyPaycheck(paydayTransaction, employeeId, payDate, 0.0);
     }
@@ -73,14 +76,14 @@ public class PaydayTransactionTest {
     public void testPaySingleHourlyEmployeeOneTimeCard() throws Exception {
         int employeeId = 2;
         Transaction addEmployeeTransaction = new AddHourlyEmployeeTransaction(employeeId, "Bill", "Home", 15.25);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
         Calendar payDate = FRIDAY;
 
         Transaction addTimeCard = new AddTimeCardTransaction(payDate, 2.0, employeeId);
-        addTimeCard.execute();
+        addTimeCard.execute(Repository);
 
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute();
+        paydayTransaction.execute(Repository);
 
         validateHourlyPaycheck(paydayTransaction, employeeId, payDate, 30.5);
     }
@@ -90,14 +93,14 @@ public class PaydayTransactionTest {
         int employeeId = 2;
         double hourlySalary = 15.25;
         Transaction addEmployeeTransaction = new AddHourlyEmployeeTransaction(employeeId, "Bill", "Home", hourlySalary);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
         Calendar payDate = FRIDAY;
 
         Transaction addTimeCard = new AddTimeCardTransaction(payDate, 9.0, employeeId);
-        addTimeCard.execute();
+        addTimeCard.execute(Repository);
 
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute();
+        paydayTransaction.execute(Repository);
         validateHourlyPaycheck(paydayTransaction, employeeId, payDate, (8 + 1.5) * hourlySalary);
     }
 
@@ -106,14 +109,14 @@ public class PaydayTransactionTest {
         int employeeId = 2;
         double hourlySalary = 15.25;
         Transaction addEmployeeTransaction = new AddHourlyEmployeeTransaction(employeeId, "Bill", "Home", hourlySalary);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
         Calendar payDate = THURSDAY;
 
         Transaction addTimeCard = new AddTimeCardTransaction(payDate, 9.0, employeeId);
-        addTimeCard.execute();
+        addTimeCard.execute(Repository);
 
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute();
+        paydayTransaction.execute(Repository);
 
         assertThat(paydayTransaction.getPaycheck(employeeId), is(nullValue()));
     }
@@ -123,17 +126,17 @@ public class PaydayTransactionTest {
         int employeeId = 2;
         double hourlySalary = 15.25;
         Transaction addEmployeeTransaction = new AddHourlyEmployeeTransaction(employeeId, "Bill", "Home", hourlySalary);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
         Calendar payDate = FRIDAY;
 
         Transaction addTimeCard = new AddTimeCardTransaction(payDate, 2, employeeId);
-        addTimeCard.execute();
+        addTimeCard.execute(Repository);
 
         Transaction addSecondTimeCard = new AddTimeCardTransaction(THURSDAY, 5, employeeId);
-        addSecondTimeCard.execute();
+        addSecondTimeCard.execute(Repository);
 
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute();
+        paydayTransaction.execute(Repository);
 
         validateHourlyPaycheck(paydayTransaction, employeeId, payDate, 7.0 * hourlySalary);
     }
@@ -143,18 +146,18 @@ public class PaydayTransactionTest {
         int employeeId = 2;
         double hourlySalary = 15.25;
         Transaction addEmployeeTransaction = new AddHourlyEmployeeTransaction(employeeId, "Bill", "Home", hourlySalary);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
         Calendar payDate = FRIDAY;
 
         Transaction addTimeCard = new AddTimeCardTransaction(payDate, 2, employeeId);
-        addTimeCard.execute();
+        addTimeCard.execute(Repository);
 
         Calendar dateInPreviousTimePeriod = new GregorianCalendar(2001, NOVEMBER, 2);
         Transaction addSecondTimeCard = new AddTimeCardTransaction(dateInPreviousTimePeriod, 5.0, employeeId);
-        addSecondTimeCard.execute();
+        addSecondTimeCard.execute(Repository);
 
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute();
+        paydayTransaction.execute(Repository);
 
         validateHourlyPaycheck(paydayTransaction, employeeId, payDate, 2.0 * hourlySalary);
     }
@@ -163,15 +166,15 @@ public class PaydayTransactionTest {
     public void testSalariedUnionMemberDues() throws Exception {
         int employeeId = 1;
         Transaction addEmployeeTransaction = new AddSalariedEmployeeTransaction(employeeId, "Bob", "Home", 1000.0);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
         int memberId = 7734;
         double weeklyUnionDues = 9.42;
         ChangeMemberTransaction changeMemberTransaction = new ChangeMemberTransaction(employeeId, memberId, weeklyUnionDues);
-        changeMemberTransaction.execute();
+        changeMemberTransaction.execute(Repository);
 
         Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 30);
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute();
+        paydayTransaction.execute(Repository);
 
         int numberOfWeeksInPayPeriod = 5;
         double expectedDues = numberOfWeeksInPayPeriod * weeklyUnionDues;
@@ -183,11 +186,11 @@ public class PaydayTransactionTest {
         int employeeId = 2;
         double commissionRate = 9.25;
         Transaction addEmployeeTransaction = new AddCommissionedEmployeeTransaction(employeeId, "Bob", "Home", 700.0, commissionRate);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
 
         Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 16);
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute();
+        paydayTransaction.execute(Repository);
 
         validateCommissionedPaycheck(employeeId, payDate, paydayTransaction, 700.0);
     }
@@ -198,15 +201,15 @@ public class PaydayTransactionTest {
         double commissionRate = 0.5;
         double monthlySalary = 700.0;
         Transaction addEmployeeTransaction = new AddCommissionedEmployeeTransaction(employeeId, "Bob", "Home", monthlySalary, commissionRate);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
 
         Calendar payDate = new GregorianCalendar(2001, NOVEMBER, 16);
         double receiptAmount = 600.0;
         Transaction addSalesReceiptTransaction = new AddSalesReceiptTransaction(payDate, receiptAmount, employeeId);
-        addSalesReceiptTransaction.execute();
+        addSalesReceiptTransaction.execute(Repository);
 
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute();
+        paydayTransaction.execute(Repository);
 
         validateCommissionedPaycheck(employeeId, payDate, paydayTransaction, monthlySalary + receiptAmount * commissionRate);
     }
@@ -220,20 +223,20 @@ public class PaydayTransactionTest {
         double hourlyRate = 20.0;
 
         Transaction addEmployeeTransaction = new AddHourlyEmployeeTransaction(employeeId, "Bob", "Home", hourlyRate);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
 
         ChangeMemberTransaction changeMemberTransaction = new ChangeMemberTransaction(employeeId, memberId, weeklyUnionDues);
-        changeMemberTransaction.execute();
+        changeMemberTransaction.execute(Repository);
 
         double serviceCharge = 19.42;
         Transaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, payDate, serviceCharge);
-        addServiceChargeTransaction.execute();
+        addServiceChargeTransaction.execute(Repository);
 
         Transaction addTimeCardTransaction = new AddTimeCardTransaction(payDate, 8.0, employeeId);
-        addTimeCardTransaction.execute();
+        addTimeCardTransaction.execute(Repository);
 
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute();
+        paydayTransaction.execute(Repository);
 
         PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);
         assertThat(payCheck.getPayPeriodEnd(), is(payDate));
@@ -256,26 +259,26 @@ public class PaydayTransactionTest {
         double hourlyRate = 20.0;
 
         Transaction addEmployeeTransaction = new AddHourlyEmployeeTransaction(employeeId, "Bob", "Home", hourlyRate);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
 
         ChangeMemberTransaction changeMemberTransaction = new ChangeMemberTransaction(employeeId, memberId, weeklyUnionDues);
-        changeMemberTransaction.execute();
+        changeMemberTransaction.execute(Repository);
 
         double serviceCharge = 19.42;
         Transaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, payDate, serviceCharge);
-        addServiceChargeTransaction.execute();
+        addServiceChargeTransaction.execute(Repository);
 
         Transaction lateServiceChargeTransaction = new AddServiceChargeTransaction(memberId, previousPayDate, 100.0);
-        lateServiceChargeTransaction.execute();
+        lateServiceChargeTransaction.execute(Repository);
 
         Transaction earlyServiceChargeTransaction = new AddServiceChargeTransaction(memberId, nextPayDate, 200.0);
-        earlyServiceChargeTransaction.execute();
+        earlyServiceChargeTransaction.execute(Repository);
 
         Transaction addTimeCardTransaction = new AddTimeCardTransaction(payDate, 8.0, employeeId);
-        addTimeCardTransaction.execute();
+        addTimeCardTransaction.execute(Repository);
 
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute();
+        paydayTransaction.execute(Repository);
 
         PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);
         assertThat(payCheck.getPayPeriodEnd(), is(payDate));

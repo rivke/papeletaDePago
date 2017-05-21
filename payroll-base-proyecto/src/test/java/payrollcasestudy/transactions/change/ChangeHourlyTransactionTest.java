@@ -3,6 +3,8 @@ package payrollcasestudy.transactions.change;
 import org.junit.Rule;
 import org.junit.Test;
 import payrollcasestudy.DatabaseResource;
+import payrollcasestudy.boundaries.MemoryRepository;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
 import payrollcasestudy.entities.paymentschedule.WeeklyPaymentSchedule;
@@ -15,6 +17,8 @@ import static payrollcasestudy.TestConstants.*;
 
 public class ChangeHourlyTransactionTest {
 
+	private static final Repositoory Repository = new MemoryRepository();
+
     @Rule
     public DatabaseResource databaseResource = new DatabaseResource();
 
@@ -23,10 +27,10 @@ public class ChangeHourlyTransactionTest {
         int employeeId = 3;
         AddEmployeeTransaction addEmployeeTransaction =
                 new AddCommissionedEmployeeTransaction(employeeId, "Lance", "Home", 2500, 3.2);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
 
         ChangeHourlyTransaction changeHourlyTransaction = new ChangeHourlyTransaction(employeeId, 27.52);
-        changeHourlyTransaction.execute();
+        changeHourlyTransaction.execute(Repository);
 
         Employee employee = databaseResource.getInstance().getEmployee(employeeId);
         assertThat(employee.getPaymentClassification(), is(instanceOf(HourlyPaymentClassification.class)));

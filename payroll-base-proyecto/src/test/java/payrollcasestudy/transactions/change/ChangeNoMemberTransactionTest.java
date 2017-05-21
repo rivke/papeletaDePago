@@ -3,7 +3,9 @@ package payrollcasestudy.transactions.change;
 import org.junit.Rule;
 import org.junit.Test;
 import payrollcasestudy.DatabaseResource;
+import payrollcasestudy.boundaries.MemoryRepository;
 import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
 import payrollcasestudy.transactions.Transaction;
@@ -13,7 +15,9 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 public class ChangeNoMemberTransactionTest {
-    @Rule
+	private static final Repositoory Repository = new MemoryRepository();
+
+	@Rule
     public DatabaseResource databaseResource = new DatabaseResource();
 
     @Test
@@ -24,7 +28,7 @@ public class ChangeNoMemberTransactionTest {
         int memberId = 7734;
         Transaction addEmployeeTransaction =
                 new AddHourlyEmployeeTransaction(employeeId, "Bill", "Home", 15.25);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
 
         Employee employee = database.getEmployee(employeeId);
         UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,92.1);
@@ -35,7 +39,7 @@ public class ChangeNoMemberTransactionTest {
         assertThat(database.getUnionMember(memberId), is(employee));
 
         Transaction noMemberTransaction = new ChangeNoMemberTransaction(employeeId);
-        noMemberTransaction.execute();
+        noMemberTransaction.execute(Repository);
 
         employee = database.getEmployee(employeeId);
         assertThat(employee.getUnionAffiliation(), is(UnionAffiliation.NO_AFFILIATION));

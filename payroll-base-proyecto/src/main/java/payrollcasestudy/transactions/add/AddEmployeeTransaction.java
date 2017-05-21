@@ -1,6 +1,9 @@
 package payrollcasestudy.transactions.add;
 
+import java.sql.SQLException;
+
 import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
 import payrollcasestudy.entities.paymentmethods.HoldMethod;
@@ -23,15 +26,18 @@ public abstract class AddEmployeeTransaction implements Transaction {
         this.employeeAddress = employeeAddress;
     }
 
-    public void execute() {
+    public void execute(Repositoory repository) throws SQLException {
         PaymentClassification paymentClassification = getPaymentClassification();
         PaymentSchedule paymentSchedule = getPaymentSchedule();
         PaymentMethod paymentMethod = new HoldMethod();
         Employee employee = new Employee(employeeId, employeeName, employeeAddress);
+        
+        
         employee.setPaymentClassification(paymentClassification);
         employee.setPaymentSchedule(paymentSchedule);
         employee.setPaymentMethod(paymentMethod);
-        PayrollDatabase.globalPayrollDatabase.addEmployee(employeeId, employee);
+        repository.addEmployee(employeeId, employee);
+        //PayrollDatabase.globalPayrollDatabase.addEmployee(employeeId, employee);
     }
 
     protected abstract PaymentSchedule getPaymentSchedule();

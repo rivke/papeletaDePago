@@ -3,6 +3,8 @@ package payrollcasestudy.transactions.add;
 import org.junit.Rule;
 import org.junit.Test;
 import payrollcasestudy.DatabaseResource;
+import payrollcasestudy.boundaries.MemoryRepository;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
@@ -15,21 +17,25 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 import static payrollcasestudy.TestConstants.*;
 
+import java.sql.SQLException;
+
 /**
  * Listing 19-2
  */
 public class AddSalariedEmployeeTransactionTest {
 	
+	
+	private static final Repositoory Repository = new MemoryRepository();
 
     @Rule
     public DatabaseResource databaseResource = new DatabaseResource();
 
     @Test
-    public void testAddSalariedEmployee(){
+    public void testAddSalariedEmployee() throws SQLException{
         int employeeId = 1;
         Transaction addEmployeeTransaction =
                 new AddSalariedEmployeeTransaction(employeeId, "Bob", "Home", 1000.0);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
 
         Employee employee = databaseResource.getInstance().getEmployee(employeeId);
         assertThat(employee.getName(), is("Bob"));

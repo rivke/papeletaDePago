@@ -14,11 +14,11 @@
 			<div class='ui blue segment' >	
 				<h3 class='ui red center aligned header'> Lista de Empleados </h3>
 			 		 <div class="ui stackable four column grid">
-		                 #foreach( $product in $empleados )
+		                 #foreach( $emp in $empleados )
 						    <div class="column">
-		                 		$product.onlyEmployee($updatable)
+		                 		$emp.updateIdAndName($updatable)
 		
-		                    	<form action='/detalle/$product.getId()'>
+		                    	<form action='/detalle/$emp.getId()'>
 							  		<input class='ui teal  button' type='submit' value='Ver Detalle de pago' />
 						    	</form>				 
 						     </div>        

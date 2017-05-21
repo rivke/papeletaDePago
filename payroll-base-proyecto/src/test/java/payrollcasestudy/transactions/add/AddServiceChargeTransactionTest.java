@@ -3,6 +3,8 @@ package payrollcasestudy.transactions.add;
 import org.junit.Rule;
 import org.junit.Test;
 import payrollcasestudy.DatabaseResource;
+import payrollcasestudy.boundaries.MemoryRepository;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.ServiceCharge;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
@@ -16,6 +18,7 @@ import static org.hamcrest.Matchers.*;
 import static payrollcasestudy.TestConstants.*;
 
 public class AddServiceChargeTransactionTest {
+	private static final Repositoory Repository = new MemoryRepository();
 
     @Rule
     public DatabaseResource database = new DatabaseResource();
@@ -25,7 +28,7 @@ public class AddServiceChargeTransactionTest {
         int employeeId = 2;
         Transaction addEmployeeTransaction =
                 new AddHourlyEmployeeTransaction(employeeId, "Bill", "Home", 15.25);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
 
         Employee employee = database.getInstance().getEmployee(employeeId);
         assertThat(employee, is(notNullValue()));
@@ -38,7 +41,7 @@ public class AddServiceChargeTransactionTest {
 
         Calendar date = new GregorianCalendar(2001, 11, 01);
         AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date, 12.95);
-        addServiceChargeTransaction.execute();
+        addServiceChargeTransaction.execute(null);
         ServiceCharge serviceCharge = unionAffiliation.getServiceCharge(date);
         assertThat(serviceCharge, is(notNullValue()));
         assertThat(serviceCharge.getAmount(), is(closeTo(12.95, FLOAT_ACCURACY)));

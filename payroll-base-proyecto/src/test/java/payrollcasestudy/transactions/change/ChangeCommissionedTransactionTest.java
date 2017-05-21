@@ -3,6 +3,8 @@ package payrollcasestudy.transactions.change;
 import org.junit.Rule;
 import org.junit.Test;
 import payrollcasestudy.DatabaseResource;
+import payrollcasestudy.boundaries.MemoryRepository;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.paymentclassifications.CommissionedPaymentClassification;
 import payrollcasestudy.entities.paymentschedule.MonthlyPaymentSchedule;
@@ -14,6 +16,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 public class ChangeCommissionedTransactionTest {
+	private static final Repositoory Repository = new MemoryRepository();
 
     @Rule
     public DatabaseResource database = new DatabaseResource();
@@ -23,10 +26,10 @@ public class ChangeCommissionedTransactionTest {
         int employeeId = 3;
         AddEmployeeTransaction addEmployeeTransaction =
                 new AddHourlyEmployeeTransaction(employeeId, "Lance", "Home", 24.3);
-        addEmployeeTransaction.execute();
+        addEmployeeTransaction.execute(Repository);
 
         ChangeCommissionedTransaction changeCommissionedTransaction = new ChangeCommissionedTransaction(employeeId, 200, 20.0);
-        changeCommissionedTransaction.execute();
+        changeCommissionedTransaction.execute(Repository);
 
         Employee employee = database.getInstance().getEmployee(employeeId);
         assertThat(employee.getPaymentClassification(), is(instanceOf(CommissionedPaymentClassification.class)));

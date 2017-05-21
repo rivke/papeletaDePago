@@ -18,6 +18,10 @@ public class HourlyPaymentClassification extends PaymentClassification{
         this.hourlyRate = hourlyRate;
     }
 
+    public HourlyPaymentClassification() {
+        this.hourlyRate = hourlyRate;
+    }
+
     public double getHourlyRate() {
         return hourlyRate;
     }
@@ -48,13 +52,25 @@ public class HourlyPaymentClassification extends PaymentClassification{
         return straightTime * hourlyRate + overtime * hourlyRate * 1.5;
     }
 
-	public String queTipoDeEmpleado(Updatable updatable) {
+	public String update(Updatable updatable) {
 		
 			
 		return	 updatable.updateHourlyRate(""+hourlyRate);
 			
 			
 		
+		
+	}
+
+	public double update2() {
+		// TODO Auto-generated method stub
+		return hourlyRate;
+	}
+
+	@Override
+	public void update3(double a) {
+		// TODO Auto-generated method stub
+		hourlyRate=a;
 		
 	}
 	

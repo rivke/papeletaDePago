@@ -17,6 +17,7 @@ import freemarker.template.Template;
 import freemarker.template.Version;
 import payrollcasestudy.DatabaseResource;
 import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
 import payrollcasestudy.entities.paymentmethods.HoldMethod;
@@ -30,6 +31,8 @@ import updatable.Updatable;
 import velocityy.VelocityTemplateEngine;
 import views.EmpleadoView;
 
+import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.BDrepository;
 
 public class Main {
 	
@@ -41,7 +44,8 @@ public class Main {
 	
 	static Map<String, Object> map = new HashMap<>();
 	static Updatable updatable = new EmpleadoView();		
-	
+	private static Repositoory mc = new BDrepository();
+
 		
 	public static void main(String[] args) {
 		map.put("updatable",updatable);
@@ -49,11 +53,11 @@ public class Main {
 		
 		get("/", (request, response) -> {
 		      return new ModelAndView(new HashMap(), "mainPage.vtl");
-		    }, velocity.vel());
+		      }, velocity.vel());
 		
 		get("/registrar", (request, response) -> {
 		      return new ModelAndView(new HashMap(), "registrarEmpleado.vtl");
-		    }, velocity.vel());		                
+		      }, velocity.vel());		                
             	  	      	
     	post("/registrar_Empleado_por_Hora", (request, response) -> employeeController.addHourlyEmployee(request.queryParams("nombre"), request.queryParams("apellido"), request.queryParams("direccion"), Double.parseDouble(request.queryParams("tarifa_por_hora"))));
     	post("/registrar_Empleado_Asalariado", (request, response) -> employeeController.addSalariedEmployee(request.queryParams("nombre2"), request.queryParams("apellido2"), request.queryParams("direccion2"), Double.parseDouble(request.queryParams("salario"))));
@@ -76,16 +80,16 @@ public class Main {
     	get("/detalle/:id", (request, response) -> {
     		
     		map.put("empleado",employeeController.showEmployee(Integer.parseInt(request.params(":id"))));        			
-    				
-    		map.put("pago",employeeController.showpayEmployeeSeulement(Integer.parseInt(request.params(":id"))));
-    		
-		      return new ModelAndView(map, "mostrarUno.vtl");
+    	   // map.put("pago",employeeController.showPayment(Integer.parseInt(request.params(":id"))));
+    		 return new ModelAndView(map, "mostrarUno.vtl");
 		    }, velocity.vel());	
     	
     	
 		get("/mostrarEmpleados", (request, response) -> {
 			
-			map.put("empleados",PayrollDatabase.getAllEmployees());
+			//map.put("empleados",PayrollDatabase.getAllEmployees());
+			map.put("empleados",mc.getAllEmployees());
+
 			
 		      return new ModelAndView(map, "showAllEmployees.vtl");
 		    }, velocity.vel());	

@@ -1,784 +1,315 @@
-2017-05-08 01:10:32,645 - Initializing Velocity, Calling init()...
-2017-05-08 01:10:32,645 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2017-05-08 01:10:32,645 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2017-05-08 01:10:32,645 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2017-05-08 01:10:32,645 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2017-05-08 01:10:32,645 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2017-05-08 01:10:32,645 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2017-05-08 01:10:32,671 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:10:32,703 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2017-05-08 01:10:32,707 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2017-05-08 01:10:32,712 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2017-05-08 01:10:32,714 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2017-05-08 01:10:32,715 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2017-05-08 01:10:32,717 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2017-05-08 01:10:32,719 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2017-05-08 01:10:32,722 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2017-05-08 01:10:32,724 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2017-05-08 01:10:32,727 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2017-05-08 01:10:32,786 - Created '20' parsers.
-2017-05-08 01:10:32,796 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2017-05-08 01:10:32,797 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2017-05-08 01:10:32,797 - Velocimacro : Default library not found.
-2017-05-08 01:10:32,797 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2017-05-08 01:10:32,797 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2017-05-08 01:10:32,797 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2017-05-08 01:10:32,798 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2017-05-08 01:10:32,817 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:10:34,513 - Log4JLogChute initialized using file 'velocity.log'
-2017-05-08 01:10:34,514 - Initializing Velocity, Calling init()...
-2017-05-08 01:10:34,514 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2017-05-08 01:10:34,514 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2017-05-08 01:10:34,514 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2017-05-08 01:10:34,514 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2017-05-08 01:10:34,514 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2017-05-08 01:10:34,514 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2017-05-08 01:10:34,515 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:10:34,515 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2017-05-08 01:10:34,516 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2017-05-08 01:10:34,516 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2017-05-08 01:10:34,516 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2017-05-08 01:10:34,516 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2017-05-08 01:10:34,516 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2017-05-08 01:10:34,516 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2017-05-08 01:10:34,516 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2017-05-08 01:10:34,517 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2017-05-08 01:10:34,517 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2017-05-08 01:10:34,532 - Created '20' parsers.
-2017-05-08 01:10:34,532 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2017-05-08 01:10:34,533 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2017-05-08 01:10:34,533 - Velocimacro : Default library not found.
-2017-05-08 01:10:34,533 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2017-05-08 01:10:34,533 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2017-05-08 01:10:34,533 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2017-05-08 01:10:34,533 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2017-05-08 01:10:34,537 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:10:46,528 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:10:50,251 - Log4JLogChute initialized using file 'velocity.log'
-2017-05-08 01:10:50,252 - Initializing Velocity, Calling init()...
-2017-05-08 01:10:50,252 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2017-05-08 01:10:50,252 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2017-05-08 01:10:50,252 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2017-05-08 01:10:50,252 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2017-05-08 01:10:50,252 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2017-05-08 01:10:50,252 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2017-05-08 01:10:50,252 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:10:50,253 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2017-05-08 01:10:50,255 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2017-05-08 01:10:50,255 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2017-05-08 01:10:50,255 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2017-05-08 01:10:50,255 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2017-05-08 01:10:50,255 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2017-05-08 01:10:50,256 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2017-05-08 01:10:50,256 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2017-05-08 01:10:50,256 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2017-05-08 01:10:50,257 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2017-05-08 01:10:50,262 - Created '20' parsers.
-2017-05-08 01:10:50,263 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2017-05-08 01:10:50,263 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2017-05-08 01:10:50,263 - Velocimacro : Default library not found.
-2017-05-08 01:10:50,263 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2017-05-08 01:10:50,263 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2017-05-08 01:10:50,263 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2017-05-08 01:10:50,264 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2017-05-08 01:10:50,287 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:10:51,451 - Log4JLogChute initialized using file 'velocity.log'
-2017-05-08 01:10:51,451 - Initializing Velocity, Calling init()...
-2017-05-08 01:10:51,451 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2017-05-08 01:10:51,452 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2017-05-08 01:10:51,452 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2017-05-08 01:10:51,452 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2017-05-08 01:10:51,452 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2017-05-08 01:10:51,452 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2017-05-08 01:10:51,452 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:10:51,459 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2017-05-08 01:10:51,460 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2017-05-08 01:10:51,460 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2017-05-08 01:10:51,460 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2017-05-08 01:10:51,462 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2017-05-08 01:10:51,462 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2017-05-08 01:10:51,462 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2017-05-08 01:10:51,463 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2017-05-08 01:10:51,463 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2017-05-08 01:10:51,463 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2017-05-08 01:10:51,465 - Created '20' parsers.
-2017-05-08 01:10:51,465 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2017-05-08 01:10:51,466 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2017-05-08 01:10:51,477 - Velocimacro : Default library not found.
-2017-05-08 01:10:51,479 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2017-05-08 01:10:51,479 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2017-05-08 01:10:51,479 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2017-05-08 01:10:51,479 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2017-05-08 01:10:51,482 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:10:54,537 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:10:56,312 - Log4JLogChute initialized using file 'velocity.log'
-2017-05-08 01:10:56,312 - Initializing Velocity, Calling init()...
-2017-05-08 01:10:56,312 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
-2017-05-08 01:10:56,312 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
-2017-05-08 01:10:56,312 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
-2017-05-08 01:10:56,312 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
-2017-05-08 01:10:56,312 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
-2017-05-08 01:10:56,313 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
-2017-05-08 01:10:56,313 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:10:56,313 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
-2017-05-08 01:10:56,314 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
-2017-05-08 01:10:56,314 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
-2017-05-08 01:10:56,314 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
-2017-05-08 01:10:56,315 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
-2017-05-08 01:10:56,315 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
-2017-05-08 01:10:56,315 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
-2017-05-08 01:10:56,315 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
-2017-05-08 01:10:56,315 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
-2017-05-08 01:10:56,315 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
-2017-05-08 01:10:56,317 - Created '20' parsers.
-2017-05-08 01:10:56,317 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
-2017-05-08 01:10:56,317 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
-2017-05-08 01:10:56,318 - Velocimacro : Default library not found.
-2017-05-08 01:10:56,318 - Velocimacro : allowInline = true : VMs can be defined inline in templates
-2017-05-08 01:10:56,318 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
-2017-05-08 01:10:56,318 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
-2017-05-08 01:10:56,318 - Velocimacro : autoload off : VM system will not automatically reload global library macros
-2017-05-08 01:10:56,323 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:11:18,842 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:11:46,886 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:19,423 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:21,257 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:37,731 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:42,821 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:46,393 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:06,305 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:07,881 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:08,967 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:11,175 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:14,549 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:32,490 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:34,292 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:45,426 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:47,486 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:04,652 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:07,639 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:09,000 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:10,880 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:18,522 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:19,550 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:21,593 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:22,650 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:25,726 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:26,785 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:09,514 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:12,322 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:13,727 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:14,918 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:26,159 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:27,337 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:30,120 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:31,967 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:50,666 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:53,344 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:55,604 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:56,908 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:05,909 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:07,394 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:10,808 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:13,103 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:29,535 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:30,844 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:55,069 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:56,934 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:58,444 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:59,979 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:07,734 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:09,880 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:11,451 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:13,291 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:16,833 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:18,589 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:25,872 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:25,878 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:33,666 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:51,348 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:52,424 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:57,481 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:21:01,326 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:13,340 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:14,831 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:16,150 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:59,104 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:01,506 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:46,851 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:48,348 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:49,677 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:52,014 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:54,098 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:55,375 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:56,481 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:48:33,535 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:48:35,277 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:05,663 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:09,254 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:10,365 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:11,544 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:25,534 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:27,616 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:44,350 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:46,724 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:54,020 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:56,699 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:58,030 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:00,634 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:03,098 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:04,201 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:05,436 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:21,296 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:23,765 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:01,972 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:03,090 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:05,127 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:07,497 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:08,322 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:09,953 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:10,779 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:11,924 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:13,148 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:14,451 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:15,380 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:17,911 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:18,859 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:19,852 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:20,900 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:37,989 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:41,291 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:14,358 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:16,606 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:40,457 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:41,687 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:43,399 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:46,409 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:47,253 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:48,481 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:51,053 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:52,228 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:53,322 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:55,853 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:56,736 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:58,447 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:59,430 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:00,670 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:06,903 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:09,958 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:17,678 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-ource.loader.ClasspathResourceLoader
-2017-05-08 01:10:56,323 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:10:56,323 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:11:18,842 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:11:18,842 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:11:18,842 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:11:18,842 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:11:46,886 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:11:46,886 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:11:46,886 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:11:46,886 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:19,423 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:19,423 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:19,423 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:19,423 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:21,257 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:21,257 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:21,257 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:21,257 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:37,731 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:37,731 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:37,731 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:37,731 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:42,821 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:42,821 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:42,821 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:42,821 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:46,393 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:46,393 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:46,393 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:12:46,393 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:06,305 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:06,305 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:06,305 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:06,305 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:07,881 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:07,881 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:07,881 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:07,881 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:08,967 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:08,967 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:08,967 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:08,967 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:11,175 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:11,175 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:11,175 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:11,175 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:14,549 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:14,549 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:14,549 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:14,549 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:32,490 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:32,490 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:32,490 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:32,490 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:34,292 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:34,292 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:34,292 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:34,292 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:45,426 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:45,426 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:45,426 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:45,426 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:47,486 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:47,486 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:47,486 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:13:47,486 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:04,652 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:04,652 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:04,652 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:04,652 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:07,639 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:07,639 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:07,639 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:07,639 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:09,000 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:09,000 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:09,000 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:09,000 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:10,880 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:10,880 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:10,880 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:10,880 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:18,522 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:18,522 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:18,522 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:18,522 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:19,550 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:19,550 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:19,550 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:19,550 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:21,593 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:21,593 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:21,593 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:21,593 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:22,650 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:22,650 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:22,650 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:22,650 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:25,726 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:25,726 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:25,726 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:25,726 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:26,785 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:26,785 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:26,785 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:14:26,785 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:09,514 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:09,514 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:09,514 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:09,514 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:12,322 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:12,322 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:12,322 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:12,322 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:13,727 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:13,727 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:13,727 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:13,727 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:14,918 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:14,918 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:14,918 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:14,918 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:26,159 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:26,159 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:26,159 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:26,159 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:27,337 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:27,337 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:27,337 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:27,337 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:30,120 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:30,120 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:30,120 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:30,120 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:31,967 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:31,967 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:31,967 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:31,967 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:50,666 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:50,666 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:50,666 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:50,666 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:53,344 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:53,344 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:53,344 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:53,344 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:55,604 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:55,604 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:55,604 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:55,604 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:56,908 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:56,908 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:56,908 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:15:56,908 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:05,909 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:05,909 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:05,909 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:05,909 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:07,394 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:07,394 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:07,394 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:07,394 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:10,808 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:10,808 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:10,808 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:10,808 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:13,103 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:13,103 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:13,103 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:13,103 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:29,535 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:29,535 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:29,535 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:29,535 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:30,844 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:30,844 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:30,844 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:30,844 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:55,069 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:55,069 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:55,069 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:55,069 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:56,934 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:56,934 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:56,934 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:56,934 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:58,444 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:58,444 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:58,444 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:58,444 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:59,979 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:59,979 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:59,979 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:16:59,979 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:07,734 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:07,734 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:07,734 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:07,734 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:09,880 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:09,880 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:09,880 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:09,880 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:11,451 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:11,451 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:11,451 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:11,451 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:13,291 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:13,291 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:13,291 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:13,291 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:16,833 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:16,833 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:16,833 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:16,833 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:18,589 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:18,589 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:18,589 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:18,589 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:25,872 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:25,872 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:25,872 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:17:25,872 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:25,878 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:25,878 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:25,878 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:25,878 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:33,666 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:33,666 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:33,666 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:33,666 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:51,348 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:51,348 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:51,348 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:51,348 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:52,424 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:52,424 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:52,424 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:52,424 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:57,481 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:57,481 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:57,481 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:20:57,481 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:21:01,326 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:21:01,326 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:21:01,326 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:21:01,326 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:13,340 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:13,340 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:13,340 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:13,340 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:14,831 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:14,831 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:14,831 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:14,831 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:16,150 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:16,150 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:16,150 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:16,150 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:59,104 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:59,104 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:59,104 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:45:59,104 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:01,506 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:01,506 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:01,506 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:01,506 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:46,851 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:46,851 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:46,851 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:46,851 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:48,348 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:48,348 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:48,348 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:48,348 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:49,677 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:49,677 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:49,677 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:49,677 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:52,014 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:52,014 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:52,014 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:52,014 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:54,098 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:54,098 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:54,098 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:54,098 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:55,375 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:55,375 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:55,375 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:55,375 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:56,481 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:56,481 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:56,481 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:46:56,481 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:48:33,535 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:48:33,535 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:48:33,535 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:48:33,535 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:48:35,277 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:48:35,277 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:48:35,277 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:48:35,277 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:05,663 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:05,663 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:05,663 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:05,663 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:09,254 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:09,254 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:09,254 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:09,254 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:10,365 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:10,365 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:10,365 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:10,365 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:11,544 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:11,544 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:11,544 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:49:11,544 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:25,534 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:25,534 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:25,534 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:25,534 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:27,616 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:27,616 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:27,616 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:27,616 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:44,350 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:44,350 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:44,350 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:44,350 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:46,724 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:46,724 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:46,724 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:51:46,724 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:54,020 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:54,020 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:54,020 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:54,020 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:56,699 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:56,699 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:56,699 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:56,699 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:58,030 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:58,030 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:58,030 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:52:58,030 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:00,634 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:00,634 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:00,634 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:00,634 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:03,098 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:03,098 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:03,098 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:03,098 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:04,201 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:04,201 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:04,201 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:04,201 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:05,436 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:05,436 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:05,436 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:05,436 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:21,296 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:21,296 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:21,296 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:21,296 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:23,765 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:23,765 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:23,765 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:53:23,765 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:01,972 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:01,972 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:01,972 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:01,972 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:03,090 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:03,090 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:03,090 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:03,090 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:05,127 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:05,127 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:05,127 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:05,127 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:07,497 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:07,497 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:07,497 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:07,497 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:08,322 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:08,322 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:08,322 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:08,322 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:09,953 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:09,953 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:09,953 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:09,953 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:10,779 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:10,779 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:10,779 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:10,779 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:11,924 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:11,924 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:11,924 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:11,924 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:13,148 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:13,148 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:13,148 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:13,148 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:14,451 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:14,451 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:14,451 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:14,451 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:15,380 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:15,380 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:15,380 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:15,380 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:17,911 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:17,911 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:17,911 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:17,911 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:18,859 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:18,859 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:18,859 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:18,859 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:19,852 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:19,852 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:19,852 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:19,852 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:20,900 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:20,900 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:20,900 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:20,900 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:37,989 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:37,989 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:37,989 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:37,989 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:41,291 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:41,291 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:41,291 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:56:41,291 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:14,358 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:14,358 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:14,358 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:14,358 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:16,606 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:16,606 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:16,606 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:16,606 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:40,457 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:40,457 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:40,457 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:40,457 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:41,687 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:41,687 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:41,687 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:41,687 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:43,399 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:43,399 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:43,399 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:43,399 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:46,409 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:46,409 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:46,409 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:46,409 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:47,253 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:47,253 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:47,253 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:47,253 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:48,481 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:48,481 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:48,481 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:48,481 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:51,053 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:51,053 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:51,053 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:51,053 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:52,228 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:52,228 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:52,228 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:52,228 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:53,322 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:53,322 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:53,322 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:53,322 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:55,853 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:55,853 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:55,853 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:55,853 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:56,736 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:56,736 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:56,736 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:56,736 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:58,447 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:58,447 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:58,447 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:58,447 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:59,430 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:59,430 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:59,430 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:57:59,430 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:00,670 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:00,670 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:00,670 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:00,670 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:06,903 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:06,903 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:06,903 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:06,903 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:09,958 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:09,958 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:09,958 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:09,958 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:17,678 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:17,678 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:17,678 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
-2017-05-08 01:58:17,678 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:40:21,280 - Initializing Velocity, Calling init()...
+2017-05-07 23:40:21,280 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-05-07 23:40:21,280 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-05-07 23:40:21,280 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-05-07 23:40:21,281 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-05-07 23:40:21,281 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:40:21,281 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:40:21,285 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:40:21,300 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-05-07 23:40:21,302 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-05-07 23:40:21,303 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-05-07 23:40:21,303 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-05-07 23:40:21,304 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-05-07 23:40:21,305 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-05-07 23:40:21,306 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-05-07 23:40:21,307 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-05-07 23:40:21,309 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-05-07 23:40:21,310 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-05-07 23:40:21,345 - Created '20' parsers.
+2017-05-07 23:40:21,351 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-05-07 23:40:21,352 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-05-07 23:40:21,352 - Velocimacro : Default library not found.
+2017-05-07 23:40:21,352 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-05-07 23:40:21,352 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-05-07 23:40:21,352 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-05-07 23:40:21,352 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-05-07 23:40:21,360 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:40:27,616 - Log4JLogChute initialized using file 'velocity.log'
+2017-05-07 23:40:27,616 - Initializing Velocity, Calling init()...
+2017-05-07 23:40:27,616 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-05-07 23:40:27,616 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-05-07 23:40:27,616 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-05-07 23:40:27,616 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-05-07 23:40:27,616 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:40:27,616 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:40:27,617 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:40:27,617 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-05-07 23:40:27,618 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-05-07 23:40:27,618 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-05-07 23:40:27,618 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-05-07 23:40:27,618 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-05-07 23:40:27,618 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-05-07 23:40:27,618 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-05-07 23:40:27,618 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-05-07 23:40:27,618 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-05-07 23:40:27,618 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-05-07 23:40:27,619 - Created '20' parsers.
+2017-05-07 23:40:27,620 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-05-07 23:40:27,620 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-05-07 23:40:27,620 - Velocimacro : Default library not found.
+2017-05-07 23:40:27,620 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-05-07 23:40:27,620 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-05-07 23:40:27,620 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-05-07 23:40:27,620 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-05-07 23:40:27,622 - ResourceManager : found registrarEmpleado.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:40:35,933 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:40:38,832 - Log4JLogChute initialized using file 'velocity.log'
+2017-05-07 23:40:38,832 - Initializing Velocity, Calling init()...
+2017-05-07 23:40:38,832 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-05-07 23:40:38,832 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-05-07 23:40:38,832 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-05-07 23:40:38,832 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-05-07 23:40:38,832 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:40:38,832 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:40:38,833 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:40:38,833 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-05-07 23:40:38,834 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-05-07 23:40:38,834 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-05-07 23:40:38,834 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-05-07 23:40:38,834 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-05-07 23:40:38,834 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-05-07 23:40:38,834 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-05-07 23:40:38,834 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-05-07 23:40:38,834 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-05-07 23:40:38,835 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-05-07 23:40:38,836 - Created '20' parsers.
+2017-05-07 23:40:38,837 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-05-07 23:40:38,838 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-05-07 23:40:38,838 - Velocimacro : Default library not found.
+2017-05-07 23:40:38,838 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-05-07 23:40:38,838 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-05-07 23:40:38,838 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-05-07 23:40:38,838 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-05-07 23:40:38,854 - ResourceManager : found registrarServicio.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:40:56,833 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:00,836 - ResourceManager : found mainPage.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:02,259 - Log4JLogChute initialized using file 'velocity.log'
+2017-05-07 23:41:02,259 - Initializing Velocity, Calling init()...
+2017-05-07 23:41:02,260 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-05-07 23:41:02,260 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-05-07 23:41:02,260 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-05-07 23:41:02,260 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-05-07 23:41:02,260 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:41:02,260 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:41:02,260 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:02,264 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-05-07 23:41:02,267 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-05-07 23:41:02,268 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-05-07 23:41:02,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-05-07 23:41:02,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-05-07 23:41:02,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-05-07 23:41:02,272 - Created '20' parsers.
+2017-05-07 23:41:02,272 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-05-07 23:41:02,286 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-05-07 23:41:02,286 - Velocimacro : Default library not found.
+2017-05-07 23:41:02,286 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-05-07 23:41:02,286 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-05-07 23:41:02,286 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-05-07 23:41:02,286 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-05-07 23:41:02,288 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:03,999 - Log4JLogChute initialized using file 'velocity.log'
+2017-05-07 23:41:04,000 - Initializing Velocity, Calling init()...
+2017-05-07 23:41:04,000 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-05-07 23:41:04,001 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-05-07 23:41:04,001 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-05-07 23:41:04,001 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-05-07 23:41:04,001 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:41:04,001 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:41:04,002 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:04,002 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-05-07 23:41:04,003 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-05-07 23:41:04,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-05-07 23:41:04,010 - Created '20' parsers.
+2017-05-07 23:41:04,011 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-05-07 23:41:04,011 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-05-07 23:41:04,012 - Velocimacro : Default library not found.
+2017-05-07 23:41:04,012 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-05-07 23:41:04,012 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-05-07 23:41:04,012 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-05-07 23:41:04,012 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-05-07 23:41:04,014 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+oader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:02,260 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:02,260 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:02,264 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-05-07 23:41:02,264 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-05-07 23:41:02,264 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-05-07 23:41:02,266 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-05-07 23:41:02,267 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-05-07 23:41:02,267 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-05-07 23:41:02,267 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-05-07 23:41:02,268 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-05-07 23:41:02,268 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-05-07 23:41:02,268 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-05-07 23:41:02,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-05-07 23:41:02,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-05-07 23:41:02,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-05-07 23:41:02,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-05-07 23:41:02,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-05-07 23:41:02,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-05-07 23:41:02,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-05-07 23:41:02,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-05-07 23:41:02,269 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-05-07 23:41:02,272 - Created '20' parsers.
+2017-05-07 23:41:02,272 - Created '20' parsers.
+2017-05-07 23:41:02,272 - Created '20' parsers.
+2017-05-07 23:41:02,272 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-05-07 23:41:02,272 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-05-07 23:41:02,272 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-05-07 23:41:02,286 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-05-07 23:41:02,286 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-05-07 23:41:02,286 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-05-07 23:41:02,286 - Velocimacro : Default library not found.
+2017-05-07 23:41:02,286 - Velocimacro : Default library not found.
+2017-05-07 23:41:02,286 - Velocimacro : Default library not found.
+2017-05-07 23:41:02,286 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-05-07 23:41:02,286 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-05-07 23:41:02,286 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-05-07 23:41:02,286 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-05-07 23:41:02,286 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-05-07 23:41:02,286 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-05-07 23:41:02,286 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-05-07 23:41:02,286 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-05-07 23:41:02,286 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-05-07 23:41:02,286 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-05-07 23:41:02,286 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-05-07 23:41:02,286 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-05-07 23:41:02,288 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:02,288 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:02,288 - ResourceManager : found showAllEmployees.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:03,999 - Log4JLogChute initialized using file 'velocity.log'
+2017-05-07 23:41:03,999 - Log4JLogChute initialized using file 'velocity.log'
+2017-05-07 23:41:03,999 - Log4JLogChute initialized using file 'velocity.log'
+2017-05-07 23:41:03,999 - Log4JLogChute initialized using file 'velocity.log'
+2017-05-07 23:41:04,000 - Initializing Velocity, Calling init()...
+2017-05-07 23:41:04,000 - Initializing Velocity, Calling init()...
+2017-05-07 23:41:04,000 - Initializing Velocity, Calling init()...
+2017-05-07 23:41:04,000 - Initializing Velocity, Calling init()...
+2017-05-07 23:41:04,000 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-05-07 23:41:04,000 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-05-07 23:41:04,000 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-05-07 23:41:04,000 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2017-05-07 23:41:04,001 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-05-07 23:41:04,001 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-05-07 23:41:04,001 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-05-07 23:41:04,001 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2017-05-07 23:41:04,001 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-05-07 23:41:04,001 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-05-07 23:41:04,001 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-05-07 23:41:04,001 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2017-05-07 23:41:04,001 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-05-07 23:41:04,001 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-05-07 23:41:04,001 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-05-07 23:41:04,001 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2017-05-07 23:41:04,001 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:41:04,001 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:41:04,001 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:41:04,001 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:41:04,001 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:41:04,001 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:41:04,001 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:41:04,001 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2017-05-07 23:41:04,002 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:04,002 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:04,002 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:04,002 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:04,002 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-05-07 23:41:04,002 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-05-07 23:41:04,002 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-05-07 23:41:04,002 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2017-05-07 23:41:04,003 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-05-07 23:41:04,003 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-05-07 23:41:04,003 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-05-07 23:41:04,003 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-05-07 23:41:04,004 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-05-07 23:41:04,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2017-05-07 23:41:04,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-05-07 23:41:04,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-05-07 23:41:04,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-05-07 23:41:04,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2017-05-07 23:41:04,010 - Created '20' parsers.
+2017-05-07 23:41:04,010 - Created '20' parsers.
+2017-05-07 23:41:04,010 - Created '20' parsers.
+2017-05-07 23:41:04,010 - Created '20' parsers.
+2017-05-07 23:41:04,011 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-05-07 23:41:04,011 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-05-07 23:41:04,011 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-05-07 23:41:04,011 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2017-05-07 23:41:04,011 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-05-07 23:41:04,011 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-05-07 23:41:04,011 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-05-07 23:41:04,011 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2017-05-07 23:41:04,012 - Velocimacro : Default library not found.
+2017-05-07 23:41:04,012 - Velocimacro : Default library not found.
+2017-05-07 23:41:04,012 - Velocimacro : Default library not found.
+2017-05-07 23:41:04,012 - Velocimacro : Default library not found.
+2017-05-07 23:41:04,012 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-05-07 23:41:04,012 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-05-07 23:41:04,012 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-05-07 23:41:04,012 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2017-05-07 23:41:04,012 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-05-07 23:41:04,012 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-05-07 23:41:04,012 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-05-07 23:41:04,012 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2017-05-07 23:41:04,012 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-05-07 23:41:04,012 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-05-07 23:41:04,012 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-05-07 23:41:04,012 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2017-05-07 23:41:04,012 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-05-07 23:41:04,012 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-05-07 23:41:04,012 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-05-07 23:41:04,012 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2017-05-07 23:41:04,014 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:04,014 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:04,014 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2017-05-07 23:41:04,014 - ResourceManager : found mostrarUno.vtl with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+

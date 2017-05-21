@@ -19,12 +19,23 @@ public class SalariedClassification extends PaymentClassification {
         return salary;
     }
     
-	public String queTipoDeEmpleado(Updatable updatable) {
+	public String update(Updatable updatable) {
 		
 			
 		return updatable.updateSalary(""+salary);
 		
 		
+		
+	}
+
+	public double update2() {
+		// TODO Auto-generated method stub
+		return salary;
+	}
+
+	@Override
+	public void update3(double a) {
+		// TODO Auto-generated method stub
 		
 	}
 	

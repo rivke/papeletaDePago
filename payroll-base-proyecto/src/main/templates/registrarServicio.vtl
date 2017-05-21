@@ -115,8 +115,8 @@
 					</div>
 		        	<div class="column">
 		        	<h3> Lista de empleados actuales</h3>		        	
-		        		#foreach( $product in $empleados )
-		                  $product.onlyEmployee($updatable)		                 			 						                    
+		        		#foreach( $emp in $empleados )
+		                  $emp.updateIdAndName($updatable)		                 			 						                    
 		                #end		                     		
 		        	</div>
 	      	</div>

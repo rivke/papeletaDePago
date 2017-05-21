@@ -3,6 +3,7 @@ package payrollcasestudy.transactions.add;
 import java.util.Calendar;
 
 import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
 import payrollcasestudy.transactions.Transaction;
@@ -21,7 +22,7 @@ public class AddServiceChargeTransaction implements Transaction {
 	}
 
 	
-	public void execute() {
+	public void execute(Repositoory repository) {
 		// TODO Auto-generated method stub
 
 	}

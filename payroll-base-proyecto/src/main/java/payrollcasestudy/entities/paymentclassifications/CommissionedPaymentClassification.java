@@ -66,6 +66,12 @@ public class CommissionedPaymentClassification extends PaymentClassification {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String queryInsert() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
     
 }

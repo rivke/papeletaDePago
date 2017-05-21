@@ -9,6 +9,8 @@ public abstract class PaymentClassification {
     public abstract double calculatePay(PayCheck payCheck);
     
     public abstract String update(Updatable updatable );
+    public abstract String queryInsert();
+
     public abstract double update2();
     public abstract void update3(double a);
 

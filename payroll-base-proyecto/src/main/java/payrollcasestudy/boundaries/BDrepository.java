@@ -59,21 +59,25 @@ public class BDrepository implements Repositoory{
 	
 	@Override
 	public void addEmployee(int employeeId, Employee employee) throws SQLException {
-
+		PaymentClassification a;
+		 a=employee.getPaymentClassification();
 		PreparedStatement pstInsertarCuenta; 
-	    String sqlNewHourlyEmployee = "INSERT INTO hourly_employees VALUES (?,?,?,?)";
+	    //String sqlNewHourlyEmployee = "INSERT INTO hourly_employees VALUES (?,?,?,?)";
+	    String sqlNewHourlyEmployee =a.queryInsert();
+
 	    pstInsertarCuenta = bd.conectar().prepareStatement(sqlNewHourlyEmployee); 
 	    pstInsertarCuenta.setLong(1, employeeId);
 	    pstInsertarCuenta.setString(2, employee.getName());
 	    pstInsertarCuenta.setString(3, employee.getAddress());
 	  
-	    PaymentClassification a=employee.getPaymentClassification();
+	   
 	     
 	    pstInsertarCuenta.setLong(4, (long) a.update2());
 	   
 	    pstInsertarCuenta.executeUpdate();    
 	    
 	}
+	
 	
 		
 	

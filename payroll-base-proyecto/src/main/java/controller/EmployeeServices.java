@@ -50,7 +50,7 @@ import views.UI;
 
 
 
-public class EmployeeController {
+public class EmployeeServices {
 	
 	private static Repositoory mc = new BDrepository();
 

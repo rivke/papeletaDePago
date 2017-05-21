@@ -27,18 +27,14 @@ public class BDrepository implements Repositoory{
 	static Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
     static PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
 	
-	 
-     BaseDeDatos bd = new BaseDeDatos();
+    BaseDeDatos bd = new BaseDeDatos();
 
 	    
 	@Override
 	public Employee getEmployee(int employeeId)
 	{ResultSet rs=null;
 		
-		try{
-			
-			
-	           
+		try{     
            String query= "SELECT * FROM hourly_employees WHERE employeeId='"+ employeeId + "';";
            
 			rs= connectionWithTableOfEmployees(query);
@@ -47,7 +43,6 @@ public class BDrepository implements Repositoory{
            while (rs.next()) {
 		 employee=new Employee(Integer.parseInt(rs.getString("employeeId")), rs.getString("name"), rs.getString("address"));
 		 PaymentClassification paymentClassification= new HourlyPaymentClassification(Integer.parseInt(rs.getString("tarifa_por_hora")));
-		// employee.setPaymentClassification(paymentClassification).update3(Integer.parseInt(rs.getString("tarifa_por_hora")));;
         employee.setPaymentClassification(paymentClassification);
            }
 			
@@ -64,18 +59,14 @@ public class BDrepository implements Repositoory{
 	
 	@Override
 	public void addEmployee(int employeeId, Employee employee) throws SQLException {
-		
-		
-		  
-	    PreparedStatement pstInsertarCuenta;
-	   
-	   
+
+		PreparedStatement pstInsertarCuenta; 
 	    String sqlNewHourlyEmployee = "INSERT INTO hourly_employees VALUES (?,?,?,?)";
 	    pstInsertarCuenta = bd.conectar().prepareStatement(sqlNewHourlyEmployee); 
 	    pstInsertarCuenta.setLong(1, employeeId);
 	    pstInsertarCuenta.setString(2, employee.getName());
 	    pstInsertarCuenta.setString(3, employee.getAddress());
-	    
+	  
 	    PaymentClassification a=employee.getPaymentClassification();
 	     
 	    pstInsertarCuenta.setLong(4, (long) a.update2());

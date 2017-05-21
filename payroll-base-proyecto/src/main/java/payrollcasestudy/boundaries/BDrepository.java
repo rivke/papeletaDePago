@@ -37,10 +37,13 @@ public class BDrepository implements Repositoory{
 		
 		try{
 			
-           String query= "SELECT * FROM employees WHERE employeeId='"+ employeeId + "';";
-           Statement stmt=(Statement) bd.conectar().createStatement();
-           rs=((java.sql.Statement)stmt).executeQuery(query);
-          // System.out.println("Exito");
+			
+	           
+           String query= "SELECT * FROM hourly_employees WHERE employeeId='"+ employeeId + "';";
+           
+			rs= connectionWithTableOfEmployees(query);
+
+			System.out.println("Exito");
            while (rs.next()) {
 		 employee=new Employee(Integer.parseInt(rs.getString("employeeId")), rs.getString("name"), rs.getString("address"));
 		 PaymentClassification paymentClassification= new HourlyPaymentClassification(Integer.parseInt(rs.getString("tarifa_por_hora")));
@@ -55,45 +58,20 @@ public class BDrepository implements Repositoory{
 			return employee;
 			
 		}
-		
-		
-	   
-
-	      
-
-	   
+		   
 	}
 	
-	public ResultSet connectionWithTableOfEmployees2()
-	{
-		ResultSet rs=null;
-		try{
-			
-           String query= "SELECT * FROM papeletadepago.employees";
-           Statement stmt=(Statement) bd.conectar().createStatement();
-           rs=((java.sql.Statement)stmt).executeQuery(query);
-           System.out.println("Exito");
-           return rs;
-			
-			
-		}catch (Exception e){
-			System.err.println(e);
-			
-			return rs;
-
-		}
-		
-		
-	}
-
+	
 	@Override
 	public void addEmployee(int employeeId, Employee employee) throws SQLException {
 		
+		
+		  
 	    PreparedStatement pstInsertarCuenta;
 	   
 	   
-	    String sqlNuevaCuenta = "INSERT INTO employees VALUES (?,?,?,?)";
-	    pstInsertarCuenta = bd.conectar().prepareStatement(sqlNuevaCuenta); 
+	    String sqlNewHourlyEmployee = "INSERT INTO hourly_employees VALUES (?,?,?,?)";
+	    pstInsertarCuenta = bd.conectar().prepareStatement(sqlNewHourlyEmployee); 
 	    pstInsertarCuenta.setLong(1, employeeId);
 	    pstInsertarCuenta.setString(2, employee.getName());
 	    pstInsertarCuenta.setString(3, employee.getAddress());
@@ -152,13 +130,13 @@ public class BDrepository implements Repositoory{
 	}
 	
 	
-	public ResultSet connectionWithTableOfEmployees()
+	public ResultSet connectionWithTableOfEmployees(String query)
 	{
 		
 		ResultSet rs=null;
 		try{
 		
-           String query= "SELECT * FROM papeletadepago.employees";
+          // String query= "SELECT * FROM papeletadepago.hourly_employees";
            Statement stmt=(Statement) bd.conectar().createStatement();
            rs=((java.sql.Statement)stmt).executeQuery(query);
            System.out.println("Exito");
@@ -181,9 +159,10 @@ public class BDrepository implements Repositoory{
 	
 	@Override
 	public ArrayList<Employee> getAllEmployees() throws SQLException {
+		String query= "SELECT * FROM papeletadepago.hourly_employees";
        ArrayList<Employee> ls = new ArrayList<Employee>();
 		try{
-			ResultSet results= connectionWithTableOfEmployees();
+			ResultSet results= connectionWithTableOfEmployees(query);
 			while(results.next()){
 				
 				Employee employee=new Employee(Integer.parseInt(results.getString("employeeId")), results.getString("name"), results.getString("address"));

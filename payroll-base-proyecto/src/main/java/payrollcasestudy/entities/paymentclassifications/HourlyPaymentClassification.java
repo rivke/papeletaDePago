@@ -12,10 +12,10 @@ import java.util.Map;
 public class HourlyPaymentClassification extends PaymentClassification{
 
     private Map<Calendar, TimeCard> timeCardMap = new HashMap<Calendar, TimeCard>();
-    private double hourlyRate;
+    private double hourlyRate=0.0;
 
     public HourlyPaymentClassification(double hourlyRate) {
-        this.hourlyRate = hourlyRate;
+        this.hourlyRate = 0.0;
     }
 
     public double getHourlyRate() {

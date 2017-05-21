@@ -80,7 +80,7 @@ public class Main {
     	get("/detalle/:id", (request, response) -> {
     		
     		map.put("empleado",employeeController.showEmployee(Integer.parseInt(request.params(":id"))));        			
-    	    map.put("pago",employeeController.showPayment(Integer.parseInt(request.params(":id"))));
+    	   // map.put("pago",employeeController.showPayment(Integer.parseInt(request.params(":id"))));
     		 return new ModelAndView(map, "mostrarUno.vtl");
 		    }, velocity.vel());	
     	

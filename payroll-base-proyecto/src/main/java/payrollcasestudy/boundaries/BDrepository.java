@@ -14,61 +14,73 @@ import java.sql.ResultSet;
 import payrollcasestudy.entities.Employee;
 
 public class BDrepository implements Repositoory{
-	private static final Map<String, Class<?>> Employee = null;
-	private static Connection con;
-	 private static BDrepository INSTANCE = null;
-	 public Connection conexion = null;
-	    
-	 public void conectar() throws SQLException
-	 {
-		 conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/papeletadepago","root","rebeca");
-		 
-	 }
-
-	  
-	  
-	public static Repositoory getInstance() {
-        if (INSTANCE == null) createInstance();
-        return INSTANCE;
-    }
-
-	private synchronized static void createInstance() {
-        if (INSTANCE == null) { 
-            INSTANCE = new BDrepository();
-            performConnection();
-        }
-    }
+	Employee employee = null;
 	
-	public static void performConnection() {
-		String host = "localhost";
-		String user = "root";
-		String pass = "rebeca";
-		String dtbs = "papeletadepago";
-		
+	 
+     BaseDeDatos bd = new BaseDeDatos();
+
+	    
+	@Override
+	public Employee getEmployee(int employeeId)
+	{ResultSet rs=null;
+			
 		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			String newConnectionURL = "jdbc:mysql://" + host + "/" + dtbs
-					+ "?" + "user=" + user + "&password=" + pass;
-					con = DriverManager.getConnection(newConnectionURL);
-		}catch (Exception e) {
-			System.out.println("Error en l'obertura de la connexió.");
+			
+           String query= "SELECT * FROM employees WHERE employeeId='"+ employeeId + "';";
+           Statement stmt=(Statement) bd.conectar().createStatement();
+           rs=((java.sql.Statement)stmt).executeQuery(query);
+          // System.out.println("Exito");
+           while (rs.next()) {
+		 employee=new Employee(Integer.parseInt(rs.getString("employeeId")), rs.getString("name"), rs.getString("address"));
+
+           }
+			
+           return employee;
+
+		}catch (Exception e){
+			System.err.println(e);
+			return employee;
+			
 		}
 		
+		
+	   
+
+	      
+
+	   
 	}
-	@Override
-	public Employee getEmployee(int employeeId) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public ResultSet connectionWithTableOfEmployees2()
+	{
+		ResultSet rs=null;
+		try{
+			
+           String query= "SELECT * FROM papeletadepago.employees";
+           Statement stmt=(Statement) bd.conectar().createStatement();
+           rs=((java.sql.Statement)stmt).executeQuery(query);
+           System.out.println("Exito");
+           return rs;
+			
+			
+		}catch (Exception e){
+			System.err.println(e);
+			
+			return rs;
+
+		}
+		
+		
 	}
 
 	@Override
 	public void addEmployee(int employeeId, Employee employee) throws SQLException {
 		
 	    PreparedStatement pstInsertarCuenta;
-	    conectar();
+	    
 	 
 	    String sqlNuevaCuenta = "INSERT INTO employees VALUES (?,?,?)";
-	    pstInsertarCuenta = conexion.prepareStatement(sqlNuevaCuenta); 
+	    pstInsertarCuenta = bd.conectar().prepareStatement(sqlNuevaCuenta); 
 	    pstInsertarCuenta.setLong(1, employeeId);
 	    pstInsertarCuenta.setString(2, employee.getName());
 	    pstInsertarCuenta.setString(3, employee.getAddress());
@@ -128,9 +140,9 @@ public class BDrepository implements Repositoory{
 		
 		ResultSet rs=null;
 		try{
-			conectar();
+		
            String query= "SELECT * FROM papeletadepago.employees";
-           Statement stmt=(Statement) conexion.createStatement();
+           Statement stmt=(Statement) bd.conectar().createStatement();
            rs=((java.sql.Statement)stmt).executeQuery(query);
            System.out.println("Exito");
            return rs;
@@ -145,6 +157,8 @@ public class BDrepository implements Repositoory{
 		
 		
 	}
+	
+	
 	
 	
 	

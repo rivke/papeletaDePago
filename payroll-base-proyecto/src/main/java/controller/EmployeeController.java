@@ -88,7 +88,7 @@ public class EmployeeController {
 	
      public static String showEmployee(int id){			
 		Updatable updatable = new EmpleadoView();		
-		Employee empleado = database.getEmployee(id);		
+		Employee empleado = mc.getEmployee(id);		
 		return empleado.update(updatable);		
 			
 	}

@@ -36,6 +36,7 @@ public class Employee {
     }
 
     public void setPaymentClassification(PaymentClassification paymentClassification) {
+    	
         this.paymentClassification = paymentClassification;
     }
 

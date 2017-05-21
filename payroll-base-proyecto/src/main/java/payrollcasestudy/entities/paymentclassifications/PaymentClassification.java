@@ -9,7 +9,9 @@ public abstract class PaymentClassification {
     public abstract double calculatePay(PayCheck payCheck);
     
     public abstract String update(Updatable updatable );
-    
+    public abstract double update2();
+    public abstract void update3(double a);
+
     
     public static boolean isInPayPeriod(Calendar date, PayCheck payCheck) {
         Calendar payPeriodStart = payCheck.getPayPeriodStart();

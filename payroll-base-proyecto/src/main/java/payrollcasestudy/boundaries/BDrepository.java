@@ -1,5 +1,7 @@
 package payrollcasestudy.boundaries;
 
+import static java.util.Calendar.NOVEMBER;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,14 +9,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Map;
 import java.util.Set;
 import java.sql.ResultSet;
 
 import payrollcasestudy.entities.Employee;
+import payrollcasestudy.entities.PayCheck;
+import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
+import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
+import payrollcasestudy.transactions.PaydayTransaction;
+import payrollcasestudy.transactions.Transaction;
 
 public class BDrepository implements Repositoory{
 	Employee employee = null;
+	static Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
+    static PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
 	
 	 
      BaseDeDatos bd = new BaseDeDatos();
@@ -23,7 +34,7 @@ public class BDrepository implements Repositoory{
 	@Override
 	public Employee getEmployee(int employeeId)
 	{ResultSet rs=null;
-			
+		
 		try{
 			
            String query= "SELECT * FROM employees WHERE employeeId='"+ employeeId + "';";
@@ -32,7 +43,9 @@ public class BDrepository implements Repositoory{
           // System.out.println("Exito");
            while (rs.next()) {
 		 employee=new Employee(Integer.parseInt(rs.getString("employeeId")), rs.getString("name"), rs.getString("address"));
-
+		 PaymentClassification paymentClassification= new HourlyPaymentClassification(Integer.parseInt(rs.getString("tarifa_por_hora")));
+		// employee.setPaymentClassification(paymentClassification).update3(Integer.parseInt(rs.getString("tarifa_por_hora")));;
+        employee.setPaymentClassification(paymentClassification);
            }
 			
            return employee;
@@ -77,13 +90,17 @@ public class BDrepository implements Repositoory{
 	public void addEmployee(int employeeId, Employee employee) throws SQLException {
 		
 	    PreparedStatement pstInsertarCuenta;
-	    
-	 
-	    String sqlNuevaCuenta = "INSERT INTO employees VALUES (?,?,?)";
+	   
+	   
+	    String sqlNuevaCuenta = "INSERT INTO employees VALUES (?,?,?,?)";
 	    pstInsertarCuenta = bd.conectar().prepareStatement(sqlNuevaCuenta); 
 	    pstInsertarCuenta.setLong(1, employeeId);
 	    pstInsertarCuenta.setString(2, employee.getName());
 	    pstInsertarCuenta.setString(3, employee.getAddress());
+	    
+	    PaymentClassification a=employee.getPaymentClassification();
+	     
+	    pstInsertarCuenta.setLong(4, (long) a.update2());
 	   
 	    pstInsertarCuenta.executeUpdate();    
 	    

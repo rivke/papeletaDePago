@@ -12,10 +12,14 @@ import java.util.Map;
 public class HourlyPaymentClassification extends PaymentClassification{
 
     private Map<Calendar, TimeCard> timeCardMap = new HashMap<Calendar, TimeCard>();
-    private double hourlyRate=0.0;
+    private double hourlyRate;
 
     public HourlyPaymentClassification(double hourlyRate) {
-        this.hourlyRate = 0.0;
+        this.hourlyRate = hourlyRate;
+    }
+
+    public HourlyPaymentClassification() {
+        this.hourlyRate = hourlyRate;
     }
 
     public double getHourlyRate() {
@@ -55,6 +59,18 @@ public class HourlyPaymentClassification extends PaymentClassification{
 			
 			
 		
+		
+	}
+
+	public double update2() {
+		// TODO Auto-generated method stub
+		return hourlyRate;
+	}
+
+	@Override
+	public void update3(double a) {
+		// TODO Auto-generated method stub
+		hourlyRate=a;
 		
 	}
 	

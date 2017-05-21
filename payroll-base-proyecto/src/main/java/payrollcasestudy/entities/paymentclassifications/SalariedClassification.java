@@ -27,5 +27,16 @@ public class SalariedClassification extends PaymentClassification {
 		
 		
 	}
+
+	public double update2() {
+		// TODO Auto-generated method stub
+		return salary;
+	}
+
+	@Override
+	public void update3(double a) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

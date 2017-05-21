@@ -69,12 +69,12 @@ public class EmployeeController {
         Transaction addEmployeeTransaction =
                 new AddHourlyEmployeeTransaction(employeeId, nombreCompleto, direccion, tarifa_por_hora);
         addEmployeeTransaction.execute(mc);
-        return "bien";//verifyCreation(nombre, apellido, nombreCompleto);        
+        return verifyCreation(nombre, apellido, nombreCompleto);        
 	}
 	
 
 	private static String verifyCreation(String nombre, String apellido, String nombreCompleto) {
-		Employee employee = database.getEmployee(employeeId);
+		Employee employee = mc.getEmployee(employeeId);
         String mensaje;
 		if(employee.getName() == nombreCompleto)
 			mensaje="El Empleado "+nombre+ " "+ apellido + "</br> Se ha sido registrado con exito ";

@@ -46,7 +46,7 @@ import payrollcasestudy.transactions.add.AddTimeCardTransaction;
 import updatable.Updatable;
 
 import views.EmpleadoView;
-import views.UI;
+import views.MessageView;
 
 
 
@@ -55,7 +55,7 @@ public class EmployeeController {
 	private static Repositoory mc = new BDrepository();
 
 	static PayrollDatabase database=PayrollDatabase.globalPayrollDatabase;
-	static public int employeeId=0;
+	static public int employeeId = mc.getLastId();
 	static public int memberId = 0;
 	static String nombreCompleto = "";
 	static Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
@@ -63,7 +63,7 @@ public class EmployeeController {
 	
 	public static String addHourlyEmployee(String nombre, String apellido, String direccion, double tarifa_por_hora) throws SQLException{
 		System.out.println("----------REGISTRANDO EMPLEADO POR HORA---------");			
-		employeeId++;
+		employeeId+=1;
 		
 		nombreCompleto = nombre + " " + apellido;
         Transaction addEmployeeTransaction =
@@ -78,10 +78,10 @@ public class EmployeeController {
         String mensaje;
 		if(employee.getName() == nombreCompleto)
 			mensaje="El Empleado "+nombre+ " "+ apellido + "</br> Se ha sido registrado con exito ";
-				
+		else		
 			mensaje="Error al registrar el empleado " + employee.getName();
 		
-		return UI.mostrarMensaje(mensaje);   
+		return MessageView.mostrarMensaje(mensaje);   
 	}
 	
 	
@@ -130,7 +130,7 @@ public class EmployeeController {
 	
    public static String payEmployee() {	   
        paydayTransaction.execute(null);
-       return UI.mostrarMensaje("Pagados");
+       return MessageView.mostrarMensaje("Pagados");
 	}
 		
    
@@ -152,7 +152,7 @@ public class EmployeeController {
          AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date1, cargo);
         addServiceChargeTransaction.execute(null);	        
 	      
-		return UI.mostrarMensaje("Servicio agregado");
+		return MessageView.mostrarMensaje("Servicio agregado");
 	}
 
 
@@ -169,7 +169,7 @@ public class EmployeeController {
         Transaction salesReceiptTransaction =
                 new AddSalesReceiptTransaction(date1, amount, eemployeId);
         salesReceiptTransaction.execute(null); 
-		return UI.mostrarMensaje("Recibo de venta agregado");
+		return MessageView.mostrarMensaje("Recibo de venta agregado");
 	}
 	
 
@@ -178,7 +178,7 @@ public class EmployeeController {
         Transaction timeCardTransaction = new AddTimeCardTransaction(date1, horas,  eemployeId);
         timeCardTransaction.execute(null);
      
-		return UI.mostrarMensaje("Timecard agregada");
+		return MessageView.mostrarMensaje("Timecard agregada");
 	}
 
 

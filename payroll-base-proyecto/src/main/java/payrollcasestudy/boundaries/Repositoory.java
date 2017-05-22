@@ -27,5 +27,6 @@ public interface Repositoory {
     
     public  ArrayList<Employee> getAllEmployees() throws SQLException;
     
+    public Integer getLastId();
 
 }

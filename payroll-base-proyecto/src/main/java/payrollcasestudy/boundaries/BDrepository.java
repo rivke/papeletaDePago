@@ -25,72 +25,47 @@ import payrollcasestudy.transactions.Transaction;
 public class BDrepository implements Repositoory{
 	Employee employee = null;
 	static Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
-    static PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-	
-	 
-     BaseDeDatos bd = new BaseDeDatos();
-
+    static PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);	
+	BaseDeDatos bd = new BaseDeDatos();
 	    
 	@Override
 	public Employee getEmployee(int employeeId)
-	{ResultSet rs=null;
-		
-		try{
-			
-			
-	           
-           String query= "SELECT * FROM hourly_employees WHERE employeeId='"+ employeeId + "';";
-           
-			rs= connectionWithTableOfEmployees(query);
-
-			System.out.println("Exito");
+	{
+		ResultSet rs=null;		
+		try{				           
+           String query= "SELECT * FROM papeletasdepago.hourly_employees WHERE employeeId="+ employeeId + ";";           
+           rs= connectionWithTableOfEmployees(query);
+           System.out.println("Exito");
            while (rs.next()) {
-		 employee=new Employee(Integer.parseInt(rs.getString("employeeId")), rs.getString("name"), rs.getString("address"));
-		 PaymentClassification paymentClassification= new HourlyPaymentClassification(Integer.parseInt(rs.getString("tarifa_por_hora")));
-		// employee.setPaymentClassification(paymentClassification).update3(Integer.parseInt(rs.getString("tarifa_por_hora")));;
-        employee.setPaymentClassification(paymentClassification);
-           }
-			
+        	   employee=new Employee(Integer.parseInt(rs.getString("employeeId")), rs.getString("name"), rs.getString("address"));
+        	   PaymentClassification paymentClassification= new HourlyPaymentClassification(Double.parseDouble(rs.getString("tarifa_por_hora")));
+        	   //employee.setPaymentClassification(paymentClassification).update3(Integer.parseInt(rs.getString("tarifa_por_hora")));;
+        	   employee.setPaymentClassification(paymentClassification);
+           }			
            return employee;
-
 		}catch (Exception e){
 			System.err.println(e);
-			return employee;
-			
-		}
-		   
+			return employee;			
+		}		   
 	}
 	
 	
 	@Override
-	public void addEmployee(int employeeId, Employee employee) throws SQLException {
-		
-		
-		  
-	    PreparedStatement pstInsertarCuenta;
-	   
-	   
+	public void addEmployee(int employeeId, Employee employee) throws SQLException {			  
+	    PreparedStatement pstInsertarCuenta;	   	   
 	    String sqlNewHourlyEmployee = "INSERT INTO hourly_employees VALUES (?,?,?,?)";
 	    pstInsertarCuenta = bd.conectar().prepareStatement(sqlNewHourlyEmployee); 
 	    pstInsertarCuenta.setLong(1, employeeId);
 	    pstInsertarCuenta.setString(2, employee.getName());
-	    pstInsertarCuenta.setString(3, employee.getAddress());
-	    
-	    PaymentClassification a=employee.getPaymentClassification();
-	     
-	    pstInsertarCuenta.setLong(4, (long) a.update2());
-	   
-	    pstInsertarCuenta.executeUpdate();    
-	    
+	    pstInsertarCuenta.setString(3, employee.getAddress());	    
+	    PaymentClassification a=employee.getPaymentClassification();	     
+	    pstInsertarCuenta.setLong(4, (long) a.update2());	   
+	    pstInsertarCuenta.executeUpdate();    	    
 	}
-	
 		
-	
-
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
@@ -131,52 +106,52 @@ public class BDrepository implements Repositoory{
 	
 	
 	public ResultSet connectionWithTableOfEmployees(String query)
-	{
-		
+	{		
 		ResultSet rs=null;
-		try{
-		
+		try{		
           // String query= "SELECT * FROM papeletadepago.hourly_employees";
            Statement stmt=(Statement) bd.conectar().createStatement();
            rs=((java.sql.Statement)stmt).executeQuery(query);
            System.out.println("Exito");
-           return rs;
-			
-			
+           return rs;				
 		}catch (Exception e){
-			System.err.println(e);
-			
+			System.err.println(e);			
 			return rs;
-
-		}
-		
-		
+		}		
 	}
-	
-	
-	
 	
 	
 	@Override
 	public ArrayList<Employee> getAllEmployees() throws SQLException {
-		String query= "SELECT * FROM papeletadepago.hourly_employees";
-       ArrayList<Employee> ls = new ArrayList<Employee>();
+		String query= "SELECT * FROM papeletasdepago.hourly_employees";
+		ArrayList<Employee> ls = new ArrayList<Employee>();
 		try{
 			ResultSet results= connectionWithTableOfEmployees(query);
 			while(results.next()){
-				
 				Employee employee=new Employee(Integer.parseInt(results.getString("employeeId")), results.getString("name"), results.getString("address"));
-		       ls.add(employee);
-			}
-			
+				ls.add(employee);
+			}			
 			return ls;
 		}
 		catch(Exception e){
 			System.err.println(e);
-			return ls;
-			
-		}
-		
+			return ls;			
+		}		
+	}
+
+
+	@Override
+	public Integer getLastId() {
+		ResultSet rs=null;		
+		try{				           
+           String query= "SELECT max(employeeId) FROM papeletasdepago.hourly_employees";           
+           rs= connectionWithTableOfEmployees(query);
+           System.out.println("Exito");           
+           return Integer.parseInt(rs.getString("employeeId"));        
+		}catch (Exception e){
+			System.err.println(e);
+			return -1;			
+		}		   
 	}
 
 }

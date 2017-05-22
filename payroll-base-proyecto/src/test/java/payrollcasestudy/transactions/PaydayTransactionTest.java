@@ -229,7 +229,7 @@ public class PaydayTransactionTest {
         changeMemberTransaction.execute(Repository);
 
         double serviceCharge = 19.42;
-        Transaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, payDate, serviceCharge);
+        Transaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, payDate, serviceCharge,Repository);
         addServiceChargeTransaction.execute(Repository);
 
         Transaction addTimeCardTransaction = new AddTimeCardTransaction(payDate, 8.0, employeeId);
@@ -265,13 +265,13 @@ public class PaydayTransactionTest {
         changeMemberTransaction.execute(Repository);
 
         double serviceCharge = 19.42;
-        Transaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, payDate, serviceCharge);
+        Transaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, payDate, serviceCharge,Repository);
         addServiceChargeTransaction.execute(Repository);
 
-        Transaction lateServiceChargeTransaction = new AddServiceChargeTransaction(memberId, previousPayDate, 100.0);
+        Transaction lateServiceChargeTransaction = new AddServiceChargeTransaction(memberId, previousPayDate, 100.0,Repository);
         lateServiceChargeTransaction.execute(Repository);
 
-        Transaction earlyServiceChargeTransaction = new AddServiceChargeTransaction(memberId, nextPayDate, 200.0);
+        Transaction earlyServiceChargeTransaction = new AddServiceChargeTransaction(memberId, nextPayDate, 200.0,Repository);
         earlyServiceChargeTransaction.execute(Repository);
 
         Transaction addTimeCardTransaction = new AddTimeCardTransaction(payDate, 8.0, employeeId);

@@ -2,9 +2,7 @@ package payrollcasestudy.transactions.change;
 
 import org.junit.Rule;
 import org.junit.Test;
-import payrollcasestudy.DatabaseResource;
 import payrollcasestudy.boundaries.MemoryRepository;
-import payrollcasestudy.boundaries.PayrollDatabase;
 import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;

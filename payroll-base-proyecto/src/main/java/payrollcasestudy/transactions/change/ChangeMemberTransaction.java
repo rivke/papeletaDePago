@@ -18,9 +18,9 @@ public class ChangeMemberTransaction  extends changeAffiliationTransactionn {
 	}
 
 	@Override
-	protected void registerAsAMember(Employee employee) {
+	protected void registerAsAMember(Employee employee, Repositoory repository) {
 		// TODO Auto-generated method stub
-		Repositoory.repository2.addUnionMember(memberId, employee);
+		repository.addUnionMember(memberId, employee);
 		
 	}
 

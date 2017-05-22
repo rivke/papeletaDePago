@@ -2,7 +2,6 @@ package payrollcasestudy.transactions.change;
 
 import org.junit.Rule;
 import org.junit.Test;
-import payrollcasestudy.DatabaseResource;
 import payrollcasestudy.boundaries.MemoryRepository;
 import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
@@ -15,7 +14,7 @@ import static org.junit.Assert.assertThat;
 import static payrollcasestudy.TestConstants.*;
 
 public class ChangeMemberTransactionTest {
-	private static final Repositoory Repository = new MemoryRepository();
+	private static final Repositoory repository = new MemoryRepository();
 
     
 
@@ -25,19 +24,19 @@ public class ChangeMemberTransactionTest {
         int memberId = 7734;
         AddEmployeeTransaction addEmployeeTransaction =
                 new AddHourlyEmployeeTransaction(employeeId, "Bill", "Home", 15.25);
-        addEmployeeTransaction.execute(Repository);
+        addEmployeeTransaction.execute(repository);
 
         ChangeMemberTransaction changeMemberTransaction =
                 new ChangeMemberTransaction(employeeId, memberId, 99.42);
-        changeMemberTransaction.execute(Repository);
+        changeMemberTransaction.execute(repository);
 
-        Employee employee = Repository.getEmployee(employeeId);
+        Employee employee = repository.getEmployee(employeeId);
         assertThat(employee.getUnionAffiliation(), is(notNullValue()));
 
         UnionAffiliation unionAffiliation = employee.getUnionAffiliation();
         assertThat(unionAffiliation.getDues(), is(closeTo(99.42, FLOAT_ACCURACY)));
 
-        Employee member = Repository.getUnionMember(memberId);
+        Employee member = repository.getUnionMember(memberId);
         assertThat(member, is(employee));
     }
 }

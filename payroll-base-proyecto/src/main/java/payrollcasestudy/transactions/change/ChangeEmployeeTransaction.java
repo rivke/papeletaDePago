@@ -8,8 +8,6 @@ import payrollcasestudy.transactions.Transaction;
 
 public abstract class ChangeEmployeeTransaction implements Transaction {
 
-   PayrollDatabase database = PayrollDatabase.globalPayrollDatabase;
-    //Repositoory database1 = Repositoory.repository2;
 
     private int employeeId;
 
@@ -19,8 +17,8 @@ public abstract class ChangeEmployeeTransaction implements Transaction {
 
     public void execute(Repositoory repository) {
         Employee employee = repository.getEmployee(employeeId);
-        changeEmployee(employee);
+        changeEmployee(employee, repository);
     }
 
-    public abstract void changeEmployee(Employee employee);
+    public abstract void changeEmployee(Employee employee, Repositoory repository);
 }

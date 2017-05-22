@@ -1,5 +1,6 @@
 package payrollcasestudy.transactions.change;
 
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
 
@@ -16,9 +17,9 @@ public class ChangeNoMemberTransaction extends changeAffiliationTransactionn {
 	    }
 
 	   	@Override
-		protected void registerAsAMember(Employee employee) {
+		protected void registerAsAMember(Employee employee, Repositoory repository) {
 			this.memberId = employee.getUnionAffiliation().getMemberId();
-			database.deleteUnionMember(memberId);
+			repository.deleteUnionMember(memberId);
 		}  		   				   	
 	   	
 	

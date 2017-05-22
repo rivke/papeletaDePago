@@ -149,7 +149,7 @@ public class EmployeeServices {
 	    memberId++;
         addMemberShip(2, employee);
         Calendar date1 = fechaCorrecta(dia, mes, anio);
-         AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date1, cargo);
+         AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date1, cargo, mc);
         addServiceChargeTransaction.execute(null);	        
 	      
 		return MessageView.mostrarMensaje("Servicio agregado");

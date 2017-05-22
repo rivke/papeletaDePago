@@ -1,5 +1,6 @@
 package payrollcasestudy.transactions.change;
 
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 
 public class ChangeNameTransaction extends ChangeEmployeeTransaction{
@@ -11,7 +12,7 @@ public class ChangeNameTransaction extends ChangeEmployeeTransaction{
     }
 
     @Override
-    public void changeEmployee(Employee employee) {
+    public void changeEmployee(Employee employee, Repositoory repository) {
         employee.setName(newName);
     }
 }

@@ -2,7 +2,6 @@ package payrollcasestudy.transactions.add;
 
 import org.junit.Rule;
 import org.junit.Test;
-import payrollcasestudy.DatabaseResource;
 import payrollcasestudy.boundaries.MemoryRepository;
 import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
@@ -39,7 +38,7 @@ public class AddServiceChargeTransactionTest {
         assertThat(repository.getUnionMember(memberId), is(notNullValue()));
 
         Calendar date = new GregorianCalendar(2001, 11, 01);
-        AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date, 12.95);
+        AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date, 12.95,repository);
         addServiceChargeTransaction.execute(repository);
         
         ServiceCharge serviceCharge = unionAffiliation.getServiceCharge(date);

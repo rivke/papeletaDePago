@@ -11,9 +11,9 @@ import payrollcasestudy.transactions.Transaction;
 public class AddServiceChargeTransaction implements Transaction {
  
 	
-	public AddServiceChargeTransaction(int memberId, Calendar payDate, double serviceCharge) {
+	public AddServiceChargeTransaction(int memberId, Calendar payDate, double serviceCharge, Repositoory repository) {
 		// TODO Auto-generated constructor stub
-		Employee member=PayrollDatabase.globalPayrollDatabase.getUnionMember(memberId);
+		Employee member=repository.getUnionMember(memberId);
 		UnionAffiliation unionAffiliation= member.getUnionAffiliation();
 		unionAffiliation.addServiceChargeTransaction(payDate,serviceCharge);
 		

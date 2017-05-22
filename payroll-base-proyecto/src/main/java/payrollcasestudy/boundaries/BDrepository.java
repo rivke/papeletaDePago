@@ -224,6 +224,13 @@ public class BDrepository implements Repositoory{
 		}
 		
 	}
+
+
+	@Override
+	public Integer getLastId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

@@ -79,4 +79,10 @@ public class MemoryRepository implements Repositoory {
     	return employees;
 	}
 
+	@Override
+	public Integer getLastId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

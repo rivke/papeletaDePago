@@ -1,6 +1,6 @@
 package views;
 
-public class UI {
+public class MessageView {
 	static public String inicioPagina(){
 		return "<html>"
 	+ "<head>"

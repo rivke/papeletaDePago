@@ -8,7 +8,8 @@ import java.util.Set;
 import payrollcasestudy.entities.Employee;
 
 public class MemoryRepository implements Repositoory {
-	  public static PayrollDatabase globalPayrollDatabase = new PayrollDatabase();	
+	  public static Repositoory repository = new MemoryRepository();	
+	  
 	  private Map<Integer, Employee> employees = new HashMap<Integer, Employee>();
 	    public Map<Integer, Employee> unionMembers = new HashMap<Integer, Employee>();
 
@@ -60,10 +61,10 @@ public class MemoryRepository implements Repositoory {
 
 	@Override
 	public Employee addShow(int ind) {
-		Set<Integer> employeeIds=PayrollDatabase.globalPayrollDatabase.getAllEmployeeIds();
+		Set<Integer> employeeIds=Repositoory.repository.getAllEmployeeIds();
 		ArrayList<Integer> employeeIdLista = new ArrayList<>(employeeIds);
 		Employee employee;				
-			employee=PayrollDatabase.globalPayrollDatabase.getEmployee(employeeIdLista.get(ind));				
+			employee=Repositoory.repository.getEmployee(employeeIdLista.get(ind));				
 		return employee;	
 	}
 
@@ -72,8 +73,8 @@ public class MemoryRepository implements Repositoory {
 		ArrayList<Employee> employees = new ArrayList<Employee>();
     	String resp = " ";
     	Employee emp;
-    	for(int id : globalPayrollDatabase.getAllEmployeeIds()){
-    		employees.add(globalPayrollDatabase.getEmployee(id));    		
+    	for(int id : repository.getAllEmployeeIds()){
+    		employees.add(repository.getEmployee(id));    		
     	}
     	return employees;
 	}

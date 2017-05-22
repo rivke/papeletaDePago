@@ -32,7 +32,7 @@ public class ChangeHourlyTransactionTest {
         ChangeHourlyTransaction changeHourlyTransaction = new ChangeHourlyTransaction(employeeId, 27.52);
         changeHourlyTransaction.execute(Repository);
 
-        Employee employee = databaseResource.getInstance().getEmployee(employeeId);
+        Employee employee = Repository.getEmployee(employeeId);
         assertThat(employee.getPaymentClassification(), is(instanceOf(HourlyPaymentClassification.class)));
         HourlyPaymentClassification paymentClassification =
                 (HourlyPaymentClassification) employee.getPaymentClassification();

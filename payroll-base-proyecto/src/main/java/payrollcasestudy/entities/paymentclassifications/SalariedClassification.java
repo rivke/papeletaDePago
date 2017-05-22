@@ -40,9 +40,9 @@ public class SalariedClassification extends PaymentClassification {
 	}
 
 	@Override
-	public String queryInsert() {
-	    String sqlNewSalariedEmployee;
-	    return sqlNewSalariedEmployee = "INSERT INTO salaried_employee VALUES (?,?,?,?)";
+	public String updateQuery() {
+
+	    return "INSERT INTO salaried_employee VALUES (?,?,?,?)";
 		
 	}
 	

@@ -34,29 +34,14 @@ public class BDrepository implements Repositoory{
 	@Override
 	public Employee getEmployee(int employeeId)
 	{ResultSet rs=null;
-    String query= "SELECT * FROM hourly_employees WHERE employeeId='"+ employeeId + "';";
-
-    String query2= "SELECT * FROM salaried_employee WHERE idSalariedEmployee='"+ employeeId + "';";
+    String querySelectHourlyEmployee= "SELECT * FROM hourly_employees WHERE employeeId='"+ employeeId + "';";
+    String querySelectSalariedEmployee= "SELECT * FROM salaried_employee WHERE idSalariedEmployee='"+ employeeId + "';";
 
 		try{     
-           
-			rs= connectionWithTableOfEmployees(query);
-
-			System.out.println("Exito");
-           while (rs.next()) {
-		 employee=new Employee(Integer.parseInt(rs.getString("employeeId")), rs.getString("name"), rs.getString("address"));
-		 PaymentClassification paymentClassification= new HourlyPaymentClassification(Integer.parseInt(rs.getString("tarifa_por_hora")));
-        employee.setPaymentClassification(paymentClassification);
-           }
-			
-           rs= connectionWithTableOfEmployees(query2);
-
-			System.out.println("Exito");
-          while (rs.next()) {
-		 employee=new Employee(Integer.parseInt(rs.getString("idSalariedEmployee")), rs.getString("name"), rs.getString("adresse"));
-		 PaymentClassification paymentClassification= new SalariedClassification(Integer.parseInt(rs.getString("salary")));
-       employee.setPaymentClassification(paymentClassification);
-          }
+           rs= connectionWithTableOfEmployees(querySelectHourlyEmployee);
+           getHourlyEmployeeOfBD(rs);
+           rs= connectionWithTableOfEmployees(querySelectSalariedEmployee);
+           getSalariedEmployeeOfBD(rs);
 			
            return employee;
 
@@ -67,25 +52,37 @@ public class BDrepository implements Repositoory{
 		}
 		   
 	}
+
+
+	private void getHourlyEmployeeOfBD(ResultSet rs) throws SQLException {
+		while (rs.next()) {
+		 employee=new Employee(Integer.parseInt(rs.getString("employeeId")), rs.getString("name"), rs.getString("address"));
+		 PaymentClassification paymentClassification= new HourlyPaymentClassification(Integer.parseInt(rs.getString("tarifa_por_hora")));
+        employee.setPaymentClassification(paymentClassification);
+           }
+	}
+
+
+	private void getSalariedEmployeeOfBD(ResultSet rs) throws SQLException {
+		while (rs.next()) {
+		 employee=new Employee(Integer.parseInt(rs.getString("idSalariedEmployee")), rs.getString("name"), rs.getString("adresse"));
+		 PaymentClassification paymentClassification= new SalariedClassification(Integer.parseInt(rs.getString("salary")));
+       employee.setPaymentClassification(paymentClassification);
+          }
+	}
 	
 	
 	@Override
 	public void addEmployee(int employeeId, Employee employee) throws SQLException {
-		PaymentClassification a;
-		 a=employee.getPaymentClassification();
+		PaymentClassification a=employee.getPaymentClassification();
 		PreparedStatement pstInsertarCuenta; 
-	    //String sqlNewHourlyEmployee = "INSERT INTO hourly_employees VALUES (?,?,?,?)";
-	    String sqlNewHourlyEmployee =a.queryInsert();
+	    String sqlNewHourlyEmployee =a.updateQuery();
 
 	    pstInsertarCuenta = bd.conectar().prepareStatement(sqlNewHourlyEmployee); 
 	    pstInsertarCuenta.setLong(1, employeeId);
 	    pstInsertarCuenta.setString(2, employee.getName());
 	    pstInsertarCuenta.setString(3, employee.getAddress());
-	  
-	   
-	     
 	    pstInsertarCuenta.setLong(4, (long) a.update2());
-	   
 	    pstInsertarCuenta.executeUpdate();    
 	    
 	}

@@ -34,7 +34,7 @@ public class AddCommissionedEmployeeTransactionTest {
         Transaction addEmployeeTransaction =
                 new AddCommissionedEmployeeTransaction(employeeId, "Michael", "Home", 200.0 , 20.0);
         addEmployeeTransaction.execute(Repository);
-        Employee employee = database.getInstance().getEmployee(employeeId);
+        Employee employee = Repository.getEmployee(employeeId);
         assertThat(employee.getName(), is("Michael"));
 
         PaymentClassification paymentClassification = employee.getPaymentClassification();

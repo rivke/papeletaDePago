@@ -33,7 +33,7 @@ public class ChangeSalariedTransactionTest {
         ChangeSalariedTransaction changeSalariedTransaction = new ChangeSalariedTransaction(employeeId, 3000.0);
         changeSalariedTransaction.execute(Repository);
 
-        Employee employee = databaseResource.getInstance().getEmployee(employeeId);
+        Employee employee = Repository.getEmployee(employeeId);
         assertThat(employee.getPaymentClassification(), is(instanceOf(SalariedClassification.class)));
         SalariedClassification paymentClassification =
                 (SalariedClassification) employee.getPaymentClassification();

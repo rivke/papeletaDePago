@@ -22,7 +22,6 @@ public class ChangeNoMemberTransactionTest {
 
     @Test
     public void testChangeMemberTransaction() throws Exception {
-        PayrollDatabase database = databaseResource.getInstance();
 
         int employeeId = 2;
         int memberId = 7734;
@@ -30,20 +29,20 @@ public class ChangeNoMemberTransactionTest {
                 new AddHourlyEmployeeTransaction(employeeId, "Bill", "Home", 15.25);
         addEmployeeTransaction.execute(Repository);
 
-        Employee employee = database.getEmployee(employeeId);
+        Employee employee = Repository.getEmployee(employeeId);
         UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,92.1);
         employee.setUnionAffiliation(unionAffiliation);
         assertThat(employee.getUnionAffiliation(), is(unionAffiliation));
 
-        database.addUnionMember(memberId, employee);
-        assertThat(database.getUnionMember(memberId), is(employee));
+        Repository.addUnionMember(memberId, employee);
+        assertThat(Repository.getUnionMember(memberId), is(employee));
 
         Transaction noMemberTransaction = new ChangeNoMemberTransaction(employeeId);
         noMemberTransaction.execute(Repository);
 
-        employee = database.getEmployee(employeeId);
+        employee = Repository.getEmployee(employeeId);
         assertThat(employee.getUnionAffiliation(), is(UnionAffiliation.NO_AFFILIATION));
 
-        assertThat(database.getUnionMember(memberId), is(nullValue()));
+        assertThat(Repository.getUnionMember(memberId), is(nullValue()));
     }
 }

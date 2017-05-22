@@ -58,19 +58,20 @@ public class CommissionedPaymentClassification extends PaymentClassification {
 
 	public double update2() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 	@Override
 	public void update3(double a) {
 		// TODO Auto-generated method stub
+		a=1;
 		
 	}
 
 	@Override
-	public String queryInsert() {
+	public String updateQuery() {
 		// TODO Auto-generated method stub
-		return null;
+		return "a";
 	}
 	
     

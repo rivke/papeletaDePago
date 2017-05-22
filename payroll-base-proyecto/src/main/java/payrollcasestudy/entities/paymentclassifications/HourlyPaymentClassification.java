@@ -74,10 +74,9 @@ public class HourlyPaymentClassification extends PaymentClassification{
 		
 	}
 
-	@Override
-	public String queryInsert() {
-		String sqlNewHourlyEmployee ;
-	    return  sqlNewHourlyEmployee = "INSERT INTO hourly_employees VALUES (?,?,?,?)";
+	public String updateQuery() {
+		
+	    return  "INSERT INTO hourly_employees VALUES (?,?,?,?)";
 		
 	}
 	

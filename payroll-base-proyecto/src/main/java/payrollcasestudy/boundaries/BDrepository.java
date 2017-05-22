@@ -123,7 +123,7 @@ public class BDrepository implements Repositoory{
 	
 	@Override
 	public ArrayList<Employee> getAllEmployees() throws SQLException {
-		String query= "SELECT * FROM papeletasdepago.hourly_employees";
+		String query= "SELECT * FROM papeletasdepago.hourly_employees WHERE employeeId > 0";
 		ArrayList<Employee> ls = new ArrayList<Employee>();
 		try{
 			ResultSet results= connectionWithTableOfEmployees(query);

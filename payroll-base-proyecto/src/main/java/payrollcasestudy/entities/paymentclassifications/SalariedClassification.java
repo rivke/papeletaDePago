@@ -38,5 +38,12 @@ public class SalariedClassification extends PaymentClassification {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String updateQuery() {
+
+	    return "INSERT INTO salaried_employee VALUES (?,?,?,?)";
+		
+	}
 	
 }

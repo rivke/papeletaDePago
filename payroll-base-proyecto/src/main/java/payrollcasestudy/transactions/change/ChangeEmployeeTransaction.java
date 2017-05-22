@@ -15,7 +15,7 @@ public abstract class ChangeEmployeeTransaction implements Transaction {
     }
 
     public void execute(Repositoory repository) {
-        Employee employee = database.getEmployee(employeeId);
+        Employee employee = repository.getEmployee(employeeId);
         changeEmployee(employee);
     }
 

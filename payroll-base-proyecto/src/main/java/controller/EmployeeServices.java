@@ -50,7 +50,7 @@ import views.MessageView;
 
 
 
-public class EmployeeController {
+public class EmployeeServices {
 	
 	private static Repositoory mc = new BDrepository();
 
@@ -103,7 +103,7 @@ public class EmployeeController {
 		nombreCompleto = nombre + " " + apellido;
         Transaction addEmployeeTransaction =
                 new AddSalariedEmployeeTransaction(employeeId, nombreCompleto, direccion, salario);
-        addEmployeeTransaction.execute(null);
+        addEmployeeTransaction.execute(mc);
         return verifyCreation(nombre, apellido, nombreCompleto);
 	}
 	

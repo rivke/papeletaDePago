@@ -26,7 +26,7 @@ public abstract class AddEmployeeTransaction implements Transaction {
         this.employeeAddress = employeeAddress;
     }
 
-    public void execute(Repositoory repository) throws SQLException {
+    public void execute(Repositoory repository) {
         PaymentClassification paymentClassification = getPaymentClassification();
         PaymentSchedule paymentSchedule = getPaymentSchedule();
         PaymentMethod paymentMethod = new HoldMethod();
@@ -36,7 +36,12 @@ public abstract class AddEmployeeTransaction implements Transaction {
         employee.setPaymentClassification(paymentClassification);
         employee.setPaymentSchedule(paymentSchedule);
         employee.setPaymentMethod(paymentMethod);
-        repository.addEmployee(employeeId, employee);
+        try {
+			repository.addEmployee(employeeId, employee);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         //PayrollDatabase.globalPayrollDatabase.addEmployee(employeeId, employee);
     }
 

@@ -37,7 +37,7 @@ public class AddSalariedEmployeeTransactionTest {
                 new AddSalariedEmployeeTransaction(employeeId, "Bob", "Home", 1000.0);
         addEmployeeTransaction.execute(Repository);
 
-        Employee employee = databaseResource.getInstance().getEmployee(employeeId);
+        Employee employee = Repository.getEmployee(employeeId);
         assertThat(employee.getName(), is("Bob"));
 
         PaymentClassification paymentClassification = employee.getPaymentClassification();

@@ -31,7 +31,7 @@ public class ChangeCommissionedTransactionTest {
         ChangeCommissionedTransaction changeCommissionedTransaction = new ChangeCommissionedTransaction(employeeId, 200, 20.0);
         changeCommissionedTransaction.execute(Repository);
 
-        Employee employee = database.getInstance().getEmployee(employeeId);
+        Employee employee = Repository.getEmployee(employeeId);
         assertThat(employee.getPaymentClassification(), is(instanceOf(CommissionedPaymentClassification.class)));
         CommissionedPaymentClassification paymentClassification =
                 (CommissionedPaymentClassification) employee.getPaymentClassification();

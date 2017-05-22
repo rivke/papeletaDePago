@@ -33,12 +33,14 @@ public class AddSalesReceiptTransactionTest {
         addCommissionedEmployee.execute(Repository);
 
         Calendar date = new GregorianCalendar(2001, NOVEMBER, 31);
+        
         Transaction salesReceiptTransaction =
                 new AddSalesReceiptTransaction(date, 1000.0, employeeId);
-        salesReceiptTransaction.execute(null);
+        salesReceiptTransaction.execute(Repository);
 
-        Employee employee = database.getInstance().getEmployee(employeeId);
+        Employee employee = Repository.getEmployee(employeeId);
         assertThat(employee, is(notNullValue()));
+        
         PaymentClassification paymentClassification = employee.getPaymentClassification();
         CommissionedPaymentClassification commissionedPaymentClassification =
                 (CommissionedPaymentClassification) paymentClassification;

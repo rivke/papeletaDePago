@@ -32,13 +32,13 @@ public class ChangeMemberTransactionTest {
                 new ChangeMemberTransaction(employeeId, memberId, 99.42);
         changeMemberTransaction.execute(Repository);
 
-        Employee employee = databaseResource.getInstance().getEmployee(employeeId);
+        Employee employee = Repository.getEmployee(employeeId);
         assertThat(employee.getUnionAffiliation(), is(notNullValue()));
 
         UnionAffiliation unionAffiliation = employee.getUnionAffiliation();
         assertThat(unionAffiliation.getDues(), is(closeTo(99.42, FLOAT_ACCURACY)));
 
-        Employee member = databaseResource.getInstance().getUnionMember(memberId);
+        Employee member = Repository.getUnionMember(memberId);
         assertThat(member, is(employee));
     }
 }

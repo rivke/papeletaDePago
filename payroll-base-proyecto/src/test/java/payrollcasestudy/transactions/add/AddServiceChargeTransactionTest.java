@@ -30,18 +30,19 @@ public class AddServiceChargeTransactionTest {
                 new AddHourlyEmployeeTransaction(employeeId, "Bill", "Home", 15.25);
         addEmployeeTransaction.execute(Repository);
 
-        Employee employee = database.getInstance().getEmployee(employeeId);
+        Employee employee = Repository.getEmployee(employeeId);
         assertThat(employee, is(notNullValue()));
 
         int memberId = 86; //Maxwell Smart
         UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,12.5);
         employee.setUnionAffiliation(unionAffiliation);
-        database.getInstance().addUnionMember(memberId, employee);
-        assertThat(database.getInstance().getUnionMember(memberId), is(notNullValue()));
+        Repository.addUnionMember(memberId, employee);
+        assertThat(Repository.getUnionMember(memberId), is(notNullValue()));
 
         Calendar date = new GregorianCalendar(2001, 11, 01);
         AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date, 12.95);
-        addServiceChargeTransaction.execute(null);
+        addServiceChargeTransaction.execute(Repository);
+        
         ServiceCharge serviceCharge = unionAffiliation.getServiceCharge(date);
         assertThat(serviceCharge, is(notNullValue()));
         assertThat(serviceCharge.getAmount(), is(closeTo(12.95, FLOAT_ACCURACY)));

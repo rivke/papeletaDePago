@@ -10,7 +10,7 @@ import java.util.Set;
 
 import org.junit.Rule;
 
-import controller.EmployeeController;
+import controller.EmployeeServices;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -39,7 +39,7 @@ public class Main {
 	public static int employeeId;
 	public static String mensajee;
 	public static String mensajee2="rebe";
-	static EmployeeController employeeController;
+	static EmployeeServices employeeController;
 	static VelocityTemplateEngine velocity;
 	
 	static Map<String, Object> map = new HashMap<>();

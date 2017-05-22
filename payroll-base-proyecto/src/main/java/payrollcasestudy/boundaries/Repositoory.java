@@ -10,6 +10,10 @@ public interface Repositoory {
 	
 
 
+	//public static  Repositoory repository = new MemoryRepository();
+
+	public static Repositoory repository = new MemoryRepository();
+
 	public Employee getEmployee(int employeeId);
     public void addEmployee(int employeeId, Employee employee) throws SQLException;
     public void clear();

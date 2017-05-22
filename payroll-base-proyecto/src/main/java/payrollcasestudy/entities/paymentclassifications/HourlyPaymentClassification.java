@@ -73,6 +73,12 @@ public class HourlyPaymentClassification extends PaymentClassification{
 		hourlyRate=a;
 		
 	}
+
+	public String updateQuery() {
+		
+	    return  "INSERT INTO hourly_employees VALUES (?,?,?,?)";
+		
+	}
 	
 	
 	

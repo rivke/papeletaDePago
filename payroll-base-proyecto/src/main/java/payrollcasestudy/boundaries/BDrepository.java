@@ -19,6 +19,7 @@ import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.PayCheck;
 import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
+import payrollcasestudy.entities.paymentclassifications.SalariedClassification;
 import payrollcasestudy.transactions.PaydayTransaction;
 import payrollcasestudy.transactions.Transaction;
 
@@ -33,9 +34,11 @@ public class BDrepository implements Repositoory{
 	@Override
 	public Employee getEmployee(int employeeId)
 	{ResultSet rs=null;
-		
+    String query= "SELECT * FROM hourly_employees WHERE employeeId='"+ employeeId + "';";
+
+    String query2= "SELECT * FROM salaried_employee WHERE idSalariedEmployee='"+ employeeId + "';";
+
 		try{     
-           String query= "SELECT * FROM hourly_employees WHERE employeeId='"+ employeeId + "';";
            
 			rs= connectionWithTableOfEmployees(query);
 
@@ -45,6 +48,15 @@ public class BDrepository implements Repositoory{
 		 PaymentClassification paymentClassification= new HourlyPaymentClassification(Integer.parseInt(rs.getString("tarifa_por_hora")));
         employee.setPaymentClassification(paymentClassification);
            }
+			
+           rs= connectionWithTableOfEmployees(query2);
+
+			System.out.println("Exito");
+          while (rs.next()) {
+		 employee=new Employee(Integer.parseInt(rs.getString("idSalariedEmployee")), rs.getString("name"), rs.getString("adresse"));
+		 PaymentClassification paymentClassification= new SalariedClassification(Integer.parseInt(rs.getString("salary")));
+       employee.setPaymentClassification(paymentClassification);
+          }
 			
            return employee;
 
@@ -154,6 +166,16 @@ public class BDrepository implements Repositoory{
 	
 	@Override
 	public ArrayList<Employee> getAllEmployees() throws SQLException {
+		
+
+       ArrayList<Employee> ls = new ArrayList<Employee>();
+       ls.addAll(getAllEmployeesHourly());
+       ls.addAll(getAllEmployeesSalaried());
+		return ls;
+		
+	}
+	
+	public ArrayList<Employee> getAllEmployeesHourly() throws SQLException {
 		String query= "SELECT * FROM papeletadepago.hourly_employees";
        ArrayList<Employee> ls = new ArrayList<Employee>();
 		try{
@@ -173,5 +195,31 @@ public class BDrepository implements Repositoory{
 		}
 		
 	}
+	
+	public ArrayList<Employee> getAllEmployeesSalaried() throws SQLException {
+		String query= "SELECT * FROM papeletadepago.salaried_employee";
+
+       ArrayList<Employee> ls = new ArrayList<Employee>();
+		try{
+			ResultSet results= connectionWithTableOfEmployees(query);
+			while(results.next()){
+				
+				Employee employee=new Employee(Integer.parseInt(results.getString("idSalariedEmployee")), results.getString("name"), results.getString("adresse"));
+		       ls.add(employee);
+			}
+			
+			return ls;
+		}
+		catch(Exception e){
+			System.err.println(e);
+			return ls;
+			
+		}
+		
+	}
+	
+	
+	
+	
 
 }

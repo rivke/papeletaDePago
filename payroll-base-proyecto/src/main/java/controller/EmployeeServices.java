@@ -76,7 +76,7 @@ public class EmployeeServices {
 	private static String verifyCreation(String nombre, String apellido, String nombreCompleto) {
 		Employee employee = mc.getEmployee(employeeId);
         String mensaje;
-		if(employee.getName() == nombreCompleto)
+		if(employee.getName()!="")
 			mensaje="El Empleado "+nombre+ " "+ apellido + "</br> Se ha sido registrado con exito ";
 		else		
 			mensaje="Error al registrar el empleado " + employee.getName();

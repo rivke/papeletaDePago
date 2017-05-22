@@ -33,11 +33,7 @@ public class SalariedClassification extends PaymentClassification {
 		return salary;
 	}
 
-	@Override
-	public void update3(double a) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public String updateQuery() {

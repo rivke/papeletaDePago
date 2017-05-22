@@ -19,8 +19,7 @@ public class ChangeHourlyTransactionTest {
 
 	private static final Repositoory Repository = new MemoryRepository();
 
-    @Rule
-    public DatabaseResource databaseResource = new DatabaseResource();
+ 
 
     @Test
     public void testChangeHourlyTransaction() throws Exception {

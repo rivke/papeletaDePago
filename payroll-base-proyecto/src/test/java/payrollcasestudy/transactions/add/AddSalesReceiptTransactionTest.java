@@ -22,8 +22,7 @@ import static payrollcasestudy.TestConstants.*;
 public class AddSalesReceiptTransactionTest {
 
     private static final Repositoory Repository = new MemoryRepository();
-	@Rule
-    public DatabaseResource database = new DatabaseResource();
+	
 
     @Test
     public void testAddSalesReceipt() throws Exception {

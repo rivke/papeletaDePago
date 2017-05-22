@@ -1,5 +1,6 @@
 package payrollcasestudy.transactions.change;
 import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
 
@@ -19,7 +20,7 @@ public class ChangeMemberTransaction  extends changeAffiliationTransactionn {
 	@Override
 	protected void registerAsAMember(Employee employee) {
 		// TODO Auto-generated method stub
-		PayrollDatabase.globalPayrollDatabase.addUnionMember(memberId, employee);
+		Repositoory.repository2.addUnionMember(memberId, employee);
 		
 	}
 

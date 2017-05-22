@@ -16,9 +16,9 @@ import static org.junit.Assert.assertThat;
  */
 public class DeleteEmployeeTransactionTest {
 	private static final Repositoory Repository = new MemoryRepository();
+	
 
-    @Rule
-    public DatabaseResource database = new DatabaseResource();
+   
 
     @Test
     public void testDeleteEmployees() throws Exception {

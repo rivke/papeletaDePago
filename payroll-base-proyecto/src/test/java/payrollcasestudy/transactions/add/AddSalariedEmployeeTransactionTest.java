@@ -27,8 +27,7 @@ public class AddSalariedEmployeeTransactionTest {
 	
 	private static final Repositoory Repository = new MemoryRepository();
 
-    @Rule
-    public DatabaseResource databaseResource = new DatabaseResource();
+  
 
     @Test
     public void testAddSalariedEmployee() throws SQLException{

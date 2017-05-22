@@ -12,7 +12,6 @@ public abstract class PaymentClassification {
     public abstract String updateQuery();
 
     public abstract double update2();
-    public abstract void update3(double a);
 
     
     public static boolean isInPayPeriod(Calendar date, PayCheck payCheck) {

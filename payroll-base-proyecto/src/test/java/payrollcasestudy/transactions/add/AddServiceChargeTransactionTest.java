@@ -18,30 +18,29 @@ import static org.hamcrest.Matchers.*;
 import static payrollcasestudy.TestConstants.*;
 
 public class AddServiceChargeTransactionTest {
-	private static final Repositoory Repository = new MemoryRepository();
+	private static final Repositoory repository = new MemoryRepository();
 
-    @Rule
-    public DatabaseResource database = new DatabaseResource();
+   
 
     @Test
     public void testAddServiceCharge() throws Exception {
         int employeeId = 2;
         Transaction addEmployeeTransaction =
                 new AddHourlyEmployeeTransaction(employeeId, "Bill", "Home", 15.25);
-        addEmployeeTransaction.execute(Repository);
+        addEmployeeTransaction.execute(repository);
 
-        Employee employee = Repository.getEmployee(employeeId);
+        Employee employee = repository.getEmployee(employeeId);
         assertThat(employee, is(notNullValue()));
 
         int memberId = 86; //Maxwell Smart
         UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,12.5);
         employee.setUnionAffiliation(unionAffiliation);
-        Repository.addUnionMember(memberId, employee);
-        assertThat(Repository.getUnionMember(memberId), is(notNullValue()));
+        repository.addUnionMember(memberId, employee);
+        assertThat(repository.getUnionMember(memberId), is(notNullValue()));
 
         Calendar date = new GregorianCalendar(2001, 11, 01);
         AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date, 12.95);
-        addServiceChargeTransaction.execute(Repository);
+        addServiceChargeTransaction.execute(repository);
         
         ServiceCharge serviceCharge = unionAffiliation.getServiceCharge(date);
         assertThat(serviceCharge, is(notNullValue()));

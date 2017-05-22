@@ -67,12 +67,7 @@ public class HourlyPaymentClassification extends PaymentClassification{
 		return hourlyRate;
 	}
 
-	@Override
-	public void update3(double a) {
-		// TODO Auto-generated method stub
-		hourlyRate=a;
-		
-	}
+
 
 	public String updateQuery() {
 		

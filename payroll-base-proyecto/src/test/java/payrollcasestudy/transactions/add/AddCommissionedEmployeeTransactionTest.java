@@ -1,8 +1,6 @@
 package payrollcasestudy.transactions.add;
 
-import org.junit.Rule;
 import org.junit.Test;
-import payrollcasestudy.DatabaseResource;
 import payrollcasestudy.boundaries.MemoryRepository;
 import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
@@ -24,9 +22,7 @@ import java.sql.SQLException;
 public class AddCommissionedEmployeeTransactionTest {
 
 	private static final Repositoory Repository = new MemoryRepository();
-	@Rule
-    public DatabaseResource database = new DatabaseResource();
-
+	
 	
     @Test
     public void testAddCommissionedEmployee() throws SQLException{

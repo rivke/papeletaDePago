@@ -25,9 +25,6 @@ import payrollcasestudy.transactions.Transaction;
 
 public class BDrepository implements Repositoory{
 	Employee employee = null;
-	static Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
-    static PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-	
     BaseDeDatos bd = new BaseDeDatos();
 
 	    
@@ -76,9 +73,10 @@ public class BDrepository implements Repositoory{
 	public void addEmployee(int employeeId, Employee employee) throws SQLException {
 		PaymentClassification a=employee.getPaymentClassification();
 		PreparedStatement pstInsertarCuenta; 
-	    String sqlNewHourlyEmployee =a.updateQuery();
+		
+	    String sqlNewEmployee =a.updateQuery();
 
-	    pstInsertarCuenta = bd.conectar().prepareStatement(sqlNewHourlyEmployee); 
+	    pstInsertarCuenta = bd.conectar().prepareStatement(sqlNewEmployee); 
 	    pstInsertarCuenta.setLong(1, employeeId);
 	    pstInsertarCuenta.setString(2, employee.getName());
 	    pstInsertarCuenta.setString(3, employee.getAddress());
@@ -105,8 +103,22 @@ public class BDrepository implements Repositoory{
 
 	@Override
 	public Employee getUnionMember(int memberId) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultSet rs=null;
+	    String querySelectHourlyEmployee= "SELECT * FROM hourly_employees WHERE memberId='"+ memberId + "';";
+	    
+			try{     
+	           rs= connectionWithTableOfEmployees(querySelectHourlyEmployee);
+	           getHourlyEmployeeOfBD(rs);
+	         
+				
+	           return employee;
+
+			}catch (Exception e){
+				System.err.println(e);
+				return employee;
+				
+			}
+		
 	}
 
 	@Override
@@ -139,8 +151,6 @@ public class BDrepository implements Repositoory{
 		
 		ResultSet rs=null;
 		try{
-		
-          // String query= "SELECT * FROM papeletadepago.hourly_employees";
            Statement stmt=(Statement) bd.conectar().createStatement();
            rs=((java.sql.Statement)stmt).executeQuery(query);
            System.out.println("Exito");

@@ -25,9 +25,7 @@ public class AddHourlyEmployeeTransactionTest  {
 
 	private static final Repositoory Repository = new MemoryRepository();
 
-    @Rule
-    public DatabaseResource database = new DatabaseResource();
-
+   
     @Test
     public void testAddHourlyEmployee() throws SQLException{
         int employeeId = 1;

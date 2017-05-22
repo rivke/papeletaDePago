@@ -17,9 +17,7 @@ import static org.junit.Assert.assertThat;
 public class ChangeNoMemberTransactionTest {
 	private static final Repositoory Repository = new MemoryRepository();
 
-	@Rule
-    public DatabaseResource databaseResource = new DatabaseResource();
-
+	
     @Test
     public void testChangeMemberTransaction() throws Exception {
 

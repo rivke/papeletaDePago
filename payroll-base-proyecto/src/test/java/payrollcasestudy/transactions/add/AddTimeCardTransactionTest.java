@@ -22,8 +22,7 @@ import static org.junit.Assert.assertThat;
 public class AddTimeCardTransactionTest {
 	private static final Repositoory Repository = new MemoryRepository();
 
-    @Rule
-    public DatabaseResource database = new DatabaseResource();
+    
 
     @Test
     public void testTimeCardTransaction() throws SQLException{
@@ -36,7 +35,7 @@ public class AddTimeCardTransactionTest {
         Transaction timeCardTransaction = new AddTimeCardTransaction(date, 8.0, employeeId);
         timeCardTransaction.execute(Repository);
 
-        Employee employee = database.getInstance().getEmployee(employeeId);
+        Employee employee = Repository.getEmployee(employeeId);
         assertThat(employee, is(notNullValue()));
 
         PaymentClassification paymentClassification = employee.getPaymentClassification();

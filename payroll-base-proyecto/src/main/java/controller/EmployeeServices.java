@@ -55,7 +55,7 @@ public class EmployeeServices {
 	private static Repositoory mc = new BDrepository();
 
 	static PayrollDatabase database=PayrollDatabase.globalPayrollDatabase;
-	static public int employeeId = mc.getLastId();
+	static public int employeeId = 0;
 	static public int memberId = 0;
 	static String nombreCompleto = "";
 	static Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);

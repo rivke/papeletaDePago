@@ -62,7 +62,7 @@ public class BDrepository implements Repositoory{
 
 	private void getSalariedEmployeeOfBD(ResultSet rs) throws SQLException {
 		while (rs.next()) {
-		 employee=new Employee(Integer.parseInt(rs.getString("idSalariedEmployee")), rs.getString("name"), rs.getString("adresse"));
+		 employee=new Employee(Integer.parseInt(rs.getString("idSalariedEmployee")), rs.getString("name"), rs.getString("address"));
 		 PaymentClassification paymentClassification= new SalariedClassification(Integer.parseInt(rs.getString("salary")));
        employee.setPaymentClassification(paymentClassification);
           }
@@ -211,7 +211,7 @@ public class BDrepository implements Repositoory{
 			ResultSet results= connectionWithTableOfEmployees(query);
 			while(results.next()){
 				
-				Employee employee=new Employee(Integer.parseInt(results.getString("idSalariedEmployee")), results.getString("name"), results.getString("adresse"));
+				Employee employee=new Employee(Integer.parseInt(results.getString("idSalariedEmployee")), results.getString("name"), results.getString("address"));
 		       ls.add(employee);
 			}
 			

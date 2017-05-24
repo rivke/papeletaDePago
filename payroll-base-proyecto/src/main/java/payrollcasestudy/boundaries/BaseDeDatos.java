@@ -14,29 +14,23 @@ public class BaseDeDatos {
 	    public Connection conexion = null;
 
 	
-	    public Connection conectar(){
+	    @SuppressWarnings("finally")
+		public Connection conectar(){
 	        try {
 	            Class.forName("com.mysql.jdbc.Driver");
 	            conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/papeletadepago","root","rebeca");
 	            if (conexion != null) {
 	                System.out.println("¡Conexión Exitosa!");
 	            }
-	        } catch (Exception e) {
-	            e.printStackTrace();
+	        } catch (SQLException e) {
+			
+				System.err.println(e);
 	        } finally {
 	            return conexion;
 	        }
 	    }
 	    
-	    public String getStatusConnection() {
-			try{
-				conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/papeletadepago", "root","rebeca");
-				return "Connection success";
-			}catch (Exception e){
-				return "Connection failed";
-			}
-			
-		}
+	   
 	    
 	    public void close()
 	    {

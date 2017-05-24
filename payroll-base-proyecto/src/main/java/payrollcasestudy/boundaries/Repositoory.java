@@ -1,6 +1,6 @@
 package payrollcasestudy.boundaries;
 
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -10,14 +10,13 @@ public interface Repositoory {
 	
 
 
-	//public static  Repositoory repository = new MemoryRepository();
 
 	public static Repositoory repository = new MemoryRepository();
 	public static Repositoory repository2 = new BDrepository();
 
 
 	public Employee getEmployee(int employeeId);
-    public void addEmployee(int employeeId, Employee employee) throws SQLException;
+    public void addEmployee(int employeeId, Employee employee);
     public void clear();
 
     public void deleteEmployee(int employeeId);
@@ -31,7 +30,7 @@ public interface Repositoory {
     
     public Employee addShow(int ind);     
     
-    public  ArrayList<Employee> getAllEmployees() throws SQLException;
+    public  ArrayList<Employee> getAllEmployees();
     
     public Integer getLastId();
 

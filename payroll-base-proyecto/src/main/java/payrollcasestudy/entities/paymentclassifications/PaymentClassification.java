@@ -11,8 +11,6 @@ public abstract class PaymentClassification {
     
     public abstract String update(Updatable updatable );
     public abstract String updateQuery();
-
-
     public abstract ArrayList<Double> updatePayment();
 
     

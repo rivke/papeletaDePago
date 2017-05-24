@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.PayCheck;
+import payrollcasestudy.entities.paymentclassifications.CommissionedPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.SalariedClassification;
@@ -33,10 +34,11 @@ public class BDrepository implements Repositoory{
 	{
     String querySelectHourlyEmployee= "SELECT * FROM hourly_employees WHERE employeeId='"+ employeeId + "';";
     String querySelectSalariedEmployee= "SELECT * FROM salaried_employee WHERE idSalariedEmployee='"+ employeeId + "';";
+    String querySelectCommissionedEmployee= "SELECT * FROM comision WHERE idemployees='"+ employeeId + "';";
 
 		try{     
         
-           getAllEmployeesBD(querySelectHourlyEmployee, querySelectSalariedEmployee);
+           getAllEmployeesBD(querySelectHourlyEmployee, querySelectSalariedEmployee, querySelectCommissionedEmployee);
 			
            return employee;
 
@@ -49,10 +51,11 @@ public class BDrepository implements Repositoory{
 	}
 
 
-	private void getAllEmployeesBD(String querySelectHourlyEmployee, String querySelectSalariedEmployee)	{
+	private void getAllEmployeesBD(String querySelectHourlyEmployee, String querySelectSalariedEmployee, String querySelectCommissionedEmployee)	{
 		try {
 			getHourlyEmployeeOfBD(connectionWithTableOfEmployees(querySelectHourlyEmployee));
 			  getSalariedEmployeeOfBD(connectionWithTableOfEmployees(querySelectSalariedEmployee));
+			  getCommissionedEmployeeOfBD(connectionWithTableOfEmployees(querySelectCommissionedEmployee));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -68,8 +71,6 @@ public class BDrepository implements Repositoory{
         employee.setPaymentClassification(paymentClassification);
            }
 	}
-
-
 	private void getSalariedEmployeeOfBD(ResultSet rs) throws SQLException {
 		while (rs.next()) {
 		 employee=new Employee(Integer.parseInt(rs.getString("idSalariedEmployee")), rs.getString("name"), rs.getString("address"));
@@ -77,6 +78,19 @@ public class BDrepository implements Repositoory{
        employee.setPaymentClassification(paymentClassification);
           }
 	}
+	
+	
+
+
+	private void getCommissionedEmployeeOfBD(ResultSet rs) throws SQLException {
+		while (rs.next()) {
+		 employee=new Employee(Integer.parseInt(rs.getString("idemployees")), rs.getString("name"), rs.getString("address"));
+		 PaymentClassification paymentClassification= new CommissionedPaymentClassification(Integer.parseInt(rs.getString("monthlySalary")), Integer.parseInt(rs.getString("commissionRate")));
+       employee.setPaymentClassification(paymentClassification);
+          }
+	}
+	
+	
 	
 	
 	@Override
@@ -196,10 +210,11 @@ public class BDrepository implements Repositoory{
 	public ArrayList<Employee> getAllEmployees() throws SQLException {
 		
 
-       ArrayList<Employee> ls = new ArrayList<Employee>();
-       ls.addAll(getAllEmployeesHourly());
-       ls.addAll(getAllEmployeesSalaried());
-		return ls;
+       ArrayList<Employee> allEmployees = new ArrayList<Employee>();
+       allEmployees.addAll(getAllEmployeesHourly());
+       allEmployees.addAll(getAllEmployeesSalaried());
+       allEmployees.addAll(getAllEmployeesCommissioned());
+       return allEmployees;
 		
 	}
 	
@@ -233,6 +248,28 @@ public class BDrepository implements Repositoory{
 			while(results.next()){
 				
 				Employee employee=new Employee(Integer.parseInt(results.getString("idSalariedEmployee")), results.getString("name"), results.getString("address"));
+		       ls.add(employee);
+			}
+			
+			return ls;
+		}
+		catch(Exception e){
+			System.err.println(e);
+			return ls;
+			
+		}
+		
+	}
+
+	public ArrayList<Employee> getAllEmployeesCommissioned() throws SQLException {
+		String query= "SELECT * FROM papeletadepago.comision";
+
+       ArrayList<Employee> ls = new ArrayList<Employee>();
+		try{
+			ResultSet results= connectionWithTableOfEmployees(query);
+			while(results.next()){
+				
+				Employee employee=new Employee(Integer.parseInt(results.getString("idemployees")), results.getString("name"), results.getString("address"));
 		       ls.add(employee);
 			}
 			

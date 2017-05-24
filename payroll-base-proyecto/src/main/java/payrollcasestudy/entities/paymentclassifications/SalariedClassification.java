@@ -1,5 +1,7 @@
 package payrollcasestudy.entities.paymentclassifications;
 
+import java.util.ArrayList;
+
 import payrollcasestudy.entities.PayCheck;
 import updatable.Updatable;
 
@@ -28,10 +30,6 @@ public class SalariedClassification extends PaymentClassification {
 		
 	}
 
-	public double update2() {
-		// TODO Auto-generated method stub
-		return salary;
-	}
 
 	
 
@@ -40,6 +38,13 @@ public class SalariedClassification extends PaymentClassification {
 
 	    return "INSERT INTO salaried_employee VALUES (?,?,?,?)";
 		
+	}
+
+	@Override
+	public ArrayList<Double> updatePayment() {
+		ArrayList list = new ArrayList<Double>();
+		list.add(salary);
+		return list;
 	}
 	
 }

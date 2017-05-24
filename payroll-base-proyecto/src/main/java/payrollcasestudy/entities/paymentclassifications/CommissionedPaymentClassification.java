@@ -4,6 +4,7 @@ import payrollcasestudy.entities.PayCheck;
 import payrollcasestudy.entities.SalesReceipt;
 import updatable.Updatable;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,16 +57,21 @@ public class CommissionedPaymentClassification extends PaymentClassification {
 		
 	}
 
-	public double update2() {
-		// TODO Auto-generated method stub
-		return 1;
-	}
 
 	
 	@Override
 	public String updateQuery() {
-		// TODO Auto-generated method stub
-		return "a";
+		
+		return  "INSERT INTO comision VALUES (?,?,?,?,?)";
+	}
+
+	@Override
+	public ArrayList<Double> updatePayment() {
+		ArrayList list = new ArrayList<Double>();
+		list.add(monthlySalary);
+		list.add(commissionRate);
+
+		return list;
 	}
 	
     

@@ -4,6 +4,7 @@ import payrollcasestudy.entities.PayCheck;
 import payrollcasestudy.entities.TimeCard;
 import updatable.Updatable;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -62,10 +63,7 @@ public class HourlyPaymentClassification extends PaymentClassification{
 		
 	}
 
-	public double update2() {
-		// TODO Auto-generated method stub
-		return hourlyRate;
-	}
+	
 
 
 
@@ -73,6 +71,13 @@ public class HourlyPaymentClassification extends PaymentClassification{
 		
 	    return  "INSERT INTO hourly_employees VALUES (?,?,?,?)";
 		
+	}
+
+	@Override
+	public ArrayList<Double> updatePayment() {
+		ArrayList list = new ArrayList<Double>();
+		list.add(hourlyRate);
+		return list;
 	}
 	
 	

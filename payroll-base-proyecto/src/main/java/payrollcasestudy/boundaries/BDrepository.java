@@ -30,15 +30,13 @@ public class BDrepository implements Repositoory{
 	    
 	@Override
 	public Employee getEmployee(int employeeId)
-	{ResultSet rs=null;
+	{
     String querySelectHourlyEmployee= "SELECT * FROM hourly_employees WHERE employeeId='"+ employeeId + "';";
     String querySelectSalariedEmployee= "SELECT * FROM salaried_employee WHERE idSalariedEmployee='"+ employeeId + "';";
 
 		try{     
-           rs= connectionWithTableOfEmployees(querySelectHourlyEmployee);
-           getHourlyEmployeeOfBD(rs);
-           rs= connectionWithTableOfEmployees(querySelectSalariedEmployee);
-           getSalariedEmployeeOfBD(rs);
+        
+           getAllEmployeesBD(querySelectHourlyEmployee, querySelectSalariedEmployee);
 			
            return employee;
 
@@ -48,6 +46,18 @@ public class BDrepository implements Repositoory{
 			
 		}
 		   
+	}
+
+
+	private void getAllEmployeesBD(String querySelectHourlyEmployee, String querySelectSalariedEmployee)	{
+		try {
+			getHourlyEmployeeOfBD(connectionWithTableOfEmployees(querySelectHourlyEmployee));
+			  getSalariedEmployeeOfBD(connectionWithTableOfEmployees(querySelectSalariedEmployee));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         
 	}
 
 
@@ -71,16 +81,27 @@ public class BDrepository implements Repositoory{
 	
 	@Override
 	public void addEmployee(int employeeId, Employee employee) throws SQLException {
-		PaymentClassification a=employee.getPaymentClassification();
+		int aux=4;
+		PaymentClassification paymentType=employee.getPaymentClassification();
 		PreparedStatement pstInsertarCuenta; 
 		
-	    String sqlNewEmployee =a.updateQuery();
+	    String sqlNewEmployee =paymentType.updateQuery();
 
 	    pstInsertarCuenta = bd.conectar().prepareStatement(sqlNewEmployee); 
 	    pstInsertarCuenta.setLong(1, employeeId);
 	    pstInsertarCuenta.setString(2, employee.getName());
 	    pstInsertarCuenta.setString(3, employee.getAddress());
-	    pstInsertarCuenta.setLong(4, (long) a.update2());
+	    
+	    if(paymentType.updatePayment().size()>0)
+	    {
+	    	for(int ind=0;ind<paymentType.updatePayment().size();ind++) {
+		    	 pstInsertarCuenta.setDouble(aux, paymentType.updatePayment().get(ind));
+		    	  aux++;
+		    	}
+	    	
+	    }
+	    else
+	    pstInsertarCuenta.setDouble(4,paymentType.updatePayment().get(0));
 	    pstInsertarCuenta.executeUpdate();    
 	    
 	}

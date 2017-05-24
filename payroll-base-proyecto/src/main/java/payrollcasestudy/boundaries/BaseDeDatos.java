@@ -28,6 +28,16 @@ public class BaseDeDatos {
 	        }
 	    }
 	    
+	    public String getStatusConnection() {
+			try{
+				conexion = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/papeletadepago", "root","rebeca");
+				return "Connection success";
+			}catch (Exception e){
+				return "Connection failed";
+			}
+			
+		}
+	    
 	    public void close()
 	    {
 	    	

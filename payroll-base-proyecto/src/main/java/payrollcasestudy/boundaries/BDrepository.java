@@ -100,53 +100,51 @@ public class BDrepository implements Repositoory{
 	}
 	
 	
+	public String createQueryByTypeEmployee(Employee employee)
+	{
+      
+		String query="";
+        if(employee.getPaymentClassification().typeOfPayment()==category.Hourly)
+		{
+				
+        	query="INSERT INTO hourly_employees VALUES (?,?,?,?)";
+			
+		}
+		if(employee.getPaymentClassification().typeOfPayment()==category.Salaried)
+		{
+			query="INSERT INTO salaried_employee VALUES (?,?,?,?)";
+			
+		    
+		}
+		if(employee.getPaymentClassification().typeOfPayment()==category.Comision)
+		{
+   
+			query="INSERT INTO comision VALUES (?,?,?,?,?)";
+			
+		}
+		return query;
+
+		
+	}
 	
 	
 	@Override
 	public void addEmployee(int employeeId, Employee employee) {
-		String salariado="INSERT INTO salaried_employee VALUES (?,?,?,?)";
-	   String hourlyy="INSERT INTO hourly_employees VALUES (?,?,?,?)";
-		String commission= "INSERT INTO comision VALUES (?,?,?,?,?)";
-		
-		PaymentClassification pay=employee.getPaymentClassification();
-		PreparedStatement pstInsertarCuenta; 
-        
-
 		
 		try {	
-	
-	   
 			if(employee.getPaymentClassification().typeOfPayment()==category.Hourly)
-			{
-	   
-			pstInsertarCuenta = bd.conectar().prepareStatement(hourlyy);
-			 addNameAddressEmployee(employeeId, employee, pstInsertarCuenta);
-			  //addHourlyPaymentABD(pay, pstInsertarCuenta);    
-			 
-			 addHourlyPaymentABD(pay,pstInsertarCuenta);
+			{		
+				addHourlyPaymentInBD(employeeId, employee);
 			    
 			}
 			if(employee.getPaymentClassification().typeOfPayment()==category.Salaried)
 			{
-	   
-			pstInsertarCuenta = bd.conectar().prepareStatement(salariado);
-			 addNameAddressEmployee(employeeId, employee, pstInsertarCuenta);
-			  //addHourlyPaymentABD(pay, pstInsertarCuenta);    
-			 
-			 addHourlyPaymentABD(pay,pstInsertarCuenta);
-			    
+				addSalariedPaymentInBD(employeeId, employee);
+			        
 			}
 			if(employee.getPaymentClassification().typeOfPayment()==category.Comision)
 			{
-	   
-			pstInsertarCuenta = bd.conectar().prepareStatement(commission);
-			 addNameAddressEmployee(employeeId, employee, pstInsertarCuenta);
-			 addHourlyPaymentABD(pay,pstInsertarCuenta);
-			    
-			    	
-			    
-			    
-			    
+				addCommissionedInBD(employeeId, employee);    
 			}
 			
 		} catch (Exception e) {
@@ -159,31 +157,43 @@ public class BDrepository implements Repositoory{
 	}
 
 
-	private void addHourlyPaymentABD(PaymentClassification pay, PreparedStatement pstInsertarCuenta)
-			throws SQLException {
-		int colum=4;
-		    if(pay.updatePayment().size()>0)
-		    {
-		    	for(int ind=0;ind<pay.updatePayment().size();ind++) {
-			    	 pstInsertarCuenta.setDouble(colum, pay.updatePayment().get(ind));
-			    	  colum++;
-			    	}
-		    	
-		    }
-		    else
-		    pstInsertarCuenta.setDouble(4,pay.updatePayment().get(0));
-		    pstInsertarCuenta.executeUpdate();
+	private void addCommissionedInBD(int employeeId, Employee employee) throws SQLException {
+		PreparedStatement pstInsertarCuenta= bd.conectar().prepareStatement(createQueryByTypeEmployee(employee));
+		CommissionedPaymentClassification commissionedClassification =  (CommissionedPaymentClassification) employee.getPaymentClassification();
+		addNameAddressInBD(employeeId, employee, pstInsertarCuenta);
+		pstInsertarCuenta.setDouble(4,commissionedClassification.getMonthlySalary());
+		pstInsertarCuenta.setDouble(5,commissionedClassification.getCommissionRate());
+		pstInsertarCuenta.executeUpdate();
 	}
 
 
-	private void addNameAddressEmployee(int employeeId, Employee employee, PreparedStatement pstInsertarCuenta)
+	private void addNameAddressInBD(int employeeId, Employee employee, PreparedStatement pstInsertarCuenta)
 			throws SQLException {
 		pstInsertarCuenta.setLong(1, employeeId);
-		    pstInsertarCuenta.setString(2, employee.getName());
-		    pstInsertarCuenta.setString(3, employee.getAddress());
+		pstInsertarCuenta.setString(2, employee.getName());
+		pstInsertarCuenta.setString(3, employee.getAddress());
 	}
-	
-	
+
+
+	private void addSalariedPaymentInBD(int employeeId, Employee employee) throws SQLException {
+		PreparedStatement pstInsertarCuenta=bd.conectar().prepareStatement(createQueryByTypeEmployee(employee));;
+		SalariedClassification salariedClassification =  (SalariedClassification) employee.getPaymentClassification();
+		addNameAddressInBD(employeeId, employee, pstInsertarCuenta);
+		pstInsertarCuenta.setDouble(4,salariedClassification.getSalary());
+		pstInsertarCuenta.executeUpdate();
+	}
+
+
+	private void addHourlyPaymentInBD(int employeeId, Employee employee) throws SQLException {
+		PreparedStatement pstInsertarCuenta= bd.conectar().prepareStatement(createQueryByTypeEmployee(employee));
+		HourlyPaymentClassification hourlyClassification =  (HourlyPaymentClassification) employee.getPaymentClassification();
+		addNameAddressInBD(employeeId, employee, pstInsertarCuenta);
+		pstInsertarCuenta.setDouble(4,hourlyClassification.getHourlyRate());
+		pstInsertarCuenta.executeUpdate();
+	}
+
+
+
 		
 	
 

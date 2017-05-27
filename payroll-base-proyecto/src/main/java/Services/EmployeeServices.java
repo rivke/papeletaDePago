@@ -1,4 +1,4 @@
-package controller;
+package Services;
 
 import static java.util.Calendar.NOVEMBER;
 import static java.util.Calendar.APRIL;
@@ -21,9 +21,7 @@ import java.util.Set;
 
 import org.junit.Rule;
 
-import payrollcasestudy.DatabaseResource;
 import payrollcasestudy.boundaries.BDrepository;
-import payrollcasestudy.boundaries.PayrollDatabase;
 import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 
@@ -54,7 +52,6 @@ public class EmployeeServices {
 	
 	private static Repositoory mc = new BDrepository();
 
-	static PayrollDatabase database=PayrollDatabase.globalPayrollDatabase;
 	static public int employeeId = 0;
 	static public int memberId = 0;
 	static String nombreCompleto = "";
@@ -145,7 +142,7 @@ public class EmployeeServices {
    
   
 	public static String addServiceChargeEmployee(int eemployeId, double cargo, int dia, int mes, int anio) {		
-		Employee employee = database.getEmployee(eemployeId);
+		Employee employee = mc.getEmployee(eemployeId);
 	    memberId++;
         addMemberShip(2, employee);
         Calendar date1 = fechaCorrecta(dia, mes, anio);
@@ -159,7 +156,7 @@ public class EmployeeServices {
 	private static void addMemberShip(double cargo, Employee employee) {
 		UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,cargo);
         employee.setUnionAffiliation(unionAffiliation);
-        database.addUnionMember(memberId, employee);
+        mc.addUnionMember(memberId, employee);
 	}
 
 	

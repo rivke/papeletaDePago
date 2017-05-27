@@ -12,7 +12,10 @@ import java.util.Map;
 
 public class HourlyPaymentClassification extends PaymentClassification{
 
-    private Map<Calendar, TimeCard> timeCardMap = new HashMap<Calendar, TimeCard>();
+	
+	public  PaymentType category;
+   // private static final PaymentType Hourly = null;
+	private Map<Calendar, TimeCard> timeCardMap = new HashMap<Calendar, TimeCard>();
     private double hourlyRate;
 
     public HourlyPaymentClassification(double hourlyRate) {
@@ -78,6 +81,11 @@ public class HourlyPaymentClassification extends PaymentClassification{
 		ArrayList list = new ArrayList<Double>();
 		list.add(hourlyRate);
 		return list;
+	}
+
+	public PaymentType typeOfPayment() {
+		// TODO Auto-generated method stub
+		return category.Hourly;
 	}
 	
 	

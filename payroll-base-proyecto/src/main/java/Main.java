@@ -10,13 +10,11 @@ import java.util.Set;
 
 import org.junit.Rule;
 
-import controller.EmployeeServices;
-
+import Services.EmployeeServices;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.Version;
-import payrollcasestudy.DatabaseResource;
-import payrollcasestudy.boundaries.PayrollDatabase;
+
 import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
@@ -31,7 +29,6 @@ import updatable.Updatable;
 import velocityy.VelocityTemplateEngine;
 import views.EmpleadoView;
 
-import payrollcasestudy.boundaries.PayrollDatabase;
 import payrollcasestudy.boundaries.BDrepository;
 
 public class Main {
@@ -64,7 +61,7 @@ public class Main {
     	post("/registrar_Empleado_Comision", (request, response) -> employeeController.addComisionEmployee(request.queryParams("nombre3"), request.queryParams("apellido3"), request.queryParams("direccion3"), Double.parseDouble(request.queryParams("salarioMensual")), Double.parseDouble(request.queryParams("comision"))));
    	    
     	get("/registrarServicio", (request, response) -> {  
-    		map.put("empleados",PayrollDatabase.getAllEmployees());
+    		map.put("empleados",mc.getAllEmployees());
 		      return new ModelAndView(map, "registrarServicio.vtl");
 		    }, velocity.vel());    	
     	

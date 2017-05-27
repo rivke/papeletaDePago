@@ -6,7 +6,8 @@ import payrollcasestudy.entities.PayCheck;
 import updatable.Updatable;
 
 public class SalariedClassification extends PaymentClassification {
-    private double salary;
+	public  PaymentType category;
+	private double salary;
 
     public SalariedClassification(double salary) {
         this.salary = salary;
@@ -36,7 +37,7 @@ public class SalariedClassification extends PaymentClassification {
 	@Override
 	public String updateQuery() {
 
-	    return "INSERT INTO salaried_employee VALUES (?,?,?,?)";
+		return "INSERT INTO salaried_employee VALUES (?,?,?,?)";
 		
 	}
 
@@ -45,6 +46,11 @@ public class SalariedClassification extends PaymentClassification {
 		ArrayList list = new ArrayList<Double>();
 		list.add(salary);
 		return list;
+	}
+
+	public PaymentType typeOfPayment() {
+		// TODO Auto-generated method stub
+		return category.Salaried;
 	}
 	
 }

@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CommissionedPaymentClassification extends PaymentClassification {
-    private Map<Calendar, SalesReceipt> salesReceiptMap = new HashMap<Calendar, SalesReceipt>();
+	public  PaymentType category;
+	private Map<Calendar, SalesReceipt> salesReceiptMap = new HashMap<Calendar, SalesReceipt>();
     private double commissionRate;
     private double monthlySalary;
 
@@ -72,6 +73,11 @@ public class CommissionedPaymentClassification extends PaymentClassification {
 		list.add(commissionRate);
 
 		return list;
+	}
+
+	public PaymentType typeOfPayment() {
+		// TODO Auto-generated method stub
+		return category.Comision;
 	}
 	
     

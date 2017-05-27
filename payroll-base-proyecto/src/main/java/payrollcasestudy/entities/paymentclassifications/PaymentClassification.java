@@ -12,6 +12,7 @@ public abstract class PaymentClassification {
     public abstract String update(Updatable updatable );
     public abstract String updateQuery();
     public abstract ArrayList<Double> updatePayment();
+    public abstract PaymentType typeOfPayment();
 
     
     public static boolean isInPayPeriod(Calendar date, PayCheck payCheck) {
@@ -20,4 +21,6 @@ public abstract class PaymentClassification {
         return date.equals(payPeriodEnd) || date.equals(payPeriodStart) ||
                 (date.after(payPeriodStart) && date.before(payPeriodEnd));
     }
+
+	
 }

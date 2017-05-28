@@ -2,19 +2,21 @@ package payrollcasestudy.Services.BDServices;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import payrollcasestudy.entities.Employee;
 
-public abstract class DatabaseTypeServices {
-	  public static DatabaseTypeServices s;	
+public abstract class TypeDatabaseServices {
+	  public static TypeDatabaseServices s;	
 
-	  public static DatabaseTypeServices serviceHourly = new ServicesAddInBDHourlyEmployee();	
-	  public static DatabaseTypeServices serviceSalaried = new ServicesAddInBDSalariedEmployee();	
-      public static DatabaseTypeServices serviceCommissined = new ServicesAddInBDCommissionedEmployee();	
+	  public static TypeDatabaseServices serviceHourly = new ServicesAddInBDHourlyEmployee();	
+	  public static TypeDatabaseServices serviceSalaried = new ServicesAddInBDSalariedEmployee();	
+      public static TypeDatabaseServices serviceCommissined = new ServicesAddInBDCommissionedEmployee();	
 
 
 	 public abstract void addTypeEmployeeInBD(int employeeId, Employee employee);
 	 public abstract Employee getTypeEmployeeOfBD(int employeeId);
+	 public abstract ArrayList<Employee> getAllEmploye();
 
 	
 	public static void addNameAddressInBD(int employeeId, Employee employee, PreparedStatement pstInsertarCuenta)

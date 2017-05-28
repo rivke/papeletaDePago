@@ -4,12 +4,17 @@ import static spark.Spark.*;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.google.gson.Gson;
+
 import spark.ModelAndView;
 
 import updatable.Updatable;
 import velocityy.VelocityTemplateEngine;
 import views.EmpleadoView;
 import payrollcasestudy.Services.EmployeeServices.EmployeeServices;
+import payrollcasestudy.entities.Employee;
+import payrollcasestudy.jsonApi.JsonUtil;
 
 
 public class routeController {
@@ -66,5 +71,12 @@ public class routeController {
 			map.put("empleados",employeeService.getAllEmployees());
 			return new ModelAndView(map, "showAllEmployees.vtl");
 		    }, velocity.vel());	
+		
+		get("/api/AllEmployees", (req, res) -> employeeService.getAllEmployees(), JsonUtil.json());
+		
+		
+
+		
+		
 	}		
 }

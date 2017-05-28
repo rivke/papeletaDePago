@@ -69,6 +69,11 @@ public class EmployeeServices {
 		return empleado.update(updatable);		
 			
 	}
+     
+     public Employee getAnEmployee(int employeeId) {
+ 		return repository.getEmployee(employeeId);
+ 	}
+     
 	
      public ArrayList<Employee> getAllEmployees() {
 		return repository.getAllEmployees();
@@ -144,7 +149,7 @@ public class EmployeeServices {
 
 	
 	
-	public static String addSalesReceiptEmployee(int eemployeId, double amount, int dia, int mes, int anio) throws SQLException {		
+	public static String addSalesReceiptEmployee(int eemployeId, double amount, int dia, int mes, int anio)  {		
         Calendar date1 = fechaCorrecta(dia, mes, anio); 
         Transaction salesReceiptTransaction =
                 new AddSalesReceiptTransaction(date1, amount, eemployeId);
@@ -153,7 +158,7 @@ public class EmployeeServices {
 	}
 	
 
-	public static String addTimeCardEmployee(int eemployeId, double horas, int dia, int mes, int anio) throws SQLException {		
+	public static String addTimeCardEmployee(int eemployeId, double horas, int dia, int mes, int anio) {		
 		 Calendar date1 = fechaCorrecta(dia, mes, anio);
         Transaction timeCardTransaction = new AddTimeCardTransaction(date1, horas,  eemployeId);
         timeCardTransaction.execute(repository);

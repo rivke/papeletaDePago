@@ -9,21 +9,18 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import payrollcasestudy.entities.Employee;
-import payrollcasestudy.entities.paymentclassifications.CommissionedPaymentClassification;
-import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
-import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
+
 import payrollcasestudy.entities.paymentclassifications.PaymentType;
-import payrollcasestudy.entities.paymentclassifications.SalariedClassification;
+
 import payrollcasestudy.Services.BDServices.DatabaseTypeServices;
-import payrollcasestudy.Services.BDServices.ServicesAddInBDCommissionedEmployee;
+
 import payrollcasestudy.Services.BDServices.ServicesAddInBDHourlyEmployee;
-import payrollcasestudy.Services.BDServices.ServicesAddInBDSalariedEmployee;
+
 
 
 public class BDrepository  implements Repositoory{
 	public  PaymentType typeEmployee;
-	private DatabaseTypeServices dataser;
-
+	
 	private ServicesAddInBDHourlyEmployee servicioHourly ;
 
 	Employee employee = null;
@@ -39,9 +36,9 @@ public class BDrepository  implements Repositoory{
     String querySelectCommissionedEmployee= "SELECT * FROM comision WHERE idemployees='"+ employeeId + "';";
 
 		try{     
-        
-           getAllEmployeesBD(querySelectHourlyEmployee, querySelectSalariedEmployee, querySelectCommissionedEmployee);
-			
+		    //employee=DatabaseTypeServices.typeser.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectHourlyEmployee));
+		   
+			employee=getAllEmployeesBD( querySelectHourlyEmployee, querySelectSalariedEmployee, querySelectCommissionedEmployee);
            return employee;
 
 		}catch (Exception e){
@@ -53,79 +50,39 @@ public class BDrepository  implements Repositoory{
 	}
 
 
-	private void getAllEmployeesBD(String querySelectHourlyEmployee, String querySelectSalariedEmployee, String querySelectCommissionedEmployee)	{
-		getHourlyEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectHourlyEmployee));
-		  getSalariedEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectSalariedEmployee));
-		  getCommissionedEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectCommissionedEmployee));
-         
+	private Employee getAllEmployeesBD(String querySelectHourlyEmployee, String querySelectSalariedEmployee, String querySelectCommissionedEmployee)	{
+		Employee employee3 = null;
+		if( DatabaseTypeServices.serviceHourly.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectHourlyEmployee))!=null)
+			 return employee3=DatabaseTypeServices.serviceHourly.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectHourlyEmployee));
+		
+		if(DatabaseTypeServices.serviceSalaried.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectSalariedEmployee))!=null)
+			return employee3= DatabaseTypeServices.serviceSalaried.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectSalariedEmployee));
+		
+		if(DatabaseTypeServices.serviceCommissined.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectCommissionedEmployee))!=null)
+          return employee3=DatabaseTypeServices.serviceCommissined.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectCommissionedEmployee));
+		return employee3;
 	}
 
 
-	private void getHourlyEmployeeOfBD(ResultSet rs)  {
-		try {
-			while (rs.next()) {
-			 employee=new Employee(Integer.parseInt(rs.getString("employeeId")), rs.getString("name"), rs.getString("address"));
-			 PaymentClassification paymentClassification= new HourlyPaymentClassification(Integer.parseInt(rs.getString("tarifa_por_hora")));
-			employee.setPaymentClassification(paymentClassification);
-			   }
-		} catch (Exception e) {
-			
-			System.err.println(e);
-		} 
-	}
-	private void getSalariedEmployeeOfBD(ResultSet rs) {
-		try {
-			while (rs.next()) {
-			 employee=new Employee(Integer.parseInt(rs.getString("idSalariedEmployee")), rs.getString("name"), rs.getString("address"));
-			 PaymentClassification paymentClassification= new SalariedClassification(Integer.parseInt(rs.getString("salary")));
-      employee.setPaymentClassification(paymentClassification);
-			  }
-		} catch (Exception e) {
-			
-			System.err.println(e);
-		} 
-	}
-	
-	
-
-
-	private void getCommissionedEmployeeOfBD(ResultSet rs) {
-		try {
-			while (rs.next()) {
-			 employee=new Employee(Integer.parseInt(rs.getString("idemployees")), rs.getString("name"), rs.getString("address"));
-			 PaymentClassification paymentClassification= new CommissionedPaymentClassification(Integer.parseInt(rs.getString("monthlySalary")), Integer.parseInt(rs.getString("commissionRate")));
-      employee.setPaymentClassification(paymentClassification);
-			  }
-		} catch (Exception e) {
-			
-			System.err.println(e);
-		}
-	}
-	
-	
-	
-	
-	
 	@Override
 	public void addEmployee(int employeeId, Employee employee) {
 		
 		try {	
 			if(employee.getPaymentClassification().typeOfPayment()==typeEmployee.Hourly)
-			{		dataser = new ServicesAddInBDHourlyEmployee();
-				    dataser.addTypeEmployeeInBD(employeeId, employee);
+			{		
+			    DatabaseTypeServices.serviceHourly.addTypeEmployeeInBD(employeeId, employee);
 				
 			}
 			if(employee.getPaymentClassification().typeOfPayment()==typeEmployee.Salaried)
 			{
-				dataser = new ServicesAddInBDSalariedEmployee();
-				dataser.addTypeEmployeeInBD(employeeId, employee);
+				
+				DatabaseTypeServices.serviceSalaried.addTypeEmployeeInBD(employeeId, employee);
 			        
 			}
 			if(employee.getPaymentClassification().typeOfPayment()==typeEmployee.Comision)
 			{
-				dataser = new ServicesAddInBDCommissionedEmployee();
-			
-				dataser.addTypeEmployeeInBD(employeeId, employee);
+				
+				DatabaseTypeServices.serviceCommissined.addTypeEmployeeInBD(employeeId, employee);
 			}
 			
 		} catch (Exception e) {
@@ -157,21 +114,8 @@ public class BDrepository  implements Repositoory{
 
 	@Override
 	public Employee getUnionMember(int memberId) {
-		ResultSet rs=null;
-	    String querySelectHourlyEmployee= "SELECT * FROM hourly_employees WHERE memberId='"+ memberId + "';";
-	    
-			try{     
-	           rs= bd.connectionWithTableOfEmployees(querySelectHourlyEmployee);
-	           getHourlyEmployeeOfBD(rs);
-	         
-				
-	           return employee;
-
-			}catch (Exception e){
-				System.err.println(e);
-				return employee;
-				
-			}
+		return employee;
+		
 		
 	}
 

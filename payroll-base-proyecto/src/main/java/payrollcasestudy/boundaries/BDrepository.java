@@ -8,16 +8,16 @@ import java.util.ArrayList;
 
 import java.util.Set;
 
-import Services.DatabaseTypeServices;
-import Services.ServicesAddInBDCommissionedEmployee;
-import Services.ServicesAddInBDHourlyEmployee;
-import Services.ServicesAddInBDSalariedEmployee;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.paymentclassifications.CommissionedPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.PaymentType;
 import payrollcasestudy.entities.paymentclassifications.SalariedClassification;
+import payrollcasestudy.Services.BDServices.DatabaseTypeServices;
+import payrollcasestudy.Services.BDServices.ServicesAddInBDCommissionedEmployee;
+import payrollcasestudy.Services.BDServices.ServicesAddInBDHourlyEmployee;
+import payrollcasestudy.Services.BDServices.ServicesAddInBDSalariedEmployee;
 
 
 public class BDrepository  implements Repositoory{

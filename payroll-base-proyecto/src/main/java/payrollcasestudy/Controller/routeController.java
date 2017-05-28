@@ -12,6 +12,7 @@ import spark.ModelAndView;
 import updatable.Updatable;
 import velocityy.VelocityTemplateEngine;
 import views.EmpleadoView;
+import payrollcasestudy.Services.AddPaymentToBD.PaymentServices;
 import payrollcasestudy.Services.EmployeeServices.EmployeeServices;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.jsonApi.JsonUtil;
@@ -21,12 +22,14 @@ public class routeController {
 	
 	public static int employeeId;
 	private EmployeeServices employeeService;
+	private PaymentServices paymentService;
 	static VelocityTemplateEngine velocity;
 	static Map<String, Object> map = new HashMap<>();
 	static Updatable updatable = new EmpleadoView();		
 	
-	public routeController(EmployeeServices employeeController) {
+	public routeController(EmployeeServices employeeController,PaymentServices paymentService) {
 		this.employeeService = employeeController;
+		this.paymentService=paymentService;
 	}
 
 		
@@ -53,16 +56,19 @@ public class routeController {
 		      return new ModelAndView(map, "registrarServicio.vtl");
 		    }, velocity.vel());    	
     	
-    	post("/agregarCargoPorServicio", (request, response) -> employeeService.addServiceChargeEmployee(Integer.parseInt(request.queryParams("id")), Double.parseDouble(request.queryParams("cargo")),Integer.parseInt(request.queryParams("dia_pago1")),Integer.parseInt(request.queryParams("mes_pago1")),Integer.parseInt(request.queryParams("anio_pago1"))));
+    	post("/agregarCargoPorServicio", (request, response) -> paymentService.addServiceChargeEmployee(Integer.parseInt(request.queryParams("id")), Double.parseDouble(request.queryParams("cargo")),Integer.parseInt(request.queryParams("dia_pago1")),Integer.parseInt(request.queryParams("mes_pago1")),Integer.parseInt(request.queryParams("anio_pago1"))));
     	
-    	post("/agregarReciboVenta", (request, response) -> employeeService.addSalesReceiptEmployee(Integer.parseInt(request.queryParams("id2")), Double.parseDouble(request.queryParams("amount")),Integer.parseInt(request.queryParams("dia_pago2")),Integer.parseInt(request.queryParams("mes_pago2")),Integer.parseInt(request.queryParams("anio_pago2"))));
+    	post("/agregarReciboVenta", (request, response) -> paymentService.addSalesReceiptEmployee(Integer.parseInt(request.queryParams("id2")), Double.parseDouble(request.queryParams("amount")),Integer.parseInt(request.queryParams("dia_pago2")),Integer.parseInt(request.queryParams("mes_pago2")),Integer.parseInt(request.queryParams("anio_pago2"))));
    	    
-    	post("/agregarTimeCard", (request, response) -> employeeService.addTimeCardEmployee(Integer.parseInt(request.queryParams("id3")), Double.parseDouble(request.queryParams("hours")),Integer.parseInt(request.queryParams("dia_pago3")),Integer.parseInt(request.queryParams("mes_pago3")),Integer.parseInt(request.queryParams("anio_pago3"))));
+    	post("/agregarTimeCard", (request, response) -> paymentService.addTimeCardEmployee(Integer.parseInt(request.queryParams("id3")), Double.parseDouble(request.queryParams("hours")),Integer.parseInt(request.queryParams("dia_pago3")),Integer.parseInt(request.queryParams("mes_pago3")),Integer.parseInt(request.queryParams("anio_pago3"))));
    	   
-   	    get("/pago", (request, response) -> employeeService.payEmployee());	       	 
+   	    get("/pago", (request, response) -> paymentService.payEmployee());	       	 
    	    
    	    get("/detalle/:id", (request, response) -> {
-    		map.put("empleado",employeeService.showEmployee(Integer.parseInt(request.params(":id"))));        			
+    		map.put("empleado",employeeService.showEmployee(Integer.parseInt(request.params(":id")))); 
+    		map.put("pago",paymentService.showPayment(Integer.parseInt(request.params(":id")))); 
+
+    		
     		 return new ModelAndView(map, "mostrarUno.vtl");
 		    }, velocity.vel());	
     	

@@ -9,7 +9,7 @@ import payrollcasestudy.entities.Employee;
 
 public class MemoryRepository implements Repositoory {
 	  public static Repositoory repository = new MemoryRepository();	
-	  
+
 	  private Map<Integer, Employee> employees = new HashMap<Integer, Employee>();
 	    public Map<Integer, Employee> unionMembers = new HashMap<Integer, Employee>();
 
@@ -80,6 +80,12 @@ public class MemoryRepository implements Repositoory {
 
 	@Override
 	public Integer getLastId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Repositoory getRepo() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -43,6 +43,29 @@ public class BaseDeDatos {
 			}
 	    }
 
+
+
+		public ResultSet connectionWithTableOfEmployees(String query)
+		{
+			
+			ResultSet rs=null;
+			try{
+		       Statement stmt=(Statement) conectar().createStatement();
+		       rs=((java.sql.Statement)stmt).executeQuery(query);
+		       System.out.println("Exito");
+		       return rs;
+				
+				
+			}catch (Exception e){
+				System.err.println(e);
+				
+				return rs;
+		
+			}
+			
+			
+		}
+
 }
 
 

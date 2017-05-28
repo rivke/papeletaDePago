@@ -1,17 +1,17 @@
 package payrollcasestudy.boundaries;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 
 import java.util.Set;
 
-
+import Services.DatabaseTypeServices;
+import Services.ServicesAddInBDCommissionedEmployee;
+import Services.ServicesAddInBDHourlyEmployee;
+import Services.ServicesAddInBDSalariedEmployee;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.paymentclassifications.CommissionedPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
@@ -20,8 +20,11 @@ import payrollcasestudy.entities.paymentclassifications.PaymentType;
 import payrollcasestudy.entities.paymentclassifications.SalariedClassification;
 
 
-public class BDrepository implements Repositoory{
-	public  PaymentType category;
+public class BDrepository  implements Repositoory{
+	public  PaymentType typeEmployee;
+	private DatabaseTypeServices dataser;
+
+	private ServicesAddInBDHourlyEmployee servicioHourly ;
 
 	Employee employee = null;
     BaseDeDatos bd = new BaseDeDatos();
@@ -51,9 +54,9 @@ public class BDrepository implements Repositoory{
 
 
 	private void getAllEmployeesBD(String querySelectHourlyEmployee, String querySelectSalariedEmployee, String querySelectCommissionedEmployee)	{
-		getHourlyEmployeeOfBD(connectionWithTableOfEmployees(querySelectHourlyEmployee));
-		  getSalariedEmployeeOfBD(connectionWithTableOfEmployees(querySelectSalariedEmployee));
-		  getCommissionedEmployeeOfBD(connectionWithTableOfEmployees(querySelectCommissionedEmployee));
+		getHourlyEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectHourlyEmployee));
+		  getSalariedEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectSalariedEmployee));
+		  getCommissionedEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectCommissionedEmployee));
          
 	}
 
@@ -100,51 +103,29 @@ public class BDrepository implements Repositoory{
 	}
 	
 	
-	public String createQueryByTypeEmployee(Employee employee)
-	{
-      
-		String query="";
-        if(employee.getPaymentClassification().typeOfPayment()==category.Hourly)
-		{
-				
-        	query="INSERT INTO hourly_employees VALUES (?,?,?,?)";
-			
-		}
-		if(employee.getPaymentClassification().typeOfPayment()==category.Salaried)
-		{
-			query="INSERT INTO salaried_employee VALUES (?,?,?,?)";
-			
-		    
-		}
-		if(employee.getPaymentClassification().typeOfPayment()==category.Comision)
-		{
-   
-			query="INSERT INTO comision VALUES (?,?,?,?,?)";
-			
-		}
-		return query;
-
-		
-	}
+	
 	
 	
 	@Override
 	public void addEmployee(int employeeId, Employee employee) {
 		
 		try {	
-			if(employee.getPaymentClassification().typeOfPayment()==category.Hourly)
-			{		
-				addHourlyPaymentInBD(employeeId, employee);
-			    
+			if(employee.getPaymentClassification().typeOfPayment()==typeEmployee.Hourly)
+			{		dataser = new ServicesAddInBDHourlyEmployee();
+				    dataser.addTypeEmployeeInBD(employeeId, employee);
+				
 			}
-			if(employee.getPaymentClassification().typeOfPayment()==category.Salaried)
+			if(employee.getPaymentClassification().typeOfPayment()==typeEmployee.Salaried)
 			{
-				addSalariedPaymentInBD(employeeId, employee);
+				dataser = new ServicesAddInBDSalariedEmployee();
+				dataser.addTypeEmployeeInBD(employeeId, employee);
 			        
 			}
-			if(employee.getPaymentClassification().typeOfPayment()==category.Comision)
+			if(employee.getPaymentClassification().typeOfPayment()==typeEmployee.Comision)
 			{
-				addCommissionedInBD(employeeId, employee);    
+				dataser = new ServicesAddInBDCommissionedEmployee();
+			
+				dataser.addTypeEmployeeInBD(employeeId, employee);
 			}
 			
 		} catch (Exception e) {
@@ -157,46 +138,11 @@ public class BDrepository implements Repositoory{
 	}
 
 
-	private void addCommissionedInBD(int employeeId, Employee employee) throws SQLException {
-		PreparedStatement pstInsertarCuenta= bd.conectar().prepareStatement(createQueryByTypeEmployee(employee));
-		CommissionedPaymentClassification commissionedClassification =  (CommissionedPaymentClassification) employee.getPaymentClassification();
-		addNameAddressInBD(employeeId, employee, pstInsertarCuenta);
-		pstInsertarCuenta.setDouble(4,commissionedClassification.getMonthlySalary());
-		pstInsertarCuenta.setDouble(5,commissionedClassification.getCommissionRate());
-		pstInsertarCuenta.executeUpdate();
-	}
-
-
-	private void addNameAddressInBD(int employeeId, Employee employee, PreparedStatement pstInsertarCuenta)
-			throws SQLException {
-		pstInsertarCuenta.setLong(1, employeeId);
-		pstInsertarCuenta.setString(2, employee.getName());
-		pstInsertarCuenta.setString(3, employee.getAddress());
-	}
-
-
-	private void addSalariedPaymentInBD(int employeeId, Employee employee) throws SQLException {
-		PreparedStatement pstInsertarCuenta=bd.conectar().prepareStatement(createQueryByTypeEmployee(employee));;
-		SalariedClassification salariedClassification =  (SalariedClassification) employee.getPaymentClassification();
-		addNameAddressInBD(employeeId, employee, pstInsertarCuenta);
-		pstInsertarCuenta.setDouble(4,salariedClassification.getSalary());
-		pstInsertarCuenta.executeUpdate();
-	}
-
-
-	private void addHourlyPaymentInBD(int employeeId, Employee employee) throws SQLException {
-		PreparedStatement pstInsertarCuenta= bd.conectar().prepareStatement(createQueryByTypeEmployee(employee));
-		HourlyPaymentClassification hourlyClassification =  (HourlyPaymentClassification) employee.getPaymentClassification();
-		addNameAddressInBD(employeeId, employee, pstInsertarCuenta);
-		pstInsertarCuenta.setDouble(4,hourlyClassification.getHourlyRate());
-		pstInsertarCuenta.executeUpdate();
-	}
-
-
-
-		
 	
 
+
+	
+	
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
@@ -215,7 +161,7 @@ public class BDrepository implements Repositoory{
 	    String querySelectHourlyEmployee= "SELECT * FROM hourly_employees WHERE memberId='"+ memberId + "';";
 	    
 			try{     
-	           rs= connectionWithTableOfEmployees(querySelectHourlyEmployee);
+	           rs= bd.connectionWithTableOfEmployees(querySelectHourlyEmployee);
 	           getHourlyEmployeeOfBD(rs);
 	         
 				
@@ -254,31 +200,6 @@ public class BDrepository implements Repositoory{
 	}
 	
 	
-	public ResultSet connectionWithTableOfEmployees(String query)
-	{
-		
-		ResultSet rs=null;
-		try{
-           Statement stmt=(Statement) bd.conectar().createStatement();
-           rs=((java.sql.Statement)stmt).executeQuery(query);
-           System.out.println("Exito");
-           return rs;
-			
-			
-		}catch (Exception e){
-			System.err.println(e);
-			
-			return rs;
-
-		}
-		
-		
-	}
-	
-	
-	
-	
-	
 	@Override
 	public ArrayList<Employee> getAllEmployees() {
 		
@@ -295,7 +216,7 @@ public class BDrepository implements Repositoory{
 		String query= "SELECT * FROM papeletadepago.hourly_employees";
        ArrayList<Employee> ls = new ArrayList<Employee>();
 		try{
-			ResultSet results= connectionWithTableOfEmployees(query);
+			ResultSet results= bd.connectionWithTableOfEmployees(query);
 			while(results.next()){
 				
 				Employee employee=new Employee(Integer.parseInt(results.getString("employeeId")), results.getString("name"), results.getString("address"));
@@ -317,7 +238,7 @@ public class BDrepository implements Repositoory{
 
        ArrayList<Employee> ls = new ArrayList<Employee>();
 		try{
-			ResultSet results= connectionWithTableOfEmployees(query);
+			ResultSet results= bd.connectionWithTableOfEmployees(query);
 			while(results.next()){
 				
 				Employee employee=new Employee(Integer.parseInt(results.getString("idSalariedEmployee")), results.getString("name"), results.getString("address"));
@@ -339,7 +260,7 @@ public class BDrepository implements Repositoory{
 
        ArrayList<Employee> ls = new ArrayList<Employee>();
 		try{
-			ResultSet results= connectionWithTableOfEmployees(query);
+			ResultSet results= bd.connectionWithTableOfEmployees(query);
 			while(results.next()){
 				
 				Employee employee=new Employee(Integer.parseInt(results.getString("idemployees")), results.getString("name"), results.getString("address"));

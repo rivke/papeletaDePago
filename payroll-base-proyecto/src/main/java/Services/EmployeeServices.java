@@ -66,6 +66,7 @@ public class EmployeeServices {
         Transaction addEmployeeTransaction =
                 new AddHourlyEmployeeTransaction(employeeId, nombreCompleto, direccion, tarifa_por_hora);
         addEmployeeTransaction.execute(mc);
+       
         return verifyCreation(nombre, apellido, nombreCompleto);        
 	}
 	

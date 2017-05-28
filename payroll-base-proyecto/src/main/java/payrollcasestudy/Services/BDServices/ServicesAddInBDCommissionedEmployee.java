@@ -30,7 +30,8 @@ public class ServicesAddInBDCommissionedEmployee extends DatabaseTypeServices{
 		}
 
 	@Override
-	public Employee getTypeEmployeeOfBD(ResultSet rs) {
+	public Employee getTypeEmployeeOfBD(int employeeId) {
+		ResultSet rs=bd.connectionWithTableOfEmployees("SELECT * FROM comision WHERE idemployees='"+ employeeId + "';");
 		Employee employee = null;
 		try {
 			while (rs.next()) {

@@ -14,74 +14,56 @@ import payrollcasestudy.entities.paymentclassifications.PaymentType;
 
 import payrollcasestudy.Services.BDServices.DatabaseTypeServices;
 
-import payrollcasestudy.Services.BDServices.ServicesAddInBDHourlyEmployee;
-
 
 
 public class BDrepository  implements Repositoory{
 	public  PaymentType typeEmployee;
-	
-	private ServicesAddInBDHourlyEmployee servicioHourly ;
-
 	Employee employee = null;
     BaseDeDatos bd = new BaseDeDatos();
    
-   
-	    
+    
 	@Override
 	public Employee getEmployee(int employeeId)
 	{
-    String querySelectHourlyEmployee= "SELECT * FROM hourly_employees WHERE employeeId='"+ employeeId + "';";
-    String querySelectSalariedEmployee= "SELECT * FROM salaried_employee WHERE idSalariedEmployee='"+ employeeId + "';";
-    String querySelectCommissionedEmployee= "SELECT * FROM comision WHERE idemployees='"+ employeeId + "';";
-
 		try{     
-		    //employee=DatabaseTypeServices.typeser.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectHourlyEmployee));
-		   
-			employee=getAllEmployeesBD( querySelectHourlyEmployee, querySelectSalariedEmployee, querySelectCommissionedEmployee);
-           return employee;
-
-		}catch (Exception e){
+			return findAnEmployee(employeeId);
+			}
+		catch (Exception e){
 			System.err.println(e);
 			return employee;
-			
-		}
-		   
+			}
 	}
 
 
-	private Employee getAllEmployeesBD(String querySelectHourlyEmployee, String querySelectSalariedEmployee, String querySelectCommissionedEmployee)	{
+	private Employee findAnEmployee(int employeeId)	{
 		Employee employee3 = null;
-		if( DatabaseTypeServices.serviceHourly.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectHourlyEmployee))!=null)
-			 return employee3=DatabaseTypeServices.serviceHourly.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectHourlyEmployee));
+		if( DatabaseTypeServices.serviceHourly.getTypeEmployeeOfBD(employeeId)!=null)
+			return employee3=DatabaseTypeServices.serviceHourly.getTypeEmployeeOfBD(employeeId);
 		
-		if(DatabaseTypeServices.serviceSalaried.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectSalariedEmployee))!=null)
-			return employee3= DatabaseTypeServices.serviceSalaried.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectSalariedEmployee));
+		if(DatabaseTypeServices.serviceSalaried.getTypeEmployeeOfBD(employeeId)!=null)
+			return employee3= DatabaseTypeServices.serviceSalaried.getTypeEmployeeOfBD(employeeId);
 		
-		if(DatabaseTypeServices.serviceCommissined.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectCommissionedEmployee))!=null)
-          return employee3=DatabaseTypeServices.serviceCommissined.getTypeEmployeeOfBD(bd.connectionWithTableOfEmployees(querySelectCommissionedEmployee));
+		if(DatabaseTypeServices.serviceCommissined.getTypeEmployeeOfBD(employeeId)!=null)
+          return employee3=DatabaseTypeServices.serviceCommissined.getTypeEmployeeOfBD(employeeId);
 		return employee3;
 	}
 
 
 	@Override
 	public void addEmployee(int employeeId, Employee employee) {
-		
 		try {	
 			if(employee.getPaymentClassification().typeOfPayment()==typeEmployee.Hourly)
 			{		
-			    DatabaseTypeServices.serviceHourly.addTypeEmployeeInBD(employeeId, employee);
+				DatabaseTypeServices.serviceHourly.addTypeEmployeeInBD(employeeId, employee);
 				
 			}
 			if(employee.getPaymentClassification().typeOfPayment()==typeEmployee.Salaried)
 			{
-				
 				DatabaseTypeServices.serviceSalaried.addTypeEmployeeInBD(employeeId, employee);
 			        
 			}
 			if(employee.getPaymentClassification().typeOfPayment()==typeEmployee.Comision)
 			{
-				
 				DatabaseTypeServices.serviceCommissined.addTypeEmployeeInBD(employeeId, employee);
 			}
 			

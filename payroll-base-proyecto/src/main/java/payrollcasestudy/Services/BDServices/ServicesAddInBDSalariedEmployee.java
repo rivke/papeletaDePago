@@ -29,7 +29,9 @@ public class ServicesAddInBDSalariedEmployee extends DatabaseTypeServices {
 			}
 
 		@Override
-		public Employee getTypeEmployeeOfBD(ResultSet rs) {
+		public Employee getTypeEmployeeOfBD(int employeeId) {
+			ResultSet rs=bd.connectionWithTableOfEmployees("SELECT * FROM salaried_employee WHERE idSalariedEmployee='"+ employeeId + "';");
+
 			Employee employee = null;
 			try {
 				while (rs.next()) {

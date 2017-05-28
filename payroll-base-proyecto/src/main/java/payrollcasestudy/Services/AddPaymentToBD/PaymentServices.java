@@ -33,7 +33,7 @@ public PaymentServices(Repositoory repository, Repositoory repository2) {
 public static String addPaySalariedEmployee(int employeeId) {		
     Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
     PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-    paydayTransaction.execute(repository);
+    paydayTransaction.execute(repository2);
     PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);         
 	return ""+payCheck.getNetPay();
 }
@@ -78,7 +78,7 @@ public static String addSalesReceiptEmployee(int eemployeId, double amount, int 
     Calendar date1 = fechaCorrecta(dia, mes, anio); 
     Transaction salesReceiptTransaction =
             new AddSalesReceiptTransaction(date1, amount, eemployeId);
-    salesReceiptTransaction.execute(repository); 
+    salesReceiptTransaction.execute(repository2); 
 	return MessageView.mostrarMensaje("Recibo de venta agregado");
 }
 

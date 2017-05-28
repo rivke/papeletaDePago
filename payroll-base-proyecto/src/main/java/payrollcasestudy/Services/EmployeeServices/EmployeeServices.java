@@ -49,8 +49,14 @@ import views.MessageView;
 
 
 public class EmployeeServices {
+	private static Repositoory mc;
 	
-	private static Repositoory mc = new BDrepository();
+	public EmployeeServices(Repositoory repository) {
+		mc = repository;
+	}
+
+
+	//private static Repositoory mc = new BDrepository();
 
 	static public int employeeId = 0;
 	static public int memberId = 0;
@@ -91,7 +97,10 @@ public class EmployeeServices {
 			
 	}
 	
-	
+     public ArrayList<Employee> getAllEmployees() {
+		return mc.getAllEmployees();
+     
+     }
 	
 	
 

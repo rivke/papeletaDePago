@@ -4,9 +4,10 @@ package payrollcasestudy.boundaries;
 
 import java.util.ArrayList;
 import java.util.Set;
+
+import payrollcasestudy.Services.AddTypesEmployeesToBD.TypeDatabaseServices;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.paymentclassifications.PaymentType;
-import payrollcasestudy.Services.BDServices.TypeDatabaseServices;
 
 public class BDrepository  implements Repositoory{
 	public  PaymentType typeEmployee;

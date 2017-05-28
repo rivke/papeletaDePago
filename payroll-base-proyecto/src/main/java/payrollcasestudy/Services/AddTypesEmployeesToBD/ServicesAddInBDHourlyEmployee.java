@@ -1,4 +1,4 @@
-package payrollcasestudy.Services.BDServices;
+package payrollcasestudy.Services.AddTypesEmployeesToBD;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

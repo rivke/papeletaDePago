@@ -1,16 +1,11 @@
 package payrollcasestudy.entities;
 
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
-import payrollcasestudy.entities.paymentclassifications.CommissionedPaymentClassification;
-import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
-import payrollcasestudy.entities.paymentclassifications.SalariedClassification;
 import payrollcasestudy.entities.paymentmethods.PaymentMethod;
 import payrollcasestudy.entities.paymentschedule.PaymentSchedule;
 import updatable.Updatable;
-import views.EmpleadoView;
 
-import static org.hamcrest.Matchers.*;
 import java.util.Calendar;
 
 public class Employee {

@@ -71,8 +71,7 @@ public class MemoryRepository implements Repositoory {
 	@Override
 	public ArrayList<Employee> getAllEmployees() {
 		ArrayList<Employee> employees = new ArrayList<Employee>();
-    	String resp = " ";
-    	Employee emp;
+    
     	for(int id : repository.getAllEmployeeIds()){
     		employees.add(repository.getEmployee(id));    		
     	}

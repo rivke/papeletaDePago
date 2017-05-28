@@ -12,7 +12,7 @@ import payrollcasestudy.entities.paymentclassifications.PaymentType;
 public class BDrepository  implements Repositoory{
 	public  PaymentType typeEmployee;
 	Employee employee = null;
-    BaseDeDatos bd = new BaseDeDatos();
+    DatabaseConnection bd = new DatabaseConnection();
    
     
 	@Override
@@ -43,17 +43,17 @@ public class BDrepository  implements Repositoory{
 	@Override
 	public void addEmployee(int employeeId, Employee employee) {
 		try {	
-			if(employee.getPaymentClassification().typeOfPayment()==typeEmployee.Hourly)
+			if(employee.getPaymentClassification().typeOfPayment()==PaymentType.Hourly)
 			{		
 				TypeDatabaseServices.serviceHourly.addTypeEmployeeInBD(employeeId, employee);
 				
 			}
-			if(employee.getPaymentClassification().typeOfPayment()==typeEmployee.Salaried)
+			if(employee.getPaymentClassification().typeOfPayment()==PaymentType.Salaried)
 			{
 				TypeDatabaseServices.serviceSalaried.addTypeEmployeeInBD(employeeId, employee);
 			        
 			}
-			if(employee.getPaymentClassification().typeOfPayment()==typeEmployee.Comision)
+			if(employee.getPaymentClassification().typeOfPayment()==PaymentType.Comision)
 			{
 				TypeDatabaseServices.serviceCommissined.addTypeEmployeeInBD(employeeId, employee);
 			}

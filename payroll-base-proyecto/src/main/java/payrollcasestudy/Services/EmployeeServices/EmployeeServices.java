@@ -1,38 +1,15 @@
 package payrollcasestudy.Services.EmployeeServices;
 
 import static java.util.Calendar.NOVEMBER;
-import static java.util.Calendar.APRIL;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.closeTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static payrollcasestudy.TestConstants.FLOAT_ACCURACY;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import org.junit.Rule;
-
-import payrollcasestudy.boundaries.BDrepository;
 import payrollcasestudy.boundaries.Repositoory;
 import payrollcasestudy.entities.Employee;
 
 import payrollcasestudy.entities.PayCheck;
-import payrollcasestudy.entities.SalesReceipt;
-import payrollcasestudy.entities.ServiceCharge;
-import payrollcasestudy.entities.TimeCard;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
-import payrollcasestudy.entities.paymentclassifications.CommissionedPaymentClassification;
-import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
-import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
 import payrollcasestudy.transactions.PaydayTransaction;
 import payrollcasestudy.transactions.Transaction;
 import payrollcasestudy.transactions.add.AddCommissionedEmployeeTransaction;
@@ -49,20 +26,16 @@ import views.MessageView;
 
 
 public class EmployeeServices {
-	private static Repositoory mc;
-	
-	public EmployeeServices(Repositoory repository) {
-		mc = repository;
-	}
-
-
-	//private static Repositoory mc = new BDrepository();
-
+	private static Repositoory repository;
 	static public int employeeId = 0;
 	static public int memberId = 0;
 	static String nombreCompleto = "";
 	static Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
     static PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
+	
+	public EmployeeServices(Repositoory repository) {
+		this.repository = repository;
+	}
 	
 	public static String addHourlyEmployee(String nombre, String apellido, String direccion, double tarifa_por_hora) throws SQLException{
 		System.out.println("----------REGISTRANDO EMPLEADO POR HORA---------");			
@@ -71,14 +44,14 @@ public class EmployeeServices {
 		nombreCompleto = nombre + " " + apellido;
         Transaction addEmployeeTransaction =
                 new AddHourlyEmployeeTransaction(employeeId, nombreCompleto, direccion, tarifa_por_hora);
-        addEmployeeTransaction.execute(mc);
+        addEmployeeTransaction.execute(repository);
        
         return verifyCreation(nombre, apellido, nombreCompleto);        
 	}
 	
 
 	private static String verifyCreation(String nombre, String apellido, String nombreCompleto) {
-		Employee employee = mc.getEmployee(employeeId);
+		Employee employee = repository.getEmployee(employeeId);
         String mensaje;
 		if(employee.getName()!="")
 			mensaje="El Empleado "+nombre+ " "+ apellido + "</br> Se ha sido registrado con exito ";
@@ -92,17 +65,17 @@ public class EmployeeServices {
 	
      public static String showEmployee(int id){			
 		Updatable updatable = new EmpleadoView();		
-		Employee empleado = mc.getEmployee(id);		
+		Employee empleado = repository.getEmployee(id);		
 		return empleado.update(updatable);		
 			
 	}
 	
      public ArrayList<Employee> getAllEmployees() {
-		return mc.getAllEmployees();
+		return repository.getAllEmployees();
      
      }
 	
-	
+
 
 	public static String addSalariedEmployee(String nombre, String apellido, String direccion,double salario) throws SQLException {
 		System.out.println("----------REGISTRANDO EMPLEADO ASALARIADO---------");			
@@ -110,7 +83,7 @@ public class EmployeeServices {
 		nombreCompleto = nombre + " " + apellido;
         Transaction addEmployeeTransaction =
                 new AddSalariedEmployeeTransaction(employeeId, nombreCompleto, direccion, salario);
-        addEmployeeTransaction.execute(mc);
+        addEmployeeTransaction.execute(repository);
         return verifyCreation(nombre, apellido, nombreCompleto);
 	}
 	
@@ -121,22 +94,22 @@ public class EmployeeServices {
 		nombreCompleto = nombre + " " + apellido;
         Transaction addEmployeeTransaction =
                 new AddCommissionedEmployeeTransaction(employeeId, nombreCompleto, direccion, salarioMensual, comision);
-        addEmployeeTransaction.execute(mc);
+        addEmployeeTransaction.execute(repository);
         return verifyCreation(nombre, apellido, nombreCompleto);		
 	}
 	
 
-	
+	////Pagos
 	public static String addPaySalariedEmployee(int employeeId) {		
         Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
         PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-        paydayTransaction.execute(null);
+        paydayTransaction.execute(repository);
         PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);         
 		return ""+payCheck.getNetPay();
 	}
 	
    public static String payEmployee() {	   
-       paydayTransaction.execute(null);
+       paydayTransaction.execute(repository);
        return MessageView.mostrarMensaje("Pagados");
 	}
 		
@@ -152,12 +125,12 @@ public class EmployeeServices {
    
   
 	public static String addServiceChargeEmployee(int eemployeId, double cargo, int dia, int mes, int anio) {		
-		Employee employee = mc.getEmployee(eemployeId);
+		Employee employee = repository.getEmployee(eemployeId);
 	    memberId++;
         addMemberShip(2, employee);
         Calendar date1 = fechaCorrecta(dia, mes, anio);
-         AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date1, cargo, mc);
-        addServiceChargeTransaction.execute(null);	        
+         AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date1, cargo, repository);
+        addServiceChargeTransaction.execute(repository);	        
 	      
 		return MessageView.mostrarMensaje("Servicio agregado");
 	}
@@ -166,7 +139,7 @@ public class EmployeeServices {
 	private static void addMemberShip(double cargo, Employee employee) {
 		UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,cargo);
         employee.setUnionAffiliation(unionAffiliation);
-        mc.addUnionMember(memberId, employee);
+        repository.addUnionMember(memberId, employee);
 	}
 
 	
@@ -175,7 +148,7 @@ public class EmployeeServices {
         Calendar date1 = fechaCorrecta(dia, mes, anio); 
         Transaction salesReceiptTransaction =
                 new AddSalesReceiptTransaction(date1, amount, eemployeId);
-        salesReceiptTransaction.execute(null); 
+        salesReceiptTransaction.execute(repository); 
 		return MessageView.mostrarMensaje("Recibo de venta agregado");
 	}
 	
@@ -183,7 +156,7 @@ public class EmployeeServices {
 	public static String addTimeCardEmployee(int eemployeId, double horas, int dia, int mes, int anio) throws SQLException {		
 		 Calendar date1 = fechaCorrecta(dia, mes, anio);
         Transaction timeCardTransaction = new AddTimeCardTransaction(date1, horas,  eemployeId);
-        timeCardTransaction.execute(null);
+        timeCardTransaction.execute(repository);
      
 		return MessageView.mostrarMensaje("Timecard agregada");
 	}

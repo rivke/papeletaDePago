@@ -5,13 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import payrollcasestudy.boundaries.BaseDeDatos;
+import payrollcasestudy.boundaries.DatabaseConnection;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.paymentclassifications.CommissionedPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
 
 public class ServicesAddInBDCommissionedEmployee extends TypeDatabaseServices{
-	BaseDeDatos bd = new BaseDeDatos();
+	DatabaseConnection bd = new DatabaseConnection();
 	
 	public void addTypeEmployeeInBD(int employeeId, Employee employee) {
 		try {

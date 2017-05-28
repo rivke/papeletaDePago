@@ -1,35 +1,16 @@
 package payrollcasestudy.Controller;
 import static spark.Spark.*;
 
-import java.awt.List;
-import java.io.StringWriter;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-
-
-import org.junit.Rule;
-
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.Version;
-
-import payrollcasestudy.boundaries.Repositoory;
-import payrollcasestudy.entities.Employee;
-import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
-import payrollcasestudy.entities.paymentmethods.HoldMethod;
-import payrollcasestudy.entities.paymentmethods.PaymentMethod;
-import payrollcasestudy.entities.paymentschedule.PaymentSchedule;
-import payrollcasestudy.transactions.Transaction;
-import payrollcasestudy.transactions.add.AddHourlyEmployeeTransaction;
 import spark.ModelAndView;
-import spark.Spark;
+
 import updatable.Updatable;
 import velocityy.VelocityTemplateEngine;
 import views.EmpleadoView;
 import payrollcasestudy.Services.EmployeeServices.EmployeeServices;
-import payrollcasestudy.boundaries.BDrepository;
+
 
 public class routeController {
 	

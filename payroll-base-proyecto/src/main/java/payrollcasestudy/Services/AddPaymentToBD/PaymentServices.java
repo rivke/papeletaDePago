@@ -18,28 +18,26 @@ import payrollcasestudy.transactions.add.AddTimeCardTransaction;
 import views.MessageView;
 
 public class PaymentServices {
-private static Repositoory repository;
-private static Repositoory repository2;
+private static Repositoory memoryrepository;
 
 static Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
 static PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
 static public int memberId = 0;
-public PaymentServices(Repositoory repository, Repositoory repository2) {
-	this.repository = repository;
-	this.repository2=repository2;
+public PaymentServices(Repositoory repository) {
+	this.memoryrepository=repository;
 }
 
 
 public static String addPaySalariedEmployee(int employeeId) {		
     Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
     PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
-    paydayTransaction.execute(repository2);
+    paydayTransaction.execute(memoryrepository);
     PayCheck payCheck = paydayTransaction.getPaycheck(employeeId);         
 	return ""+payCheck.getNetPay();
 }
 
 public static String payEmployee() {	   
-   paydayTransaction.execute(repository2);
+   paydayTransaction.execute(memoryrepository);
    return MessageView.mostrarMensaje("Pagados");
 }
 	
@@ -55,12 +53,12 @@ public static String payEmployee() {
 
 
 public static String addServiceChargeEmployee(int eemployeId, double cargo, int dia, int mes, int anio) {		
-	Employee employee = repository.getEmployee(eemployeId);
+	Employee employee = memoryrepository.getEmployee(eemployeId);
     memberId++;
     addMemberShip(2, employee);
     Calendar date1 = fechaCorrecta(dia, mes, anio);
-     AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date1, cargo, repository);
-    addServiceChargeTransaction.execute(repository);	        
+     AddServiceChargeTransaction addServiceChargeTransaction = new AddServiceChargeTransaction(memberId, date1, cargo, memoryrepository);
+    addServiceChargeTransaction.execute(memoryrepository);	        
       
 	return MessageView.mostrarMensaje("Servicio agregado");
 }
@@ -69,7 +67,7 @@ public static String addServiceChargeEmployee(int eemployeId, double cargo, int 
 private static void addMemberShip(double cargo, Employee employee) {
 	UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,cargo);
     employee.setUnionAffiliation(unionAffiliation);
-    repository.addUnionMember(memberId, employee);
+    memoryrepository.addUnionMember(memberId, employee);
 }
 
 
@@ -78,7 +76,7 @@ public static String addSalesReceiptEmployee(int eemployeId, double amount, int 
     Calendar date1 = fechaCorrecta(dia, mes, anio); 
     Transaction salesReceiptTransaction =
             new AddSalesReceiptTransaction(date1, amount, eemployeId);
-    salesReceiptTransaction.execute(repository2); 
+    salesReceiptTransaction.execute(memoryrepository); 
 	return MessageView.mostrarMensaje("Recibo de venta agregado");
 }
 
@@ -86,7 +84,7 @@ public static String addSalesReceiptEmployee(int eemployeId, double amount, int 
 public static String addTimeCardEmployee(int eemployeId, double horas, int dia, int mes, int anio) {		
 	 Calendar date1 = fechaCorrecta(dia, mes, anio);
     Transaction timeCardTransaction = new AddTimeCardTransaction(date1, horas,  eemployeId);
-    timeCardTransaction.execute(repository2);
+    timeCardTransaction.execute(memoryrepository);
  
 	return MessageView.mostrarMensaje("Timecard agregada");
 }

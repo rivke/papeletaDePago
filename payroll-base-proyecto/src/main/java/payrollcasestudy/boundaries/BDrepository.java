@@ -13,19 +13,12 @@ public class BDrepository  implements Repositoory{
 	public  PaymentType typeEmployee;
 	Employee employee = null;
     DatabaseConnection bd = new DatabaseConnection();
-	  public static Repositoory repository5 = new MemoryRepository();	
+	  public static Repositoory memoryrepositoryAuxi = new MemoryRepository();	
 	  
-	  public Repositoory getRepo()
-	    {
-			return repository5;
-	    	
-	    	
-	    }
 	@Override
 	public Employee getEmployee(int employeeId)
 	{
 		try{     
-			//repository5.getEmployee(employeeId);
 			
 			return findAnEmployee(employeeId);
 			}
@@ -52,7 +45,7 @@ public class BDrepository  implements Repositoory{
 	public void addEmployee(int employeeId, Employee employee) {
 		
 		try {	
-			repository5.addEmployee(employeeId, employee);
+			memoryrepositoryAuxi.addEmployee(employeeId, employee);
 
 			if(employee.getPaymentClassification().typeOfPayment()==PaymentType.Hourly)
 			{		
@@ -107,9 +100,7 @@ public class BDrepository  implements Repositoory{
 
 	@Override
 	public Set<Integer> getAllEmployeeIds() {
-		// TODO Auto-generated method stub
-		return repository5.getAllEmployeeIds();
-		//return null;
+		return memoryrepositoryAuxi.getAllEmployeeIds();
 	}
 
 	@Override
@@ -134,6 +125,12 @@ public class BDrepository  implements Repositoory{
 		return null;
 	}
 	
+	 public Repositoory getRepo()
+	    {
+			return memoryrepositoryAuxi;
+	    	
+	    	
+	    }
 	
 	
 	

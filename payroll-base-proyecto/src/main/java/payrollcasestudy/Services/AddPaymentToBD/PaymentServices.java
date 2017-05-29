@@ -24,7 +24,7 @@ static Calendar payDate = new GregorianCalendar(2017, NOVEMBER, 24);
 static PaydayTransaction paydayTransaction = new PaydayTransaction(payDate);
 static public int memberId = 0;
 public PaymentServices(Repositoory repository) {
-	this.memoryrepository=repository;
+	this.memoryrepository=repository.getRepo();
 }
 
 

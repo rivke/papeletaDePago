@@ -26,5 +26,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/hamcrest-core-1.3.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="mysql-connector-java-5.1.42-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Rebeca/Desktop/MATERIAS2017/ArquiSoftware/golf/java-json.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

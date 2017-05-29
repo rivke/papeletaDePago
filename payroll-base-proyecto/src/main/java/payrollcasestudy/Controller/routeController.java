@@ -5,8 +5,6 @@ import static spark.Spark.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.google.gson.Gson;
-
 import spark.ModelAndView;
 
 import updatable.Updatable;
@@ -16,7 +14,6 @@ import payrollcasestudy.CheckPayment.CheckPayment;
 import payrollcasestudy.Services.AddPaymentToBD.PaymentServices;
 import payrollcasestudy.Services.EmployeeServices.EmployeeServices;
 import payrollcasestudy.entities.Employee;
-import payrollcasestudy.entities.PayCheck;
 import payrollcasestudy.jsonApi.JsonUtil;
 
 
@@ -83,12 +80,8 @@ public class routeController {
 		get("/api/AllEmployees", (req, res) -> employeeService.getAllEmployees(), JsonUtil.json());
 		
 		get("/api/Check/:id", (request, response) -> {
-			
-			Employee employee;
-			String netPay;
-			
-			employee = employeeService.getAnEmployee(Integer.parseInt(request.params(":id")));
-			netPay = paymentService.showPayment(Integer.parseInt(request.params(":id")));
+			Employee employee = employeeService.getAnEmployee(Integer.parseInt(request.params(":id")));
+			String netPay = paymentService.showPayment(Integer.parseInt(request.params(":id")));
 			CheckPayment check = new CheckPayment(employee.getId(),employee.getName(),netPay);
 			return check;
 		}, JsonUtil.json());

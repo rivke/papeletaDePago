@@ -12,16 +12,17 @@ import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
 
 public class ServicesAddInBDCommissionedEmployee extends TypeDatabaseServices{
 	DatabaseConnection bd = new DatabaseConnection();
+	ArrayList<Employee> commissionedEmployees = new ArrayList<Employee>();
 	
 	public void addTypeEmployeeInBD(int employeeId, Employee employee) {
 		try {
-			PreparedStatement pstInsertarCuenta= bd.conectar().prepareStatement("INSERT INTO comision VALUES (?,?,?,?,?)");
+			PreparedStatement insertTypeEmployee= bd.conectar().prepareStatement("INSERT INTO comision VALUES (?,?,?,?,?)");
 			CommissionedPaymentClassification commissionedClassification =  (CommissionedPaymentClassification) employee.getPaymentClassification();
-			addNameAddressInBD(employeeId, employee, pstInsertarCuenta);
-			pstInsertarCuenta.setDouble(4,commissionedClassification.getMonthlySalary());
-			pstInsertarCuenta.setDouble(5,commissionedClassification.getCommissionRate());
-			pstInsertarCuenta.executeUpdate();
-			pstInsertarCuenta.executeUpdate();
+			addNameAddressInBD(employeeId, employee, insertTypeEmployee);
+			insertTypeEmployee.setDouble(4,commissionedClassification.getMonthlySalary());
+			insertTypeEmployee.setDouble(5,commissionedClassification.getCommissionRate());
+			insertTypeEmployee.executeUpdate();
+			insertTypeEmployee.executeUpdate();
 			}
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -49,18 +50,18 @@ public class ServicesAddInBDCommissionedEmployee extends TypeDatabaseServices{
 	@Override
 	public ArrayList<Employee> getAllEmploye() {
 		String query= "SELECT * FROM papeletadepago.comision";
-		ArrayList<Employee> listCommissionedEmployee = new ArrayList<Employee>();
+		
 		try{
 			ResultSet results= bd.connectionWithTableOfEmployees(query);
 			while(results.next()){
 				Employee employee=new Employee(Integer.parseInt(results.getString("idemployees")), results.getString("name"), results.getString("address"));
-				listCommissionedEmployee.add(employee);
+				commissionedEmployees.add(employee);
 				}
-			return listCommissionedEmployee;
+			return commissionedEmployees;
 			}
 			catch(Exception e){
 				System.err.println(e);
-				return listCommissionedEmployee;	
+				return commissionedEmployees;	
 			}
 	}
 

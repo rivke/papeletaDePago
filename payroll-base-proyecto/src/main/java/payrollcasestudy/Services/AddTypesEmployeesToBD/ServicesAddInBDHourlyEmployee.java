@@ -16,11 +16,11 @@ public class ServicesAddInBDHourlyEmployee extends TypeDatabaseServices{
     
     public void addTypeEmployeeInBD(int employeeId, Employee employee){
     	try {
-    		PreparedStatement pstInsertarCuenta = bd.conectar().prepareStatement("INSERT INTO hourly_employees VALUES (?,?,?,?)");
+    		PreparedStatement insertTypeEmployee = bd.conectar().prepareStatement("INSERT INTO hourly_employees VALUES (?,?,?,?)");
     		HourlyPaymentClassification hourlyClassification =  (HourlyPaymentClassification) employee.getPaymentClassification();
-    		addNameAddressInBD(employeeId, employee, pstInsertarCuenta);
-    		pstInsertarCuenta.setDouble(4,hourlyClassification.getHourlyRate());
-    		pstInsertarCuenta.executeUpdate();
+    		addNameAddressInBD(employeeId, employee, insertTypeEmployee);
+    		insertTypeEmployee.setDouble(4,hourlyClassification.getHourlyRate());
+    		insertTypeEmployee.executeUpdate();
 			}
     	catch (SQLException e){
     		e.printStackTrace();
@@ -47,17 +47,17 @@ public class ServicesAddInBDHourlyEmployee extends TypeDatabaseServices{
 	@Override
 	public ArrayList<Employee> getAllEmploye() {
 		String query= "SELECT * FROM papeletadepago.hourly_employees";
-		ArrayList<Employee> listHourlyEmployee = new ArrayList<Employee>();try{
+		ArrayList<Employee> hourlyEmployees = new ArrayList<Employee>();try{
 			ResultSet results= bd.connectionWithTableOfEmployees(query);
 			while(results.next()){
 				Employee employee=new Employee(Integer.parseInt(results.getString("employeeId")), results.getString("name"), results.getString("address"));
-				listHourlyEmployee.add(employee);
+				hourlyEmployees.add(employee);
 				}
-			return listHourlyEmployee;
+			return hourlyEmployees;
 			}
 			catch(Exception e){
 				System.err.println(e);
-				return listHourlyEmployee;	
+				return hourlyEmployees;	
 			}
 					
 	}

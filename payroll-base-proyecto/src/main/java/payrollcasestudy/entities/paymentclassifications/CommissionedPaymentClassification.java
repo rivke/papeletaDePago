@@ -61,20 +61,7 @@ public class CommissionedPaymentClassification extends PaymentClassification {
 
 	
 	@Override
-	public String updateQuery() {
-		
-		return  "INSERT INTO comision VALUES (?,?,?,?,?)";
-	}
-
-	@Override
-	public ArrayList<Double> updatePayment() {
-		ArrayList list = new ArrayList<Double>();
-		list.add(monthlySalary);
-		list.add(commissionRate);
-
-		return list;
-	}
-
+	
 	public PaymentType typeOfPayment() {
 		// TODO Auto-generated method stub
 		return category.Comision;

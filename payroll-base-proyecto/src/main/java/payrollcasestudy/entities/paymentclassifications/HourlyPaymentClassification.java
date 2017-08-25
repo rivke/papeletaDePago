@@ -70,19 +70,7 @@ public class HourlyPaymentClassification extends PaymentClassification{
 
 
 
-	public String updateQuery() {
-		
-	    return  "INSERT INTO hourly_employees VALUES (?,?,?,?)";
-		
-	}
-
-	@Override
-	public ArrayList<Double> updatePayment() {
-		ArrayList list = new ArrayList<Double>();
-		list.add(hourlyRate);
-		return list;
-	}
-
+	
 	public PaymentType typeOfPayment() {
 		// TODO Auto-generated method stub
 		return category.Hourly;

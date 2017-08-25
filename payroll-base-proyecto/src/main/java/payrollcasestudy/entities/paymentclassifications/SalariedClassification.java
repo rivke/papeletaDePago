@@ -34,20 +34,7 @@ public class SalariedClassification extends PaymentClassification {
 
 	
 
-	@Override
-	public String updateQuery() {
-
-		return "INSERT INTO salaried_employee VALUES (?,?,?,?)";
-		
-	}
-
-	@Override
-	public ArrayList<Double> updatePayment() {
-		ArrayList list = new ArrayList<Double>();
-		list.add(salary);
-		return list;
-	}
-
+	
 	public PaymentType typeOfPayment() {
 		// TODO Auto-generated method stub
 		return category.Salaried;

@@ -15,11 +15,11 @@ public class ServicesAddInBDSalariedEmployee extends TypeDatabaseServices {
 
 	  public void addTypeEmployeeInBD(int employeeId, Employee employee) {
 		  try {
-			  PreparedStatement pstInsertarCuenta=bd.conectar().prepareStatement("INSERT INTO salaried_employee VALUES (?,?,?,?)");;
+			  PreparedStatement insertTypeEmployee=bd.conectar().prepareStatement("INSERT INTO salaried_employee VALUES (?,?,?,?)");;
 			  SalariedClassification salariedClassification =  (SalariedClassification) employee.getPaymentClassification();
-			  addNameAddressInBD(employeeId, employee, pstInsertarCuenta);
-			  pstInsertarCuenta.setDouble(4,salariedClassification.getSalary());
-			  pstInsertarCuenta.executeUpdate();
+			  addNameAddressInBD(employeeId, employee, insertTypeEmployee);
+			  insertTypeEmployee.setDouble(4,salariedClassification.getSalary());
+			  insertTypeEmployee.executeUpdate();
 			  }
 		  catch (SQLException e){
 			  e.printStackTrace();
@@ -47,19 +47,31 @@ public class ServicesAddInBDSalariedEmployee extends TypeDatabaseServices {
 	  @Override
 	  public ArrayList<Employee> getAllEmploye() {
 		  String query= "SELECT * FROM papeletadepago.salaried_employee";
-		  ArrayList<Employee> listSalariedEmployee = new ArrayList<Employee>();
+		  ArrayList<Employee> salariedEmployees = new ArrayList<Employee>();
 		  try{
 			  ResultSet results= bd.connectionWithTableOfEmployees(query);
 			  while(results.next()){
 				  Employee employee=new Employee(Integer.parseInt(results.getString("idSalariedEmployee")), results.getString("name"), results.getString("address"));
-				  listSalariedEmployee.add(employee);
+				  salariedEmployees.add(employee);
 				  }
-			  return listSalariedEmployee;
+			  return salariedEmployees;
 			}
 			catch(Exception e){
 				System.err.println(e);
-				return listSalariedEmployee;	
+				return salariedEmployees;	
 			}
 		}
+	  public Employee convertToObject(ResultSet results, Employee employeeBd)
+	  {
+		  Employee employee=new Employee(Integer.parseInt(results.getString("idSalariedEmployee")), results.getString("name"), results.getString("address"));  
+		  
+	  }
 
+	  //hacer apartito un nuevo empleado
+	  //cambiar a varible global
+	  //enviar listade empleados?? a un devolver lista, y query eviar como parametros para no hacer cada rato en todos y no repetir codigo
+	  //asi solo mando resulset??
+	  //conversion objeto relacional, exite herramientos, coversion llevar a un metodo
+	  //emplyee convertToObject(resultset employeeBd)
+	  //employee=new Employee(integer.parset...(id))
 }
